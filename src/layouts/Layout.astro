@@ -1,0 +1,57 @@
+---
+import "../styles/global.css";
+import "@fontsource-variable/plus-jakarta-sans";
+import { ClientRouter } from "astro:transitions";
+import { getTranslation } from "@i18n/utils";
+import type { Locale } from "@i18n/utils";
+
+interface Props {
+  title?: string;
+  description: string;
+}
+
+const currentLang = Astro.currentLocale as Locale;
+const { href, origin } = Astro.url;
+const { title, description } = Astro.props;
+
+const t = getTranslation(currentLang, "layout");
+
+const site = "Franco Carreras";
+const page = [title, site].filter(Boolean).join(" | ");
+---
+
+<!doctype html>
+<html lang={currentLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={href} />
+    <title>{page}</title>
+    <ClientRouter />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: page,
+        description: description,
+        url: href,
+        publisher: {
+          "@type": "Organization",
+          name: site,
+          logo: {
+            "@type": "ImageObject",
+            url: `${origin}/favicon.ico`,
+          },
+        },
+      })}
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
