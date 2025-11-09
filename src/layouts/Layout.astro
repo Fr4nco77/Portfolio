@@ -29,6 +29,23 @@ const page = [title, site].filter(Boolean).join(" | ");
     <meta name="description" content={description} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={href} />
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Open Graph -->
+    <meta property="og:title" content={page} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${origin}/favicon.ico`} />
+    <meta property="og:image:alt" content="Franco Carreras Portfolio" />
+    <!-- X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={page} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${origin}/favicon.ico`} />
     <title>{page}</title>
     <ClientRouter />
     <script
