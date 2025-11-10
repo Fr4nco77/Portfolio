@@ -1,0 +1,27 @@
+---
+interface Props {
+  id?: string;
+  styles?: string;
+}
+
+const { id, styles } = Astro.props;
+---
+
+<button
+  id={id}
+  aria-label="toggle menu"
+  class:list={[
+    "flex size-6 flex-col items-center justify-center gap-1",
+    styles,
+  ]}
+>
+  <span
+    class="h-0.5 w-5 rounded-full bg-white transition-transform duration-300 ease-in-out"
+  ></span>
+  <span
+    class="h-0.5 w-5 rounded-full bg-white transition-opacity duration-300 ease-in-out"
+  ></span>
+  <span
+    class="h-0.5 w-5 rounded-full bg-white transition-transform duration-300 ease-in-out"
+  ></span>
+</button>

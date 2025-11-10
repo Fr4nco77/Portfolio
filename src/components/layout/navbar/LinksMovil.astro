@@ -1,0 +1,37 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Button from "@components/ui/ButtonRounded.astro";
+
+interface Props {
+  links: {
+    [key: string]: string;
+  };
+  cta: string;
+  currentLang: string;
+  styles?: string;
+}
+
+const { links, cta, currentLang, styles } = Astro.props;
+console.log();
+---
+
+<nav class:list={["flex w-full flex-col items-center gap-8 lg:hidden", styles]}>
+  {
+    Object.entries(links).map(([key, value], index) => (
+      <a
+        href={getRelativeLocaleUrl(currentLang, key === "home" ? "/" : key)}
+        class="movilLink block text-2xl/tight font-medium tracking-wide uppercase opacity-0"
+        style={`animation-delay: ${index * 50}ms;`}
+      >
+        {value}
+      </a>
+    ))
+  }
+  <!-- se hardcodeo el delay de la animacion de entrada -->
+  <Button
+    to={getRelativeLocaleUrl(currentLang, "contact")}
+    styles="movilLink h-12 opacity-0 px-8 [animation-delay:300ms]"
+  >
+    <span class="text-center font-medium uppercase">{cta}</span>
+  </Button>
+</nav>

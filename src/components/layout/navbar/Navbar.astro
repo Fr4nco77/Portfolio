@@ -1,0 +1,92 @@
+---
+import { Image } from "astro:assets";
+import Logo from "@assets/images/logo.png";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getTranslation, type Locale } from "@i18n/utils";
+import ToggleMenu from "./ToggleMenu.astro";
+import LinksDesktop from "./LinksDesktop.astro";
+import LinksMovil from "./LinksMovil.astro";
+import Button from "@components/ui/ButtonRounded.astro";
+import ToggleLanguage from "./ToggleLanguage.astro";
+
+const currentLocale = Astro.currentLocale as Locale;
+const t = getTranslation(currentLocale, "navbar");
+---
+
+<header
+  class="fixed inset-x-0 top-2 z-50 w-full px-2 sm:top-3 sm:px-3 md:top-6 md:px-6 lg:top-6 lg:px-6"
+>
+  <div
+    class="mx-auto w-full max-lg:flex max-lg:flex-col max-lg:gap-y-16 max-lg:rounded-sm max-lg:bg-neutral-800 max-lg:px-4 max-lg:py-2 max-md:gap-y-14 lg:grid lg:max-w-(--breakpoint-2xl) lg:grid-cols-3"
+  >
+    <div
+      class="max-lg:flex max-lg:w-full max-lg:items-center max-lg:justify-between lg:w-fit lg:justify-self-start"
+    >
+      <a href={getRelativeLocaleUrl(currentLocale, "/")} aria-label="logo">
+        <Image
+          src={Logo}
+          alt="Logo"
+          loading="eager"
+          class="size-7 object-contain md:size-9 lg:size-10"
+        />
+      </a>
+      <div class="flex items-center gap-2 lg:hidden">
+        <ToggleLanguage
+          buttonStyles="size-6"
+          listStyles="top-8 right-[4.5rem] md:right-24 md:top-9"
+          currentLanguage={currentLocale}
+        />
+
+        <ToggleMenu id="toggleMenu" />
+      </div>
+    </div>
+    <div
+      id="menu"
+      class="pb-12 transition-all duration-300 ease-in-out max-lg:hidden md:pb-14 lg:w-fit lg:justify-self-center lg:rounded-sm lg:bg-neutral-950/25 lg:px-9 lg:py-3.5 lg:backdrop-blur-[1px]"
+    >
+      <LinksDesktop currentLang={currentLocale} links={t.links} />
+      <LinksMovil currentLang={currentLocale} links={t.links} cta={t.cta} />
+    </div>
+    <div
+      class="relative items-center gap-2 max-lg:hidden lg:flex lg:w-fit lg:justify-self-end"
+    >
+      <ToggleLanguage
+        buttonStyles="size-10"
+        listStyles="top-8 right-56"
+        currentLanguage={currentLocale}
+      />
+      <Button
+        to={getRelativeLocaleUrl(currentLocale, "contact")}
+        styles="h-10 px-6 "
+      >
+        <span class="text-xs font-semibold uppercase">{t.cta}</span>
+      </Button>
+    </div>
+  </div>
+</header>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const btnOpen = document.getElementById("toggleMenu");
+    const [top, mid, bottom] = btnOpen.querySelectorAll("span");
+    const menu = document.getElementById("menu");
+
+    btnOpen.addEventListener("click", () => {
+      //Transicion del toggle de menu
+      top.classList.toggle("rotate-45");
+      top.classList.toggle("translate-y-1.5");
+      mid.classList.toggle("opacity-0");
+      bottom.classList.toggle("-rotate-45");
+      bottom.classList.toggle("-translate-y-1.5");
+
+      //Despliegue de menu
+      menu.classList.toggle("max-lg:hidden");
+      menu.classList.toggle("max-lg:flex");
+
+      //Transicion de entrada de los links en móvil
+      document
+        .querySelectorAll(".movilLink")
+        .forEach((e) => e.classList.toggle("animate-fadeIn"));
+    });
+  })();
+</script>

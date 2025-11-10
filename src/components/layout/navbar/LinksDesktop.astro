@@ -1,0 +1,26 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+interface Props {
+  links: {
+    [key: string]: string;
+  };
+  currentLang: string;
+  styles?: string;
+}
+
+const { links, currentLang, styles } = Astro.props;
+---
+
+<nav class:list={["flex h-fit justify-center gap-10 max-lg:hidden", styles]}>
+  {
+    Object.entries(links).map(([key, value]) => (
+      <a
+        href={getRelativeLocaleUrl(currentLang, key === "home" ? "/" : key)}
+        class="text-xs/none font-semibold tracking-wide uppercase lg:transition-colors lg:duration-300 lg:hover:text-neutral-400"
+      >
+        {value}
+      </a>
+    ))
+  }
+</nav>

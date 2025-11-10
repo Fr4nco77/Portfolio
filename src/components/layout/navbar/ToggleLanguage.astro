@@ -1,0 +1,68 @@
+---
+import Languages from "@assets/icons/Languages.astro";
+import { locales } from "@i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+interface Props {
+  buttonStyles?: string;
+  listStyles?: string;
+  currentLanguage: string;
+}
+
+const { buttonStyles, listStyles, currentLanguage } = Astro.props;
+const { pathname } = Astro.url;
+const path = pathname.replace(/^\/[a-z]{2}/, "") || "/";
+---
+
+<button
+  title="Idioma"
+  aria-label="toggle language"
+  class:list={[
+    "toggleLanguage flex cursor-pointer items-center justify-center rounded-full border border-neutral-800/80 bg-neutral-950 transition-colors duration-500 hover:bg-neutral-800",
+    buttonStyles,
+  ]}
+>
+  <Languages styles="size-6" />
+</button>
+<!-- Lista de Idiomas -->
+<ul
+  class:list={[
+    "absolute h-0 list-none space-y-2 overflow-hidden rounded-sm bg-neutral-800 transition-all duration-300 ease-in-out",
+    listStyles,
+  ]}
+>
+  {
+    Object.entries(locales).map(([key, value]) => (
+      <li>
+        <a
+          href={getRelativeLocaleUrl(key, path)}
+          aria-label={`change language to ${value}`}
+          class:list={[
+            "transition-colors duration-300 hover:text-neutral-400",
+            currentLanguage === key &&
+              "pointer-events-none underline underline-offset-4",
+          ]}
+        >
+          {value}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const buttons = document.querySelectorAll(".toggleLanguage");
+    buttons.forEach((btn) => {
+      if (!btn.dataset.listenerAdded) {
+        const list = btn.nextElementSibling;
+        btn.addEventListener("click", () => {
+          list.classList.toggle("h-0");
+          list.classList.toggle("p-7");
+          list.classList.toggle("border-2");
+        });
+        btn.dataset.listenerAdded = "true";
+      }
+    });
+  })();
+</script>
