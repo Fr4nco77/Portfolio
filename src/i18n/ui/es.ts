@@ -7,6 +7,14 @@ export default {
       blog: "Blog",
       contact: "Contacto",
     },
-    cta: "Comenzar proyecto"
+    cta: "Comenzar proyecto",
+  },
+  footer: {
+    job: {
+      label: "Desarrollador de Software",
+      description:
+        "Soluciones digitales pensadas para ser eficientes, seguras y adaptables al crecimiento de tu negocio.",
+    },
+    blog: "Suscríbete al blog",
   },
 };
