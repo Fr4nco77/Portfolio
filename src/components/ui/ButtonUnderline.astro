@@ -1,0 +1,22 @@
+---
+interface Props {
+  styles?: string;
+  to: string;
+}
+
+const { styles, to } = Astro.props;
+---
+
+<a
+  class:list={[
+    "group relative flex h-fit w-fit items-center justify-center overflow-hidden uppercase lg:py-0.5",
+    styles,
+  ]}
+  href={to}
+>
+  <slot />
+  <div
+    class="absolute bottom-0 h-0.5 w-full -translate-x-[110%] bg-white transition-transform duration-300 group-hover:translate-x-0"
+  >
+  </div>
+</a>
