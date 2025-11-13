@@ -1,0 +1,130 @@
+---
+import ButtonUnderline from "@components/ui/ButtonUnderline.astro";
+import { getTranslation, type Locale } from "@i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { networks } from "@lib/consts";
+import Send from "@assets/icons/Send.astro";
+
+const currentLocale = Astro.currentLocale as Locale;
+const links = getTranslation(currentLocale, "navbar").links;
+const t = getTranslation(currentLocale, "footer");
+
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="mx-auto grid w-full border-t border-neutral-800/80 max-lg:grid-flow-row lg:max-w-(--breakpoint-2xl) lg:grid-cols-3"
+>
+  <div
+    class="flex h-fit w-full flex-col justify-center border-neutral-800/80 px-8 py-7 max-lg:border-b max-lg:text-center lg:h-full lg:border-r lg:py-6"
+  >
+    <div class="mb-6">
+      <h2 class="text-3xl font-bold tracking-tight">Franco Carreras</h2>
+      <p class="text-sm text-neutral-400">{t.job.label}</p>
+    </div>
+    <p class="text-sm leading-relaxed text-neutral-400">
+      {t.job.description}
+    </p>
+  </div>
+  <div
+    class="flex h-fit w-full justify-center border-neutral-800/80 px-8 py-7 max-lg:items-center max-lg:border-b lg:h-full lg:border-r lg:py-6"
+  >
+    <nav class="flex h-fit flex-wrap justify-center gap-9">
+      {
+        Object.entries(links).map(([key, value]) => (
+          <ButtonUnderline
+            to={getRelativeLocaleUrl(currentLocale, key === "home" ? "/" : key)}
+            styles="text-xs/tight font-semibold uppercase md:text-sm/tight md:font-medium"
+          >
+            {value}
+          </ButtonUnderline>
+        ))
+      }
+    </nav>
+  </div>
+  <div
+    class="flex h-fit w-full justify-center px-8 py-7 max-lg:items-center lg:h-full lg:py-6"
+  >
+    <div
+      class="flex w-full flex-col items-center justify-center max-lg:gap-7 lg:h-full lg:items-end lg:justify-between"
+    >
+      <div class="w-full">
+        <span class="mb-1 block text-sm font-medium tracking-wide uppercase">
+          {t.blog}
+        </span>
+        <form class="flex" id="formBlog">
+          <input
+            type="email"
+            name="email"
+            placeholder="pepe@example.com"
+            class="flex-1 rounded-l border border-neutral-700 bg-neutral-800 px-4 py-2 text-sm placeholder-neutral-400 transition-colors user-invalid:border-red-500 focus:border-white focus:outline-none"
+            required
+          />
+          <button
+            type="submit"
+            class="flex cursor-pointer items-center gap-2 rounded-r bg-white px-4 py-2 text-sm font-medium text-black transition-colors duration-300 hover:bg-neutral-700 hover:text-white"
+          >
+            <Send styles="size-4 " />
+          </button>
+        </form>
+      </div>
+      <div
+        class="flex w-full items-center justify-between gap-3 max-sm:flex-col"
+      >
+        <ul class="flex items-center gap-8 lg:gap-1 xl:gap-8">
+          {
+            networks.map(({ label, href, icon: Icon }) => (
+              <li class="transition-transform duration-300 hover:scale-110">
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                >
+                  <Icon styles="size-5" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="text-end text-sm/tight font-medium uppercase">
+          {`© ${year} Franco Carreras.`}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script is:inline data-astro-rerun type="module">
+  import showToast from "/src/components/ui/Toaster/showToast.ts";
+  (() => {
+    const form = document.getElementById("formBlog");
+
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      //  Realmente  se debería usar server actions para hacer el registro
+      // al blog de esa forma se validaría la información y se se manejaría
+      // la informacion tanto para exito como error.
+      // Pero hasta no tener un servicio de email dedicado, va quedar así.
+      const email = form.elements["email"].value.trim();
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!regex.test(email)) {
+        showToast({
+          title: "Correo no válido",
+          message:
+            "Por favor ingresá una dirección de email válida para registrarte.",
+          type: "error",
+        });
+      } else {
+        showToast({
+          title: "🎉 ¡Bienvenido al blog!",
+          message:
+            "Ahora recibirás notificaciones de nuevos posts y contenido exclusivo.",
+          type: "success",
+        });
+        form.reset();
+      }
+    });
+  })();
+</script>
