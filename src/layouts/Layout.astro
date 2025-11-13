@@ -2,8 +2,10 @@
 import "../styles/global.css";
 import "@fontsource-variable/plus-jakarta-sans";
 import { ClientRouter } from "astro:transitions";
-import { getTranslation } from "@i18n/utils";
 import type { Locale } from "@i18n/utils";
+import Navbar from "@components/layout/navbar/Navbar.astro";
+import Footer from "@components/layout/footer/Footer.astro";
+import Toaster from "@components/ui/Toaster/Toaster.astro";
 
 interface Props {
   title?: string;
@@ -13,8 +15,6 @@ interface Props {
 const currentLang = Astro.currentLocale as Locale;
 const { href, origin } = Astro.url;
 const { title, description } = Astro.props;
-
-const t = getTranslation(currentLang, "layout");
 
 const site = "Franco Carreras";
 const page = [title, site].filter(Boolean).join(" | ");
@@ -69,6 +69,9 @@ const page = [title, site].filter(Boolean).join(" | ");
     />
   </head>
   <body>
+    <Navbar />
     <slot />
+    <Footer />
+    <Toaster />
   </body>
 </html>
