@@ -17,10 +17,11 @@ const { texts } = Astro.props;
   >
     <!-- Se mostrara el primer frame del video hasta que cargue -->
     <Image
+      id="hero-poster"
       src={Poster}
       alt="Franco Carreras"
+      loading="eager"
       class="absolute inset-0 z-0 size-full object-cover p-4"
-      id="hero-poster"
     />
     <video
       id="hero"
