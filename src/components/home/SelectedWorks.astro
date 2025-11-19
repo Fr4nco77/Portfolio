@@ -1,0 +1,66 @@
+---
+import BigCard from "@components/ui/BigCard.astro";
+import StickyTitle from "@components/ui/StickyTitle.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type es from "@i18n/ui/es";
+import type { Locale } from "@i18n/utils";
+
+interface Props {
+  currentLang: Locale;
+  texts: typeof es.home.SelectedWorks;
+  projects: { id: string; name: string; cover: ImageMetadata }[];
+}
+
+const { currentLang, texts: t, projects } = Astro.props;
+---
+
+<section
+  class="relative flex w-full flex-col items-center gap-20 md:gap-32 lg:gap-52"
+>
+  <StickyTitle
+    title={t.title}
+    to={getRelativeLocaleUrl(currentLang, "work")}
+    button={t.button}
+  />
+  <div
+    id="works"
+    class="flex w-full flex-col items-center gap-20 px-4 md:gap-24 md:px-8 lg:gap-32"
+  >
+    {
+      projects.map(({ id, name, cover }) => (
+        <BigCard
+          title={name}
+          image={cover}
+          redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
+          styles="selected opacity-0"
+        />
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const cards = document.querySelectorAll(".selected");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const el = entry.target;
+          el.classList.add("animate-fadeIn");
+          observer.unobserve(el);
+        });
+      },
+      {
+        // Empieza un poco antes de estar totalmente visible
+        root: null,
+        threshold: 0.2,
+        rootMargin: "10% 0px -10% 0px",
+      },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  })();
+</script>
