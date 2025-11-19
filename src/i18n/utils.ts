@@ -1,4 +1,3 @@
-import type { GetStaticPaths } from "astro";
 import es from "@i18n/ui/es.ts";
 import en from "@i18n/ui/en.ts";
 import fr from "@i18n/ui/fr.ts";
@@ -22,9 +21,3 @@ export const getTranslation = (
   const translation = translations[currenLocale][section];
   return translation;
 };
-
-export const generateLangStaticPaths = (() => {
-  return Object.keys(locales).map((locale) => {
-    return { params: { lang: locale } };
-  });
-}) satisfies GetStaticPaths;
