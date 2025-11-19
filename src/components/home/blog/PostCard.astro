@@ -1,0 +1,58 @@
+---
+import ButtonUnderline from "@components/ui/ButtonUnderline.astro";
+import type { Locale } from "@i18n/utils";
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+interface Props {
+  currentLang: Locale;
+  id: string;
+  title: string;
+  summary: string;
+  cover: ImageMetadata;
+  tag: string;
+  date: number;
+}
+
+const { currentLang, id, title, date, summary, cover, tag } = Astro.props;
+---
+
+<div
+  class="flex w-full max-w-(--breakpoint-2xl) gap-4 max-lg:flex-col sm:gap-5 lg:justify-between"
+>
+  <div class="flex w-full flex-col lg:w-1/3 lg:justify-between">
+    <div class="flex w-full flex-col gap-2 sm:gap-3">
+      <small class="flex items-center gap-2 text-xs">
+        <ButtonUnderline
+          to={getRelativeLocaleUrl(currentLang, `blog/tag/${tag}`)}
+        >
+          {tag}
+        </ButtonUnderline>
+        <span class="inline-flex">|</span>
+        {date}
+      </small>
+      <ButtonUnderline
+        to={getRelativeLocaleUrl(currentLang, `blog/${id}`)}
+        styles="text-xl sm:text-2xl"
+      >
+        {title}
+      </ButtonUnderline>
+    </div>
+    <p class="line-clamp-4 max-lg:hidden">
+      {summary}
+    </p>
+  </div>
+  <a
+    href={getRelativeLocaleUrl(currentLang, `blog/${id}`)}
+    class="group w-full overflow-hidden rounded-sm lg:w-1/2"
+  >
+    <Image
+      src={cover}
+      alt={title}
+      class="size-full object-cover transition-transform duration-700 group-hover:scale-105 lg:aspect-3/1"
+    />
+  </a>
+  <p class="line-clamp-2 sm:text-lg lg:hidden">
+    {summary}
+  </p>
+</div>

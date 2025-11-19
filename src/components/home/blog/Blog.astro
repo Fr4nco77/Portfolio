@@ -1,0 +1,49 @@
+---
+import StickyTitle from "@components/ui/StickyTitle.astro";
+import type { Locale } from "@i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import PostCard from "@components/home/blog/PostCard.astro";
+import type es from "@i18n/ui/es";
+
+interface Props {
+  texts: typeof es.home.blog;
+  currentLang: Locale;
+  posts: {
+    id: string;
+    title: string;
+    tag: string;
+    date: number;
+    summary: string;
+    cover: ImageMetadata;
+  }[];
+}
+
+const { currentLang, texts: t, posts } = Astro.props;
+---
+
+<section
+  class="relative flex w-full flex-col items-center gap-20 md:gap-32 lg:gap-52"
+>
+  <StickyTitle
+    title={t.title}
+    button={t.button}
+    to={getRelativeLocaleUrl(currentLang, "blog")}
+  />
+  <div
+    class="flex w-full flex-col items-center gap-20 px-4 md:gap-24 md:px-8 lg:gap-32"
+  >
+    {
+      posts.map(({ id, title, summary, cover, tag, date }) => (
+        <PostCard
+          currentLang={currentLang}
+          id={id}
+          title={title}
+          summary={summary}
+          cover={cover}
+          tag={tag}
+          date={date}
+        />
+      ))
+    }
+  </div>
+</section>
