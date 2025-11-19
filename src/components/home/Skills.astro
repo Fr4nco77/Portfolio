@@ -1,0 +1,63 @@
+---
+import StickyTitle from "@components/ui/StickyTitle.astro";
+import type { Locale } from "@i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import es from "@i18n/ui/es";
+import SkillCard from "@components/ui/SkillCard.astro";
+import { skills } from "@lib/consts";
+
+interface Props {
+  currentLang: Locale;
+  texts: typeof es.home.skills;
+}
+
+const { currentLang, texts: t } = Astro.props;
+const data = skills(t.skills);
+---
+
+<section
+  class="relative flex w-full flex-col items-center gap-20 md:gap-32 lg:gap-52"
+>
+  <StickyTitle
+    title={t.title}
+    to={getRelativeLocaleUrl(currentLang, "about")}
+    button={t.button}
+  />
+  <div
+    id="container-skills"
+    class="flex w-full flex-col items-center gap-20 px-4 md:gap-24 md:px-8 lg:gap-32"
+  >
+    {
+      data.map(({ label, image, skills }) => (
+        <SkillCard label={label} image={image} skills={skills} />
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const skills = document.querySelectorAll(".service");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const el = entry.target;
+          el.classList.add("animate-fadeIn");
+
+          observer.unobserve(el);
+        });
+      },
+      {
+        // Empieza un poco antes de estar totalmente visible
+        root: null,
+        threshold: 0.2,
+        rootMargin: "10% 0px -10% 0px",
+      },
+    );
+
+    skills.forEach((skill) => observer.observe(skill));
+  })();
+</script>
