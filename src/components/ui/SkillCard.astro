@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import Badge from "./Badge.astro";
+
+interface Props {
+  label: string;
+  image: ImageMetadata;
+  skills: { label: string; icon: any}[];
+}
+
+const { label, image, skills } = Astro.props;
+---
+
+<div
+  class="service relative flex w-full max-w-(--breakpoint-2xl) opacity-0 max-lg:flex-col max-lg:items-center max-lg:gap-7 lg:justify-between"
+>
+  <p class="text-2xl/tight font-medium uppercase md:text-3xl/tight">{label}</p>
+  <div
+    class="flex gap-9 max-lg:flex-col-reverse max-lg:items-center md:gap-10 lg:justify-end lg:gap-12"
+  >
+    <div
+      class="flex h-fit max-w-96 flex-wrap items-center justify-center gap-3 md:max-w-md lg:max-w-98 lg:justify-end"
+    >
+      {skills.map(({ label, icon: Icon }) => <Badge label={label}>{<Icon styles="size-4 stroke-[1.5]"/>}</Badge>)}
+    </div>
+    <Image
+      src={image}
+      alt={label}
+      class="h-80 w-full rounded-lg object-cover md:w-124 lg:w-80 lg:h-fit"
+    />
+  </div>
+</div>
