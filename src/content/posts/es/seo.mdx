@@ -1,0 +1,68 @@
+---
+title: "SEO Técnico: El Arte de Hacer que Google Ame Tu Código"
+summary: >
+  El SEO técnico es una de las disciplinas más subestimadas pero fundamentales en el desarrollo web moderno. No se trata solo de palabras clave o backlinks, sino de cómo está construido tu sitio desde las entrañas: estructura del HTML, velocidad de carga, accesibilidad, arquitectura de URLs, uso correcto de etiquetas meta, y mucho más. En este post te comparto mi experiencia aplicando buenas prácticas de SEO técnico en proyectos reales, cómo impacta directamente en el rendimiento orgánico, y qué herramientas y estrategias utilizo para asegurar que cada línea de código esté optimizada para los motores de búsqueda. Si estás construyendo un portafolio, una landing page o una aplicación web, entender el SEO técnico puede marcar la diferencia entre ser invisible o destacar en los resultados de búsqueda.
+date: 2025-11-18
+cover: /src/assets/images/posts/seo/cover.jpg
+tag: "seo"
+draft: false
+---
+
+import { Image } from "astro:assets";
+
+# SEO Técnico: El Arte de Hacer que Google Ame Tu Código
+
+Cuando empecé a desarrollar sitios web, pensaba que el SEO era cosa del equipo de marketing. Spoiler: estaba equivocado. Muy equivocado. El SEO técnico es responsabilidad directa del desarrollador, y puede ser el factor decisivo entre un sitio que nadie encuentra y uno que genera tráfico orgánico constante.
+
+## ¿Qué es el SEO técnico?
+
+El SEO técnico abarca todas las optimizaciones que se hacen a nivel de código y arquitectura del sitio para facilitar que los motores de búsqueda lo rastreen, indexen y entiendan correctamente. No se trata de escribir contenido con palabras clave, sino de asegurarse de que ese contenido sea visible, rápido y accesible.
+
+Algunos aspectos clave del SEO técnico incluyen:
+
+- **Velocidad de carga**: Google ama los sitios rápidos. Minimizar CSS y JS, usar imágenes optimizadas, y aprovechar el lazy loading son prácticas esenciales.
+- **Estructura del HTML**: Usar correctamente etiquetas como `<header>`, `<main>`, `<article>`, `<section>` y `<footer>` ayuda a los bots a entender la jerarquía del contenido.
+- **URLs limpias y semánticas**: Evitar parámetros innecesarios y usar slugs descriptivos mejora tanto el SEO como la experiencia del usuario.
+- **Sitemaps y robots.txt**: Facilitan la indexación y controlan qué se debe o no rastrear.
+- **Uso de metaetiquetas**: Títulos, descripciones, canonical tags, y etiquetas Open Graph son fundamentales para el SEO y el social sharing.
+- **Accesibilidad (a11y)**: Un sitio accesible no solo es más inclusivo, también es más comprensible para los motores de búsqueda.
+
+## Mi experiencia aplicando SEO técnico
+
+En mi portafolio, construido con Astro, he aplicado varias de estas prácticas. Por ejemplo:
+
+- Utilizo el componente `Image` de Astro para servir imágenes optimizadas automáticamente.
+- Implementé rutas limpias y predictivas para cada post (`/posts/seo-tecnico` en lugar de `/posts?id=123`).
+- Genero automáticamente un sitemap.xml y robots.txt con Astro plugins.
+- Cada página tiene su título y descripción únicos, definidos en el frontmatter y renderizados dinámicamente en el `<head>`.
+
+<Image
+  src="/src/assets/images/posts/seo/estructura-html.jpg"
+  alt="Ejemplo de estructura HTML semántica"
+  class="size-full object-cover rounded-sm"
+/>
+
+## Herramientas que recomiendo
+
+Estas son algunas herramientas que uso para auditar y mejorar el SEO técnico:
+
+- **Lighthouse**: Integrado en Chrome DevTools, te da una visión general del rendimiento, accesibilidad y SEO.
+- **Ahrefs Webmaster Tools**: Gratuito y muy potente para detectar errores técnicos.
+- **Screaming Frog SEO Spider**: Ideal para analizar sitios grandes y detectar problemas de rastreo.
+- **Astro plugins**: Como `@astrojs/sitemap` y `astro-seo` para automatizar tareas clave.
+
+<Image
+  src="/src/assets/images/posts/seo/lighthouse.png"
+  alt="Lighthouse, 100% en seo"
+  class="size-full object-cover rounded-sm"
+/>
+
+## Conclusión: el SEO técnico es tu aliado
+
+No importa si estás construyendo un blog personal, una tienda online o una app compleja: el SEO técnico es una inversión que siempre rinde frutos. No solo mejora tu posicionamiento, también hace que tu sitio sea más rápido, accesible y mantenible.
+
+Así que la próxima vez que escribas una línea de código, pregúntate: ¿esto ayuda a que mi sitio sea más entendible para los motores de búsqueda? Si la respuesta es sí, vas por buen camino.
+
+---
+
+¿Te interesa que profundice en cómo configurar SEO técnico en Astro paso a paso? ¡Déjamelo saber y preparo una guía completa!

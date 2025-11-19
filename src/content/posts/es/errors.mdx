@@ -1,0 +1,72 @@
+---
+title: "Errores que cometí como dev y lo que aprendí"
+summary: >
+  A lo largo de mi camino como desarrollador, he cometido errores que en su momento parecían obstáculos insalvables, pero que hoy reconozco como puntos de inflexión en mi crecimiento profesional. Desde no documentar correctamente hasta subestimar la importancia de la accesibilidad, cada tropiezo me enseñó algo valioso. En este post comparto los errores más significativos que cometí como dev, cómo los enfrenté, qué aprendí de cada uno y cómo cambiaron mi forma de trabajar. Este artículo no solo busca ser una reflexión personal, sino también una guía para quienes están empezando o quieren evitar caer en las mismas trampas. Porque equivocarse es parte del proceso, pero aprender de ello es lo que realmente te convierte en mejor desarrollador.
+date: 2025-11-18
+cover: /src/assets/images/posts/errors/cover.jpg
+tag: "project"
+draft: false
+---
+
+import { Image } from "astro:assets";
+
+# Errores que cometí como dev y lo que aprendí
+
+<Image
+  src="/src/assets/images/posts/errors/errors.jpg"
+  alt="Ilustración de errores comunes en desarrollo web"
+  class="size-full object-cover rounded-sm"
+
+/>
+
+Cuando empecé a programar, pensaba que lo más importante era que el código funcionara. Si compilaba y no tiraba errores, estaba todo bien. Pero con el tiempo entendí que el desarrollo va mucho más allá de eso. Y sí, cometí errores. Muchos. Algunos me costaron horas de trabajo, otros me enseñaron lecciones que todavía aplico hoy.
+
+## 1. No documentar pensando en el futuro
+
+Al principio, escribía código sin dejar comentarios ni documentación. Total, "yo lo entiendo". El problema llegó meses después, cuando tuve que retomar ese proyecto y no entendía nada. Aprendí que documentar no es para los demás, es para tu yo del futuro.
+
+**Lección:** Siempre dejo comentarios claros y mantengo un README actualizado. Uso herramientas como JSDoc y me esfuerzo por escribir código autoexplicativo.
+
+## 2. Subestimar la accesibilidad
+
+Durante mucho tiempo, no consideré la accesibilidad como parte del desarrollo. No usaba etiquetas `aria`, no pensaba en el contraste, y ni hablar de navegación por teclado.
+
+**Lección:** Hoy diseño pensando en todos los usuarios. Uso Lighthouse para auditar accesibilidad y sigo buenas prácticas desde el inicio.
+
+<Image
+  src="/src/assets/images/posts/errors/404.jpg"
+  alt="Ejemplo de contraste deficiente en una interfaz"
+  class="size-full object-cover rounded-sm"
+/>
+
+## 3. No validar inputs del usuario
+
+En mis primeros proyectos, confiaba ciegamente en lo que el usuario ingresaba. ¿Qué podía salir mal? Spoiler: todo. Desde errores de formato hasta vulnerabilidades de seguridad.
+
+**Lección:** Ahora valido todo. Uso `zod` para esquemas, sanitizo entradas y nunca doy por sentado que el usuario va a hacer lo correcto.
+
+## 4. Ignorar el rendimiento
+
+Me enfocaba en que el sitio se viera bien, pero no en que cargara rápido. Usaba imágenes pesadas, no minificaba archivos, y no aprovechaba el lazy loading.
+
+**Lección:** Hoy optimizo cada recurso. Uso el componente `Image` de Astro, cargo scripts de forma diferida y mido el rendimiento con herramientas como WebPageTest.
+
+## 5. No pedir ayuda por miedo a parecer incompetente
+
+Este fue uno de los errores más duros. Me quedaba horas bloqueado por no querer preguntar. Pensaba que pedir ayuda era admitir que no sabía.
+
+**Lección:** Aprendí que pedir ayuda es parte del proceso. La comunidad dev es increíblemente generosa, y compartir dudas me hizo crecer más rápido.
+
+## 6. No versionar correctamente
+
+Usaba Git, pero mal. Commits sin sentido, ramas desordenadas, y conflictos que no sabía resolver.
+
+**Lección:** Hoy sigo convenciones como Conventional Commits, uso ramas por feature y hago PRs bien descriptivos. Git dejó de ser un enemigo y pasó a ser mi aliado.
+
+## Conclusión: equivocarse es parte del camino
+
+Cada error que cometí me enseñó algo. Y aunque en su momento fueron frustrantes, hoy los valoro. Porque gracias a ellos soy un mejor desarrollador, más consciente, más empático y más profesional.
+
+---
+
+¿Querés que escriba sobre cómo versionar proyectos correctamente o sobre buenas prácticas de accesibilidad? Estoy listo para seguir armando contenido que sume a tu portafolio.
