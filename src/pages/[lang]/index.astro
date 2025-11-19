@@ -1,0 +1,48 @@
+---
+import About from "@components/home/About.astro";
+import Blog from "@components/home//blog/Blog.astro";
+import Hero from "@components/home/hero/Hero.astro";
+import SelectedWorks from "@components/home/SelectedWorks.astro";
+import Skills from "@components/home/Skills.astro";
+import CTA from "@components/ui/CTA.astro";
+import { getTranslation, type Locale } from "@i18n/utils";
+import Layout from "@layouts/Layout.astro";
+import { generateHomeStaticPaths } from "@lib/staticsPaths";
+export const getStaticPaths = generateHomeStaticPaths;
+
+interface Props {
+  projects: {
+    id: string;
+    name: string;
+    cover: ImageMetadata;
+  }[];
+  posts: {
+    id: string;
+    title: string;
+    tag: string;
+    date: number;
+    summary: string;
+    cover: ImageMetadata;
+  }[];
+}
+
+const currentLang = Astro.currentLocale as Locale;
+const t = getTranslation(currentLang, "home");
+
+const { projects, posts } = Astro.props;
+---
+
+<Layout description={t.description}>
+  <main class="flex w-full flex-col items-center gap-20 md:gap-32 xl:gap-52">
+    <Hero texts={t.hero} />
+    <About currentLang={currentLang} texts={t.about} />
+    <SelectedWorks
+      currentLang={currentLang}
+      texts={t.SelectedWorks}
+      projects={projects}
+    />
+    <Skills currentLang={currentLang} texts={t.skills} />
+    <Blog currentLang={currentLang} texts={t.blog} posts={posts} />
+    <CTA currentLang={currentLang} styles="mb-20 md:mb-32 xl:mb-52" />
+  </main>
+</Layout>
