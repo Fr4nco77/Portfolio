@@ -1,0 +1,21 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const letters = text.split("");
+---
+
+{
+  letters.map((letter, index) => (
+    <span
+      class:list={[
+        "leading-tight font-medium uppercase text-5xl min-[425px]:text-7xl md:text-[9rem] lg:text-[11.5rem]",
+        index % 2 === 0 && "z-2",
+      ]}
+    >
+      {letter}
+    </span>
+  ))
+}

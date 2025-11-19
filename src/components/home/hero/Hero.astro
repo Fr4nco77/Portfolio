@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import Subtitle from "./Subtitle.astro";
+import Images from "./images.astro";
+import Poster from "@assets/images/hero/hero.png";
+
+interface Props {
+  texts: { [key: string]: string };
+}
+
+const { texts } = Astro.props;
+---
+
+<section class="relative flex w-full flex-col items-center">
+  <div
+    class="sticky top-0 flex h-screen w-full items-center justify-center p-4"
+  >
+    <!-- Se mostrara el primer frame del video hasta que cargue -->
+    <Image
+      src={Poster}
+      alt="Franco Carreras"
+      class="absolute inset-0 z-0 size-full object-cover p-4"
+      id="hero-poster"
+    />
+    <video
+      id="hero"
+      src="https://res.cloudinary.com/dcav0ojcf/video/upload/v1763422080/videos%20de%20webs%28en%20uso%2C%20no%20borrar%29/hero_dev_b3s8ph.mp4"
+      class="size-full rounded-sm object-cover"
+      autoplay
+      muted
+      loop></video>
+  </div>
+  <div
+    id="target"
+    class="z-1 flex h-440 w-full items-center justify-center px-4 md:h-584"
+  >
+    <div
+      class="flex size-full justify-center bg-neutral-950/5 backdrop-blur-[1px]"
+    >
+      <div
+        class="sticky top-0 flex h-screen w-full flex-col items-center justify-center gap-2.5"
+      >
+        <h2
+          class="text-center text-3xl/snug font-medium capitalize min-[425px]:text-4xl/snug md:text-6xl/snug lg:text-8xl/snug"
+        >
+          Franco Carreras
+        </h2>
+        <div class="relative flex items-center justify-center gap-2">
+          <Images />
+          <Subtitle text={texts.subtitle} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const video = document.getElementById("hero");
+    const poster = document.getElementById("hero-poster");
+    if (!video) return;
+
+    video.addEventListener("loadeddata", () => {
+      poster.classList.add("invisible");
+    });
+
+    if (video.readyState >= 3) poster.classList.add("invisible");
+  })();
+</script>

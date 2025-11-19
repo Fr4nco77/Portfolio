@@ -1,0 +1,79 @@
+---
+import am from "@assets/images/hero/3am.png";
+import anne from "@assets/images/hero/anne.png";
+import photography from "@assets/images/hero/photography.png";
+import ph from "@assets/images/hero/ph.png";
+import { Image } from "astro:assets";
+
+const images = [ph, photography, am, anne];
+---
+
+<div
+  class="absolute bottom-0 left-8 flex items-center justify-center gap-6 md:-bottom-2 md:gap-12 lg:left-16 lg:gap-16"
+  id="image-grid"
+>
+  {
+    images.map((image) => (
+      <div class="size-11 overflow-hidden rounded-sm md:size-24 lg:size-32">
+        <Image src={image} alt="Proyect" class="size-full object-cover" />
+      </div>
+    ))
+  }
+</div>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const imageGrid = document.getElementById("image-grid");
+    const target = document.getElementById("target");
+    if (!imageGrid || !target) return;
+
+    const initialTranslateX = -window.innerWidth; // arranca fuera de pantalla
+    const finalTranslateX = 0; // llega al centro
+    const initialScale = 0.8;
+    const finalScale = 1;
+
+    let animationFrameId = null;
+    let currentX = initialTranslateX;
+    let currentScale = initialScale;
+
+    function updateTransform() {
+      animationFrameId = null;
+
+      const rect = target.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // progreso relativo: 0 cuando empieza a entrar, 1 cuando está centrado
+      let rawProgress =
+        (windowHeight - rect.top) / (windowHeight + rect.height * 0.65);//configurar 0. para recalcular el scroll
+      rawProgress = Math.min(Math.max(rawProgress, 0), 1);
+
+      const targetX =
+        initialTranslateX + (finalTranslateX - initialTranslateX) * rawProgress;
+      const targetScale =
+        initialScale + (finalScale - initialScale) * rawProgress;
+
+      // suavizado tipo “lerp con fricción”
+      const smoothing = 0.08;
+      currentX += (targetX - currentX) * smoothing;
+      currentScale += (targetScale - currentScale) * smoothing;
+
+      imageGrid.style.transform = `translateX(${currentX}px) scale(${currentScale})`;
+
+      animationFrameId = requestAnimationFrame(updateTransform);
+    }
+
+    function onScrollOrResize() {
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(updateTransform);
+      }
+    }
+
+    // estado inicial
+    imageGrid.style.transform = `translateX(${initialTranslateX}px) scale(${initialScale})`;
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+
+    onScrollOrResize();
+  })();
+</script>
