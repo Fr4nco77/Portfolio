@@ -110,4 +110,13 @@ export default {
     },
     location: "Ubicado en Mendoza, Argentina.",
   },
+  notFound: {
+    description:
+      "Página no encontrada. Es posible que el enlace esté roto o que el contenido haya sido movido. Volvé al inicio o explorá otras secciones del sitio.",
+    notFound: "Página no encontrada",
+    text: "La página que estabas buscando fue movida o ya no existe. Por favor, volvé al inicio o usá el menú de navegación para encontrar lo que necesitás.",
+    toHome: "Volver al inicio",
+    toContact: "Contactame",
+    or: "o",
+  },
 };
