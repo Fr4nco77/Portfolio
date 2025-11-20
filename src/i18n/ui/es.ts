@@ -86,4 +86,27 @@ export default {
       button: "Visitá mi blog",
     },
   },
+  contact: {
+    title: "Contacto",
+    description: "",
+    hero: {
+      title1: "trabajemos",
+      title2: "juntos",
+      text: "Si tenés una idea, un proyecto o simplemente querés mejorar lo que ya tenés, estoy acá para ayudarte a convertirlo en software funcional, eficiente y pensado para escalar.",
+    },
+    form: {
+      name: "Nombre",
+      email: "Email",
+      message: "Tu Mensaje...",
+      button: "Enviar",
+      toaster: {
+        success: {
+          title: "¡Gracias por tu mensaje!",
+          message:
+            "Ya lo recibí. Me pondré en contacto pronto para que podamos avanzar juntos.",
+        },
+      },
+    },
+    location: "Ubicado en Mendoza, Argentina.",
+  },
 };
