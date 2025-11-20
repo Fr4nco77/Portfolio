@@ -36,7 +36,7 @@ export default {
   },
   home: {
     description:
-      "Franco Carreras es desarrollador full stack con base en Mendoza, Argentina. Con experiencia en tecnologías como React, Node.js, JavaScript, TypeScript, Astro y Java, crea soluciones digitales modernas, rápidas y escalables. Ofrece desarrollo web, diseño UX/UI, mantenimiento, consultorías y sistemas personalizados para empresas, emprendedores y particulares. Su enfoque combina creatividad, eficiencia y cercanía, logrando sitios que funcionan, se ven bien y generan resultados. Explorá sus proyectos y descubrí cómo puede ayudarte a transformar tu idea en una experiencia digital efectiva.",
+      "Franco Carreras, desarrollador full stack en Mendoza, crea soluciones web modernas con React, Node.js y Astro. Consultorías, UX/UI, sistemas a medida y portafolio profesional.",
     hero: {
       subtitle: "Estudio",
     },
@@ -88,7 +88,8 @@ export default {
   },
   contact: {
     title: "Contacto",
-    description: "",
+    description:
+      "¿Tenés un proyecto o idea en mente? Contactá a Franco, desarrollador de software con base en Mendoza, especializado en soluciones web eficientes y escalables",
     hero: {
       title1: "trabajemos",
       title2: "juntos",
