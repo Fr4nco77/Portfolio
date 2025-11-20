@@ -5,24 +5,32 @@ interface Props {
   title: string;
   to: string;
   button: string;
+  simple?: boolean;
 }
 
-const { title, to, button } = Astro.props;
+const { title, to, button, simple } = Astro.props;
 ---
 
 <div
   class="sticky top-20 z-10 flex w-full items-center justify-center border-y border-neutral-800/80 bg-neutral-950/10 px-8 py-4 backdrop-blur-xs md:top-24 lg:top-32"
 >
   <div
-    class="flex w-full items-center justify-center max-md:flex-col max-md:gap-5 md:justify-between"
+    class:list={[
+      "flex w-full items-center justify-center max-md:flex-col max-md:gap-5",
+      !simple && "md:justify-between",
+    ]}
   >
     <h3
-      class="text-2xl/tight font-medium text-center uppercase md:text-3xl/tight lg:text-4xl/tight"
+      class="text-center text-2xl/tight font-medium uppercase md:text-3xl/tight lg:text-4xl/tight"
     >
       {title}
     </h3>
-    <ButtonUnderline to={to} styles="text-base/tight font-medium uppercase">
-      {button}
-    </ButtonUnderline>
+    {
+      !simple && (
+        <ButtonUnderline to={to} styles="text-base/tight font-medium uppercase">
+          {button}
+        </ButtonUnderline>
+      )
+    }
   </div>
 </div>
