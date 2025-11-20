@@ -1,0 +1,25 @@
+---
+import type es from "@i18n/ui/es";
+
+interface Props {
+  texts: typeof es.contact.hero;
+}
+
+const { texts: t } = Astro.props;
+---
+
+<section
+  class="flex w-full flex-col items-center gap-7 px-4 md:gap-8 md:px-8 lg:gap-12"
+>
+  <h2
+    class="animate-fadeIn max-w-4xl text-center text-4xl/snug font-medium uppercase opacity-0 md:text-6xl/snug lg:text-7xl/snug"
+  >
+    {t.title1}
+    <span class="text-neutral-400">{t.title2}</span>
+  </h2>
+  <p
+    class="animate-fadeIn max-w-2xl text-center text-sm/relaxed font-medium text-balance opacity-0 [animation-delay:50ms] md:text-base/relaxed lg:max-w-3xl lg:text-xl/relaxed"
+  >
+    {t.text}
+  </p>
+</section>

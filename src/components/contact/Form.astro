@@ -1,0 +1,64 @@
+---
+import type es from "@i18n/ui/es";
+
+interface Props {
+  texts: typeof es.contact.form;
+}
+
+const { texts: t } = Astro.props;
+---
+
+<form
+  id="contactForm"
+  data-toast={JSON.stringify(t.toaster)}
+  class="flex w-full flex-col"
+>
+  <div class="flex w-full max-md:flex-col">
+    <input
+      type="text"
+      name="name"
+      placeholder={t.name}
+      class="flex-1 border-t border-l border-neutral-800/80 bg-neutral-900/15 p-[18px] text-sm/snug font-medium outline-hidden placeholder:text-sm/snug placeholder:text-neutral-400 focus:border focus:border-neutral-400 max-md:border-r md:border-b"
+      required
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder={t.email}
+      class="flex-1 border border-neutral-800/80 bg-neutral-900/15 p-[18px] text-sm/snug font-medium outline-hidden placeholder:text-sm/snug placeholder:text-neutral-400 focus:border focus:border-neutral-400"
+      required
+    />
+  </div>
+  <textarea
+    name="message"
+    placeholder={t.message}
+    class="min-h-56 flex-1 border-x border-b border-neutral-800/80 bg-neutral-900/15 p-[18px] text-sm/snug font-medium outline-hidden placeholder:text-sm/snug placeholder:text-neutral-400 focus:border focus:border-neutral-400 md:min-h-60"
+    required></textarea>
+  <button
+    type="submit"
+    class="cursor-pointer bg-neutral-800 p-[18px] text-sm/tight font-medium uppercase transition-colors duration-200 lg:hover:bg-neutral-800/80"
+    >{t.button}</button
+  >
+</form>
+
+<script is:inline data-astro-rerun type="module">
+  import showToast from "/src/components/ui/Toaster/showToast.ts";
+
+  (() => {
+    const form = document.getElementById("contactForm");
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const { success } = JSON.parse(form.dataset.toast);
+      //  Realmente  se debería usar server actions para hacer el registro
+      // al blog de esa forma se validaría la información y se se manejaría
+      // la informacion tanto para exito como error.
+      // Pero hasta no tener un servicio de email dedicado, va quedar así.
+      showToast({
+        title: success.title,
+        message: success.message,
+        type: "success",
+      });
+      form.reset();
+    });
+  })();
+</script>

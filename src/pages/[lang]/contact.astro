@@ -1,0 +1,62 @@
+---
+import Check from "@assets/icons/Check.astro";
+import ContactCard from "@components/contact/ContactCard.astro";
+import Form from "@components/contact/Form.astro";
+import Hero from "@components/contact/Hero.astro";
+import { getTranslation, type Locale } from "@i18n/utils";
+import { networks } from "@lib/consts";
+import Layout from "@layouts/Layout.astro";
+import { generateLangStaticPaths } from "@lib/staticsPaths";
+import Pin from "@assets/icons/Pin.astro";
+export const getStaticPaths = generateLangStaticPaths;
+
+const currentLang = Astro.currentLocale as Locale;
+const t = getTranslation(currentLang, "contact");
+---
+
+<Layout title={t.title} description={t.description}>
+  <main
+    class="flex w-full items-center justify-center pt-24 pb-20 md:pt-40 md:pb-32 xl:pb-52"
+  >
+    <div
+      class="relative flex w-full flex-col items-center gap-16 px-4 md:gap-20 md:px-8 lg:gap-28"
+    >
+      <Hero texts={t.hero} />
+
+      <section
+        class="flex w-full max-w-7xl items-center justify-center gap-4 max-lg:flex-col-reverse"
+      >
+        <div
+          class="flex flex-col items-center justify-center gap-4 max-lg:w-full md:flex-row lg:flex-col lg:self-stretch"
+        >
+          <ContactCard icon={Check}>
+            {
+              networks.map(({ label, href, icon: Icon }) => (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2 leading-tight font-medium lg:hover:text-neutral-400"
+                >
+                  <Icon styles="size-4" />
+                  {label}
+                </a>
+              ))
+            }
+          </ContactCard>
+          <ContactCard icon={Pin}>
+            <a
+              href="https://www.google.com/maps?q=Mendoza,+Argentina"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="leading-tight font-medium lg:hover:text-neutral-400"
+            >
+              {t.location}
+            </a>
+          </ContactCard>
+        </div>
+        <Form texts={t.form} />
+      </section>
+    </div>
+  </main>
+</Layout>
