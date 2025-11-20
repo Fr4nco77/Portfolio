@@ -52,7 +52,7 @@ const year = new Date().getFullYear();
         <span class="mb-1 block text-sm font-medium tracking-wide uppercase">
           {t.blog}
         </span>
-        <form class="flex" id="formBlog">
+        <form class="flex" id="formBlog" data-toast={JSON.stringify(t.toaster)}>
           <input
             type="email"
             name="email"
@@ -102,6 +102,8 @@ const year = new Date().getFullYear();
 
     form?.addEventListener("submit", (e) => {
       e.preventDefault();
+      const { success, error } = JSON.parse(form.dataset.toast);
+
       //  Realmente  se debería usar server actions para hacer el registro
       // al blog de esa forma se validaría la información y se se manejaría
       // la informacion tanto para exito como error.
@@ -111,16 +113,14 @@ const year = new Date().getFullYear();
 
       if (!regex.test(email)) {
         showToast({
-          title: "Correo no válido",
-          message:
-            "Por favor ingresá una dirección de email válida para registrarte.",
+          title: error.title,
+          message: error.message,
           type: "error",
         });
       } else {
         showToast({
-          title: "🎉 ¡Bienvenido al blog!",
-          message:
-            "Ahora recibirás notificaciones de nuevos posts y contenido exclusivo.",
+          title: success.title,
+          message: success.message,
           type: "success",
         });
         form.reset();

@@ -16,6 +16,18 @@ export default {
         "Soluciones digitales pensadas para ser eficientes, seguras y adaptables al crecimiento de tu negocio.",
     },
     blog: "Suscríbete al blog",
+    toaster: {
+      success: {
+        title: "🎉 ¡Bienvenido al blog!",
+        message:
+          "Ahora recibirás notificaciones de nuevos posts y contenido exclusivo.",
+      },
+      error: {
+        title: "Correo no válido",
+        message:
+          "Por favor ingresá una dirección de email válida para registrarte.",
+      },
+    },
   },
   cta: {
     text1: "trabajemos",
