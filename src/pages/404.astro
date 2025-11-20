@@ -1,0 +1,58 @@
+---
+import { getTranslation, type Locale } from "@i18n/utils";
+import Layout from "@layouts/Layout.astro";
+import ButtonRounded from "@components/ui/ButtonRounded.astro";
+import { generateLangStaticPaths } from "@lib/staticsPaths";
+import { getRelativeLocaleUrl } from "astro:i18n";
+export const getStaticPaths = generateLangStaticPaths;
+
+const currentLang = Astro.currentLocale as Locale;
+const t = getTranslation(currentLang, "notFound");
+---
+
+<Layout title="404" description={t.description}>
+  <main
+    class="flex w-full flex-col items-center pt-24 pb-20 md:pt-40 md:pb-32 xl:pb-52"
+  >
+    <section class="flex w-full justify-center px-4 md:px-8">
+      <div
+        class="relative flex w-full max-w-4xl flex-col items-center gap-10 overflow-hidden rounded-lg border border-neutral-800/80 px-4 pt-20 pb-16 text-center md:gap-14 md:pt-16 md:pb-20 lg:gap-16"
+      >
+        <div
+          class="absolute top-0 left-0 flex w-fit items-center justify-center rounded-br-2xl bg-neutral-800/80 px-6 py-4 text-xs/tight font-medium uppercase md:text-base/tight"
+        >
+          {t.notFound}
+        </div>
+        <div class="flex w-full flex-col items-center gap-2.5">
+          <h2
+            class="text-[6.5rem]/snug capitalize md:text-9xl/snug lg:text-[10rem]/snug"
+          >
+            404
+          </h2>
+          <p
+            class="max-w-2xl text-center text-sm/relaxed font-medium text-balance md:text-base/relaxed lg:max-w-3xl lg:text-xl/relaxed"
+          >
+            {t.text}
+          </p>
+        </div>
+        <div class="flex items-center gap-6 max-md:flex-col md:gap-12">
+          <ButtonRounded
+            to={getRelativeLocaleUrl(currentLang, "/")}
+            styles="h-12 w-52 px-8 font-medium uppercase "
+          >
+            {t.toHome}
+          </ButtonRounded>
+
+          <span class="text-xs font-semibold uppercase select-none">{t.or}</span
+          >
+          <ButtonRounded
+            to={getRelativeLocaleUrl(currentLang, "contact")}
+            styles="h-12 w-52 px-8 font-medium uppercase "
+          >
+            {t.toContact}</ButtonRounded
+          >
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
