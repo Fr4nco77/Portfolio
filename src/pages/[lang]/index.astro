@@ -46,3 +46,29 @@ const { projects, posts } = Astro.props;
     <CTA currentLang={currentLang} styles="mb-20 md:mb-32 xl:mb-52" />
   </main>
 </Layout>
+
+<script is:inline data-astro-rerun>
+  // Agrego un observe a todos los elementos que deben tener una transicion de entrada
+  (() => {
+    const elements = document.querySelectorAll(".observe-enter");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const el = entry.target;
+          el.classList.add("animate-fadeIn");
+          observer.unobserve(el);
+        });
+      },
+      {
+        root: null,
+        threshold: 0.2,
+        rootMargin: "10% 0px -10% 0px",
+      },
+    );
+
+    elements.forEach((e) => observer.observe(e));
+  })();
+</script>

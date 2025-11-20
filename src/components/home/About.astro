@@ -18,46 +18,24 @@ const { currentLang, texts: t } = Astro.props;
   id="about-section"
 >
   <h2
-    class="max-w-4xl text-center text-4xl/snug font-medium capitalize opacity-0 md:text-6xl/snug lg:text-7xl/snug"
+    class="observe-enter max-w-4xl text-center text-4xl/snug font-medium capitalize opacity-0 md:text-6xl/snug lg:text-7xl/snug"
   >
     {t.title}
     <span class="text-neutral-400">{t.year}</span>
   </h2>
   <p
-    class="max-w-2xl text-center text-sm/relaxed font-medium text-balance opacity-0 md:text-base/relaxed lg:max-w-3xl lg:text-xl/relaxed"
+    style="animation-delay:150ms"
+    class="observe-enter max-w-2xl text-center text-sm/relaxed font-medium text-balance opacity-0 md:text-base/relaxed lg:max-w-3xl lg:text-xl/relaxed"
   >
     {t.description}
   </p>
-  <ButtonRounded to={getRelativeLocaleUrl(currentLang, "about")} styles="h-12 px-8 font-medium uppercase opacity-0">
+  <ButtonRounded
+    to={getRelativeLocaleUrl(currentLang, "about")}
+    styles="observe-enter [animation-delay:300ms] h-12 px-8 font-medium uppercase opacity-0"
+  >
     {t.button}
     <Arrow
       styles="size-7 stroke-[1.5] group-hover:translate-x-2 duration-500 transition-tranform"
     />
   </ButtonRounded>
 </section>
-
-<script is:inline data-astro-rerun>
-  (() => {
-    const section = document.getElementById("about-section");
-    if (!section) return;
-
-    const children = section.querySelectorAll("h2, p, a");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            children.forEach((el, index) => {
-              setTimeout(() => {
-                el.classList.add("animate-fadeIn");
-              }, index * 200);
-            });
-            observer.unobserve(section); // solo una vez
-          }
-        });
-      },
-      { threshold: 0.2 },
-    ); // activa cuando 20% visible
-
-    observer.observe(section);
-  })();
-</script>

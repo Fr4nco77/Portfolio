@@ -21,14 +21,14 @@ const t = getTranslation(currentLang, "cta");
   id="cta"
 >
   <h2
-    class="max-w-4xl text-center text-4xl/snug font-medium uppercase opacity-0 md:text-6xl/snug lg:text-7xl/snug"
+    class="observe-enter max-w-4xl text-center text-4xl/snug font-medium uppercase opacity-0 md:text-6xl/snug lg:text-7xl/snug"
   >
     {t.text1}
     <span class="text-neutral-400">{t.text2}</span>
   </h2>
   <ButtonRounded
     to={getRelativeLocaleUrl(currentLang, "contact")}
-    styles="h-12 lg:h-14 lg:px-9 lg:text-2xl px-8 font-medium uppercase opacity-0"
+    styles="observe-enter [animation-delay:150ms] h-12 lg:h-14 lg:px-9 lg:text-2xl px-8 font-medium uppercase opacity-0"
   >
     {t.button}
     <Arrow
@@ -36,29 +36,3 @@ const t = getTranslation(currentLang, "cta");
     />
   </ButtonRounded>
 </section>
-
-<script is:inline data-astro-rerun>
-  (() => {
-    const cta = document.getElementById("cta");
-    if (!cta) return;
-
-    const children = cta.querySelectorAll("h2, a");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            children.forEach((el, index) => {
-              setTimeout(() => {
-                el.classList.add("animate-fadeIn");
-              }, index * 200);
-            });
-            observer.unobserve(cta);
-          }
-        });
-      },
-      { threshold: 0.2 },
-    );
-    observer.observe(cta);
-  })();
-</script>

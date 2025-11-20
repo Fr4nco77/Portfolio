@@ -32,35 +32,9 @@ const { currentLang, texts: t, projects } = Astro.props;
           title={name}
           image={cover}
           redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
-          styles="selected opacity-0"
+          styles="observe-enter opacity-0"
         />
       ))
     }
   </div>
 </section>
-
-<script is:inline data-astro-rerun>
-  (() => {
-    const cards = document.querySelectorAll(".selected");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          const el = entry.target;
-          el.classList.add("animate-fadeIn");
-          observer.unobserve(el);
-        });
-      },
-      {
-        // Empieza un poco antes de estar totalmente visible
-        root: null,
-        threshold: 0.2,
-        rootMargin: "10% 0px -10% 0px",
-      },
-    );
-
-    cards.forEach((card) => observer.observe(card));
-  })();
-</script>
