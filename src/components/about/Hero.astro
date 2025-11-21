@@ -1,0 +1,43 @@
+---
+import type es from "@i18n/ui/es";
+import { Image } from "astro:assets";
+import hero from "@assets/images/about/hero.jpg";
+
+interface Props {
+  texts: typeof es.about.hero;
+}
+
+const { texts: t } = Astro.props;
+---
+
+<section class="relative flex w-full justify-center pb-64 md:pb-80 lg:pb-120">
+  <div class="flex w-full flex-col items-center gap-2.5 px-4">
+    <h2
+      style="animation-delay: 300ms"
+      class="animate-fadeInDown text-center text-4xl/snug font-medium capitalize opacity-0 md:text-6xl/snug lg:text-8xl/snug"
+    >
+      {t.name1}
+    </h2>
+    <div class="relative flex w-full items-center justify-center gap-2">
+      <Image
+        src={hero}
+        alt="to Franco Carreras"
+        loading="eager"
+        class="animate-fadeIn absolute top-1/2 z-1 h-72 w-full rounded-sm object-cover opacity-0 md:h-96 lg:h-148 lg:w-5xl"
+      />
+      {
+        t.name2.split("").map((letter, index) => (
+          <span
+            class:list={[
+              "animate-fadeInDown text-7xl leading-tight font-medium uppercase opacity-0 max-[375px]:text-6xl md:text-[9rem] lg:text-[11.5rem]",
+              index % 2 === 0 && "z-2",
+            ]}
+            style={`animation-delay: ${index * 150 + 150}ms`}
+          >
+            {letter}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>

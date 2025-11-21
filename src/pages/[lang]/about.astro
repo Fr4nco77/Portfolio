@@ -1,0 +1,53 @@
+---
+import Hero from "@components/about/Hero.astro";
+import History from "@components/about/History.astro";
+import Skills from "@components/about/Skills.astro";
+import WorkProcess from "@components/about/WorkProcess.astro";
+import CTA from "@components/ui/CTA.astro";
+import { getTranslation, type Locale } from "@i18n/utils";
+import Layout from "@layouts/Layout.astro";
+import { generateLangStaticPaths } from "@lib/staticsPaths";
+export const getStaticPaths = generateLangStaticPaths;
+
+const currentLang = Astro.currentLocale as Locale;
+const t = getTranslation(currentLang, "about");
+const skills = getTranslation(currentLang, "home").skills;
+---
+
+<Layout title={t.title} description={t.description}>
+  <main
+    class="flex w-full flex-col items-center gap-20 pt-24 pb-20 md:gap-32 md:pt-40 md:pb-32 xl:gap-52 xl:pb-52"
+  >
+    <Hero texts={t.hero} />
+    <History texts={t.history} />
+    <Skills texts={skills} />
+    <WorkProcess texts={t.process} />
+    <CTA currentLang={currentLang} />
+  </main>
+</Layout>
+
+<script is:inline data-astro-rerun>
+  // Agrego un observe a todos los elementos que van a necesitar una transicion de entrada
+  (() => {
+    const elements = document.querySelectorAll(".observe-enter");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const el = entry.target;
+          el.classList.add("animate-fadeIn");
+          observer.unobserve(el);
+        });
+      },
+      {
+        root: null,
+        threshold: 0.2,
+        rootMargin: "10% 0px -10% 0px",
+      },
+    );
+
+    elements.forEach((e) => observer.observe(e));
+  })();
+</script>
