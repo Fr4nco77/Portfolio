@@ -110,6 +110,63 @@ export default {
     },
     location: "Ubicado en Mendoza, Argentina.",
   },
+  about: {
+    title: "Sobre mí",
+    description:
+      "Soy Franco Carreras, desarrollador web y diseñador. Diseño y desarrollo sitios rápidos, escalables y con impacto real. ¡Conectemos!",
+    hero: {
+      name1: "Soy",
+      name2: "Franco",
+    },
+    history: {
+      title: "Mi Trayectoria",
+      texts:
+        "Desde chico me fascinó entender cómo funcionan las cosas. Esa curiosidad me llevó a explorar el diseño, el desarrollo y todo lo que conecta ideas con experiencias reales. Empecé creando por intuición, aprendiendo de errores y aciertos, hasta convertir esa pasión en una profesión. Cada proyecto que encaré fue una oportunidad para crecer, para desafiarme y para encontrar nuevas formas de comunicar. Hoy, mi trabajo refleja ese recorrido: una mezcla de técnica, creatividad y ganas de seguir aprendiendo.",
+      stats: [
+        { data: "3", label: "Años de experiencia" },
+        { data: "+30", label: "Proyectos completados" },
+        { data: "+20", label: "Clientes felices" },
+        { data: " 95%", label: "Entrega puntual" },
+      ],
+    },
+    process: {
+      title: "Proceso de Trabajo",
+      texts:
+        "Cada proyecto es único, pero mi enfoque se basa en una estructura clara que me permite adaptarme, colaborar y entregar resultados sólidos. Así es como suelo trabajar:",
+      process: [
+        {
+          step: "01",
+          label: "Exploración",
+          description:
+            "Escucho, pregunto y analizo. Entender el contexto es clave para diseñar soluciones relevantes.",
+        },
+        {
+          step: "02",
+          label: "Diseño",
+          description:
+            "Transformo ideas en interfaces funcionales y atractivas. El diseño guía la experiencia.",
+        },
+        {
+          step: "03",
+          label: "Desarrollo",
+          description:
+            "Programo con precisión, usando tecnologías modernas y buenas prácticas para escalar.",
+        },
+        {
+          step: "04",
+          label: "Validación",
+          description:
+            "Testeo, ajusto y optimizo. La calidad técnica y visual es parte del resultado.",
+        },
+        {
+          step: "05",
+          label: "Lanzamiento",
+          description:
+            "Publicamos, medimos y evolucionamos. Acompaño el crecimiento post-producción.",
+        },
+      ],
+    },
+  },
   notFound: {
     description:
       "Página no encontrada. Es posible que el enlace esté roto o que el contenido haya sido movido. Volvé al inicio o explorá otras secciones del sitio.",
