@@ -1,8 +1,8 @@
 import { locales, type Locale } from "@i18n/utils";
 import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
-//FilterCollections by Lang. Collection esta mal tipado, pero me canse de los errores :)
+//FilterCollections by Lang.
 const filterByLang = (collection: any[], locale: Locale) => {
   return collection
     .filter(({ id }) => id.startsWith(`${locale}/`))
@@ -25,8 +25,14 @@ export const generateHomeStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection("posts");
 
   return Object.keys(locales).map((locale) => {
-    const filterProjects = filterByLang(projects, locale as Locale);
-    const FilterPosts = filterByLang(posts, locale as Locale);
+    const filterProjects = filterByLang(
+      projects,
+      locale as Locale,
+    ) as CollectionEntry<"projects">[];
+    const FilterPosts = filterByLang(
+      posts,
+      locale as Locale,
+    ) as CollectionEntry<"posts">[];
 
     const featuredProjects = filterProjects
       .filter(({ data }) => data.featured)
@@ -53,6 +59,37 @@ export const generateHomeStaticPaths: GetStaticPaths = async () => {
       props: {
         projects: featuredProjects,
         posts: recentPosts,
+      },
+    };
+  });
+};
+
+export const generateWorkStaticPaths: GetStaticPaths = async () => {
+  const projects = await getCollection("projects");
+
+  return Object.keys(locales).map((locale) => {
+    const projectsFiltered = filterByLang(
+      projects,
+      locale as Locale,
+    ) as CollectionEntry<"projects">[];
+
+    const dataSelected = projectsFiltered.map(({ id, data }) => {
+      const { name, cover, summary, date } = data;
+      return {
+        id: id.split("/")[1],
+        name,
+        cover,
+        summary,
+        date,
+      };
+    });
+
+    return {
+      params: {
+        lang: locale,
+      },
+      props: {
+        projects: dataSelected,
       },
     };
   });
