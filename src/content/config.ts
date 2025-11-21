@@ -13,7 +13,7 @@ const projectCollection = defineCollection({
       techs: z.array(z.string().min(2)),
       link: z.string().url(),
       repository: z.optional(z.string().url()),
-      year: z.date(),
+      date: z.date(),
       images: z.array(image()),
       video: z.optional(z.string().url()),
       featured: z.optional(z.boolean()),

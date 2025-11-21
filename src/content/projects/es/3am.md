@@ -29,7 +29,7 @@ techs:
   - "Zustand"
 link: "https://the3amclub.vercel.app/"
 repository: "https://github.com/Fr4nco77/the_3am_club"
-year: 2025-01-01
+date: 2025-01-01
 images:
   - /src/assets/images/projects/3am/image1.png
   - /src/assets/images/projects/3am/image2.png

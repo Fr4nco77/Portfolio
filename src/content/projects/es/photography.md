@@ -28,7 +28,7 @@ techs:
   - "TypeScript"
 link: "https://photographer-portafolio.vercel.app/en/"
 repository: "https://github.com/Fr4nco77/photographer-portfolio"
-year: 2025-01-01
+date: 2025-01-01
 images:
   - /src/assets/images/projects/photography/image1.png
   - /src/assets/images/projects/photography/image2.png
