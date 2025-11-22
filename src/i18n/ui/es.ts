@@ -177,6 +177,14 @@ export default {
     },
     label: "Últimos Proyectos",
   },
+  workDetail: {
+    summary: "Resumen",
+    services: "Servicios:",
+    techs: "Tecnologías",
+    date: "Lanzamiento:",
+    link: "Vista previa:",
+    repository: "Repositorio:",
+  },
   notFound: {
     description:
       "Página no encontrada. Es posible que el enlace esté roto o que el contenido haya sido movido. Volvé al inicio o explorá otras secciones del sitio.",
