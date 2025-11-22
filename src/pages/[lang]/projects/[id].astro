@@ -1,0 +1,116 @@
+---
+import InfoSection from "@components/projects/detail/InfoSection.astro";
+import NextProject from "@components/projects/detail/NextProject.astro";
+import { getTranslation, type Locale } from "@i18n/utils";
+import Layout from "@layouts/Layout.astro";
+import { generateProjectStaticPaths } from "@lib/staticsPaths";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+export const getStaticPaths = generateProjectStaticPaths;
+
+interface Props {
+  project: CollectionEntry<"projects">["data"];
+  anotherProjects: {
+    id: string;
+    name: string;
+    cover: ImageMetadata;
+  }[];
+}
+
+const currentLang = Astro.currentLocale as Locale;
+const t = getTranslation(currentLang, "workDetail");
+
+const { project, anotherProjects } = Astro.props;
+const {
+  name,
+  cover,
+  summary,
+  date,
+  images,
+  services,
+  techs,
+  link,
+  repository,
+  video,
+} = project;
+---
+
+<Layout title={name} description={summary}>
+  <main
+    class="flex w-full flex-col items-center gap-20 pt-24 pb-20 md:gap-32 md:pt-40 md:pb-32 xl:gap-52 xl:pb-52"
+  >
+    <article
+      class="flex w-full max-w-(--breakpoint-2xl) flex-col items-center gap-9 px-4 md:gap-10 lg:gap-14 lg:px-8"
+    >
+      <h1
+        class="max-w-4xl text-center text-3xl/tight font-medium uppercase md:text-5xl/tight lg:text-7xl/tight"
+      >
+        {name}
+      </h1>
+      <Image
+        src={cover}
+        alt={name}
+        loading="eager"
+        class="h-80 w-full rounded-sm object-cover md:h-128 lg:h-160"
+      />
+      <div
+        class="relative flex w-full items-center justify-center rounded-sm border border-neutral-800/80 bg-neutral-900/15 p-8"
+      >
+        <span
+          class="absolute top-2 left-2 text-xs/tight font-medium text-neutral-400 uppercase md:top-3 md:left-3 md:text-base/tight"
+        >
+          {t.summary}
+        </span>
+        <p
+          class="max-w-2xl text-center text-sm/relaxed font-medium text-balance md:text-base/relaxed lg:max-w-3xl lg:text-xl/relaxed"
+        >
+          {summary}
+        </p>
+      </div>
+      <div
+        class="flex w-full flex-col gap-9 max-lg:items-center md:gap-10 lg:flex-row-reverse lg:gap-4"
+      >
+        <InfoSection
+          labels={t}
+          information={{ name, services, techs, date, link, repository }}
+        />
+        <div class="flex w-full flex-col items-center gap-9 md:gap-10 lg:gap-4">
+          {
+            video && (
+              <video
+                src={video}
+                class="h-80 w-full rounded-sm object-cover md:h-120 lg:h-168"
+                autoplay
+                loop
+                muted
+              />
+            )
+          }
+          {
+            images.map((image) => (
+              <Image
+                src={image}
+                alt=""
+                class="h-80 w-full rounded-sm object-cover md:h-120 lg:h-168"
+              />
+            ))
+          }
+        </div>
+      </div>
+      <div
+        class="flex w-full items-center justify-between pt-12 md:pt-20 lg:pt-28"
+      >
+        {
+          anotherProjects.map(({ id, name, cover }, index) => (
+            <NextProject
+              id={id}
+              name={name}
+              cover={cover}
+              invert={index === 0}
+            />
+          ))
+        }
+      </div>
+    </article>
+  </main>
+</Layout>

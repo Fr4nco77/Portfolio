@@ -1,0 +1,54 @@
+---
+import Arrow from "@assets/icons/Arrow.astro";
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+interface Props {
+  id: string;
+  name: string;
+  cover: ImageMetadata;
+  invert?: boolean;
+}
+
+const { id, name, cover, invert } = Astro.props;
+const [locale, slug] = id.split("/");
+---
+
+<div
+  class:list={[
+    "flex flex-1 items-center",
+    invert ? "justify-start" : "justify-end",
+  ]}
+>
+  <a href={getRelativeLocaleUrl(locale, `projects/${slug}`)}>
+    <div
+      class:list={[
+        "group flex items-center justify-center gap-2 md:gap-4",
+        invert ? "flex-row" : "flex-row-reverse",
+      ]}
+    >
+      {
+        invert ? (
+          <Arrow styles="size-5 stroke-white stroke-[1.5] rotate-180 md:hidden" />
+        ) : (
+          <Arrow styles="size-5 stroke-white stroke-[1.5] md:hidden" />
+        )
+      }
+
+      <p
+        class="text-sm/tight font-medium uppercase md:text-lg/tight lg:text-2xl/tight"
+      >
+        {name}
+      </p>
+      <div
+        class="overflow-hidden rounded-sm max-md:hidden md:h-20 md:w-24 lg:h-24 lg:w-44"
+      >
+        <Image
+          src={cover}
+          alt={name}
+          class="size-full object-cover lg:transition-transform lg:duration-500 lg:group-hover:scale-105"
+        />
+      </div>
+    </div>
+  </a>
+</div>
