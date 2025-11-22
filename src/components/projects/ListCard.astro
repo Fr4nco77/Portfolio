@@ -33,7 +33,7 @@ const { name, image, summary, date, redirection, styles } = Astro.props;
       class="absolute right-0 flex h-full w-fit max-w-md translate-x-full flex-col justify-center gap-2.5 bg-neutral-800/80 px-9 py-4 transition-transform duration-700 group-hover:translate-x-0"
     >
       <div class="flex flex-col gap-3.5 text-lg/snug font-medium capitalize">
-        <span>{summary}</span>
+        <span class="line-clamp-3">{summary}</span>
         <span>{date.getFullYear()} </span>
       </div>
     </div>
