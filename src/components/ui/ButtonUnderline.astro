@@ -2,9 +2,10 @@
 interface Props {
   styles?: string;
   to: string;
+  external?: boolean;
 }
 
-const { styles, to } = Astro.props;
+const { styles, to, external } = Astro.props;
 ---
 
 <a
@@ -13,6 +14,8 @@ const { styles, to } = Astro.props;
     styles,
   ]}
   href={to}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
 >
   <slot />
   <div
