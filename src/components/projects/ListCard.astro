@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  name: string;
+  image: ImageMetadata;
+  summary: string;
+  date: Date;
+  redirection: string;
+  styles?: string;
+}
+
+const { name, image, summary, date, redirection, styles } = Astro.props;
+---
+
+<a class:list={["w-full max-w-(--breakpoint-2xl)", styles]} href={redirection}>
+  <div
+    class="group relative flex h-32 w-full items-center justify-center overflow-hidden rounded-sm border border-neutral-800/80 bg-neutral-900/15 lg:h-40"
+  >
+    <div class="h-full w-fit shrink-0 overflow-hidden">
+      <Image
+        src={image}
+        alt={name}
+        class="h-full w-48 object-cover transition-transform duration-700 lg:w-64 lg:group-hover:scale-110"
+      />
+    </div>
+    <div class="flex h-full w-full items-center justify-center p-8">
+      <h4 class="w-full text-2xl/tight font-medium uppercase lg:text-3xl/tight">
+        {name}
+      </h4>
+    </div>
+    <div
+      class="absolute right-0 flex h-full w-fit max-w-md translate-x-full flex-col justify-center gap-2.5 bg-neutral-800/80 px-9 py-4 transition-transform duration-700 group-hover:translate-x-0"
+    >
+      <div class="flex flex-col gap-3.5 text-lg/snug font-medium capitalize">
+        <span>{summary}</span>
+        <span>{date.getFullYear()} </span>
+      </div>
+    </div>
+  </div>
+</a>

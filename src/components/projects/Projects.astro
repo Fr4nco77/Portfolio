@@ -1,0 +1,119 @@
+---
+import Title from "@components/projects/Title.astro";
+import BigCard from "@components/ui/BigCard.astro";
+import ListCard from "./ListCard.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Locale } from "@i18n/utils";
+
+interface Props {
+  currentLang: Locale;
+  label: string;
+  projects: {
+    id: string;
+    name: string;
+    cover: ImageMetadata;
+    summary: string;
+    date: Date;
+  }[];
+}
+
+const { currentLang, label, projects } = Astro.props;
+---
+
+<section
+  class="flex w-full flex-col items-center gap-16 px-4 md:gap-20 md:px-8"
+>
+  <Title title={label} />
+  <div
+    id="BigCards"
+    class="flex w-full flex-col items-center gap-20 md:gap-24 lg:gap-28"
+  >
+    {
+      projects.map(({ id, name, cover }) => (
+        <BigCard
+          title={name}
+          image={cover}
+          redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
+          styles="observe-enter opacity-0"
+        />
+      ))
+    }
+  </div>
+  <div
+    id="ListCards"
+    class="hidden w-full flex-col items-center max-md:hidden md:gap-12 lg:gap-14"
+  >
+    {
+      projects.map(({ id, name, cover, summary, date }) => (
+        <ListCard
+          name={name}
+          image={cover}
+          summary={summary}
+          date={date}
+          redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
+          styles="observe-enter opacity-0"
+        />
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const listCards = document.getElementById("ListCards");
+    const btnListCard = document.getElementById("toggleListCards");
+    const iconListCard = btnListCard?.querySelector("svg");
+
+    const bigCards = document.getElementById("BigCards");
+    const btnBigCard = document.getElementById("toggleBigCards");
+    const iconBigCard = btnBigCard?.querySelector("svg");
+
+    const ACTIVE_BTN_CLASSES = [
+      "pointer-events-none",
+      "flex",
+      "items-center",
+      "justify-center",
+      "rounded-full",
+      "bg-white",
+      "p-1.5",
+    ];
+    const ACTIVE_ICON_CLASSES = [
+      "size-7",
+      "stroke-neutral-950",
+      "stroke-[1.5]",
+    ];
+
+    const INACTIVE_BTN_CLASSES = ["cursor-pointer"];
+    const INACTIVE_ICON_CLASSES = [
+      "size-7",
+      "stroke-white",
+      "stroke-[1.5]",
+      "hover:stroke-neutral-400",
+    ];
+
+    const setState = (activeBtn, activeIcon, inactiveBtn, inactiveIcon) => {
+      activeBtn?.classList.remove(...activeBtn.classList);
+      activeBtn?.classList.add(...ACTIVE_BTN_CLASSES);
+      activeIcon?.classList.remove(...activeIcon.classList);
+      activeIcon?.classList.add(...ACTIVE_ICON_CLASSES);
+
+      inactiveBtn?.classList.remove(...inactiveBtn.classList);
+      inactiveBtn?.classList.add(...INACTIVE_BTN_CLASSES);
+      inactiveIcon?.classList.remove(...inactiveIcon.classList);
+      inactiveIcon?.classList.add(...INACTIVE_ICON_CLASSES);
+    };
+
+    btnListCard?.addEventListener("click", () => {
+      bigCards.classList.replace("flex", "hidden");
+      listCards.classList.replace("hidden", "flex");
+      setState(btnListCard, iconListCard, btnBigCard, iconBigCard);
+    });
+
+    btnBigCard?.addEventListener("click", () => {
+      listCards.classList.replace("flex", "hidden");
+      bigCards.classList.replace("hidden", "flex");
+
+      setState(btnBigCard, iconBigCard, btnListCard, iconListCard);
+    });
+  })();
+</script>

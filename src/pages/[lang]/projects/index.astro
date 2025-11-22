@@ -1,0 +1,30 @@
+---
+import { getTranslation, type Locale } from "@i18n/utils";
+import { generateWorkStaticPaths } from "@lib/staticsPaths";
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/projects/Hero.astro";
+import CTA from "@components/ui/CTA.astro";
+import Projects from "@components/projects/Projects.astro";
+export const getStaticPaths = generateWorkStaticPaths;
+
+const currentLang = Astro.currentLocale as Locale;
+const t = getTranslation(currentLang, "work");
+const { projects } = Astro.props;
+---
+
+<Layout title={t.title} description={t.description}>
+  <main
+    class="flex w-full flex-col items-center gap-20 pt-24 pb-20 md:gap-32 md:pt-40 md:pb-32 xl:gap-52 xl:pb-52"
+  >
+    <Hero titles={t.hero} />
+    <Projects
+      currentLang={currentLang}
+      label={t.label}
+      projects={projects as any}
+    />
+    <CTA currentLang={currentLang} styles="observe-enter" />
+  </main>
+</Layout>
+
+<script is:inline data-astro-rerun src="/src/lib/scripts/addObserver.js"
+></script>
