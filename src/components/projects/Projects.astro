@@ -33,7 +33,7 @@ const { currentLang, label, projects } = Astro.props;
         <BigCard
           title={name}
           image={cover}
-          redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
+          redirection={getRelativeLocaleUrl(currentLang, `projects/${id}`)}
           styles="observe-enter opacity-0"
         />
       ))
@@ -50,7 +50,7 @@ const { currentLang, label, projects } = Astro.props;
           image={cover}
           summary={summary}
           date={date}
-          redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
+          redirection={getRelativeLocaleUrl(currentLang, `projects/${id}`)}
           styles="observe-enter opacity-0"
         />
       ))
