@@ -1,6 +1,6 @@
 import { locales, type Locale } from "@i18n/utils";
 import type { GetStaticPaths } from "astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 
 //FilterCollections by Lang.
 const filterByLang = (collection: any[], locale: Locale) => {
@@ -93,4 +93,36 @@ export const generateWorkStaticPaths: GetStaticPaths = async () => {
       },
     };
   });
+};
+
+export const generateProjectStaticPaths: GetStaticPaths = async () => {
+  const projects = await getCollection("projects");
+
+  const paths = await Promise.all(
+    projects.map(async ({ id, data }) => {
+      const [locale, slug] = id.split("/");
+
+      const anotherProjects = await Promise.all(
+        data.othersProjects.map(async ({ id }) => {
+          const project = await getEntry("projects", id);
+          if (!project) return;
+
+          return {
+            id: id,
+            name: project.data.name,
+            cover: project.data.cover,
+          };
+        }),
+      );
+
+      return {
+        params: { lang: locale, id: slug },
+        props: {
+          project: data,
+          anotherProjects,
+        },
+      };
+    }),
+  );
+  return paths;
 };
