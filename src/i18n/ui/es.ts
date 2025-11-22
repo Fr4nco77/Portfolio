@@ -167,6 +167,16 @@ export default {
       ],
     },
   },
+  work: {
+    title: "Proyectos",
+    description:
+      "Explora proyectos destacados de mi portafolio. Creatividad, innovación y trabajos recientes diseñados para inspirar y conectar.",
+    hero: {
+      title1: "Mis",
+      title2: "Proyectos",
+    },
+    label: "Últimos Proyectos",
+  },
   notFound: {
     description:
       "Página no encontrada. Es posible que el enlace esté roto o que el contenido haya sido movido. Volvé al inicio o explorá otras secciones del sitio.",
