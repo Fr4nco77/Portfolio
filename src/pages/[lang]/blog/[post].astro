@@ -1,0 +1,71 @@
+---
+import Arrow from "@assets/icons/Arrow.astro";
+import ButtonUnderline from "@components/ui/ButtonUnderline.astro";
+import CTA from "@components/ui/CTA.astro";
+import { getTranslation, type Locale } from "@i18n/utils";
+import Layout from "@layouts/Layout.astro";
+import { generatePostStaticPaths } from "@lib/staticsPaths";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+export const getStaticPaths = generatePostStaticPaths;
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const formatter = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "medium",
+});
+
+const currentLang = Astro.currentLocale as Locale;
+const back = getTranslation(currentLang, "post")["back"];
+const { post } = Astro.props;
+const { title, summary, tag, date } = post.data;
+const { Content } = await render(post);
+---
+
+<Layout title={title} description={summary}>
+  <main
+    class="flex w-full flex-col items-center gap-20 px-4 pt-24 pb-20 md:gap-32 md:px-8 md:pt-40 md:pb-32 xl:gap-52 xl:pb-52"
+  >
+    <article class="prose md:prose-lg prose-invert mx-auto">
+      <header>
+        <button
+          id="back"
+          aria-label={back}
+          class="group prose-sm mb-2 flex cursor-pointer items-center gap-2 transition-colors duration-300 hover:text-white"
+        >
+          <Arrow
+            styles="rotate-180 group-hover:-translate-x-1 transition-transform duration-300 ease-out size-4"
+          />
+          <span>{back}</span>
+        </button>
+        <div class="prose-sm mb-1 flex items-center gap-2">
+          <ButtonUnderline
+            to={getRelativeLocaleUrl(currentLang, `blog/tag/${tag}`)}
+            styles="not-prose"
+            >{tag}
+          </ButtonUnderline>
+          <span>|</span>
+          <time datetime={date.toISOString()}>
+            {formatter.format(date)}
+          </time>
+        </div>
+        <h1>{title}</h1>
+        <p>{summary}</p>
+      </header>
+      <Content />
+    </article>
+    <CTA currentLang={currentLang} transition={false} />
+  </main>
+</Layout>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const btn = document.getElementById("back");
+    btn.addEventListener("click", () => {
+      return history.back();
+    });
+  })();
+</script>
