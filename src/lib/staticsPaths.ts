@@ -126,3 +126,55 @@ export const generateProjectStaticPaths: GetStaticPaths = async () => {
   );
   return paths;
 };
+
+export const generateBlogStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection("posts");
+  const tags = [...new Set(posts.flatMap(({ data }) => data.tag))];
+
+  const paths = Object.keys(locales).map((locale) => {
+    const postsFiltered = filterByLang(
+      posts,
+      locale as Locale,
+    ) as CollectionEntry<"posts">[];
+
+    return {
+      params: {
+        lang: locale,
+      },
+      props: {
+        posts: postsFiltered,
+        tags: tags,
+      },
+    };
+  });
+
+  return paths;
+};
+
+export const generateTagsStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection("posts");
+  const tags = [...new Set(posts.flatMap(({ data }) => data.tag))];
+
+  const paths = Object.keys(locales).flatMap((locale) => {
+    const postsFiltered = filterByLang(
+      posts,
+      locale as Locale,
+    ) as CollectionEntry<"posts">[];
+
+    return tags.map((tag) => {
+      const filterbyTag = postsFiltered.filter(({ data }) => data.tag === tag);
+      return {
+        params: {
+          lang: locale,
+          tag: tag,
+        },
+        props: {
+          posts: filterbyTag,
+          tags: tags,
+        },
+      };
+    });
+  });
+
+  return paths;
+};
