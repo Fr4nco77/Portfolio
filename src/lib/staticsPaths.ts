@@ -178,3 +178,23 @@ export const generateTagsStaticPaths: GetStaticPaths = async () => {
 
   return paths;
 };
+
+export const generatePostStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection("posts");
+
+  const paths = posts.map((post) => {
+    const [locale, slug] = post.id.split("/");
+
+    return {
+      params: {
+        lang: locale,
+        post: slug,
+      },
+      props: {
+        post: post,
+      },
+    };
+  });
+
+  return paths;
+};
