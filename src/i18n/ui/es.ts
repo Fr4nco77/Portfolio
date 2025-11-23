@@ -191,6 +191,9 @@ export default {
       "Explora mi blog: artículos sobre programación, proyectos, tecnología y buenas prácticas para potenciar tus ideas digitales",
     labelAll: "Todo",
   },
+  post: {
+    back: "Volver",
+  },
   notFound: {
     description:
       "Página no encontrada. Es posible que el enlace esté roto o que el contenido haya sido movido. Volvé al inicio o explorá otras secciones del sitio.",
