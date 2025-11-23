@@ -7,9 +7,10 @@ import Arrow from "@assets/icons/Arrow.astro";
 interface Props {
   currentLang: Locale;
   styles?: string;
+  transition?: boolean;
 }
 
-const { currentLang, styles } = Astro.props;
+const { currentLang, styles, transition = true } = Astro.props;
 const t = getTranslation(currentLang, "cta");
 ---
 
@@ -21,14 +22,17 @@ const t = getTranslation(currentLang, "cta");
   id="cta"
 >
   <h2
-    class="observe-enter max-w-4xl text-center text-4xl/snug font-medium uppercase opacity-0 md:text-6xl/snug lg:text-7xl/snug"
+    class:list={[
+      "max-w-4xl text-center text-4xl/snug font-medium uppercase md:text-6xl/snug lg:text-7xl/snug",
+      transition && "observe-enter opacity-0",
+    ]}
   >
     {t.text1}
     <span class="text-neutral-400">{t.text2}</span>
   </h2>
   <ButtonRounded
     to={getRelativeLocaleUrl(currentLang, "contact")}
-    styles="observe-enter [animation-delay:150ms] h-12 lg:h-14 lg:px-9 lg:text-2xl px-8 font-medium uppercase opacity-0"
+    styles={`[animation-delay:150ms] h-12 lg:h-14 lg:px-9 lg:text-2xl px-8 font-medium uppercase ${transition && "observe-enter opacity-0"}`}
   >
     {t.button}
     <Arrow
