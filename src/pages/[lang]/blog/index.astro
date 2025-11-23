@@ -1,0 +1,28 @@
+---
+import { getTranslation, type Locale } from "@i18n/utils";
+import { generateBlogStaticPaths } from "@lib/staticsPaths";
+import Layout from "@layouts/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+import BlogLayout from "@layouts/BlogLayout.astro";
+export const getStaticPaths = generateBlogStaticPaths;
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+  tags: string[];
+}
+const currentLang = Astro.currentLocale as Locale;
+const t = getTranslation(currentLang, "blog");
+const { posts, tags } = Astro.props;
+---
+
+<Layout title={t.title} description={t.description}>
+  <BlogLayout
+    posts={posts}
+    tags={tags}
+    currentLang={currentLang}
+    labelAll={t.labelAll}
+  />
+</Layout>
+
+<script is:inline data-astro-rerun src="/src/lib/scripts/addObserver.js"
+></script>
