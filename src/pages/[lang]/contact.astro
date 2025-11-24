@@ -8,6 +8,7 @@ import { networks } from "@lib/consts";
 import Layout from "@layouts/Layout.astro";
 import { generateLangStaticPaths } from "@lib/staticsPaths";
 import Pin from "@assets/icons/Pin.astro";
+import Download from "@assets/icons/Download.astro";
 export const getStaticPaths = generateLangStaticPaths;
 
 const currentLang = Astro.currentLocale as Locale;
@@ -36,7 +37,7 @@ const t = getTranslation(currentLang, "contact");
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2 leading-tight font-medium lg:hover:text-neutral-400"
+                  class="flex items-center gap-2 leading-tight font-medium transition-colors duration-300 lg:hover:text-neutral-400"
                 >
                   <Icon styles="size-4" />
                   {label}
@@ -44,15 +45,24 @@ const t = getTranslation(currentLang, "contact");
               ))
             }
           </ContactCard>
-          <ContactCard icon={Pin}>
+          <ContactCard icon={Check}>
             <a
               href="https://www.google.com/maps?q=Mendoza,+Argentina"
               target="_blank"
               rel="noopener noreferrer"
-              class="leading-tight font-medium lg:hover:text-neutral-400"
+              class="flex items-center gap-2 leading-tight font-medium transition-colors duration-300 lg:hover:text-neutral-400"
             >
-              {t.location}
+              <Pin styles="size-4" />
+              Mendoza, Argentina
             </a>
+            <a
+              download
+              href="/Franco_Carreras.pdf"
+              class="flex items-center gap-2 leading-tight font-medium transition-colors duration-300 lg:hover:text-neutral-400"
+            >
+              <Download styles="size-4" />
+              {t.cv}</a
+            >
           </ContactCard>
         </div>
         <Form texts={t.form} />

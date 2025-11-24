@@ -93,7 +93,7 @@ export default {
     hero: {
       title1: "trabajemos",
       title2: "juntos",
-      text: "Si tenés una idea, un proyecto o simplemente querés mejorar lo que ya tenés, estoy acá para ayudarte a convertirlo en software funcional, eficiente y pensado para escalar.",
+      text: "Si tenés una idea, un proyecto o querés mejorar lo que ya existe, te ayudo a convertirlo en software funcional, eficiente y preparado para escalar.",
     },
     form: {
       name: "Nombre",
@@ -108,7 +108,7 @@ export default {
         },
       },
     },
-    location: "Ubicado en Mendoza, Argentina.",
+    cv: "Descargar CV",
   },
   about: {
     title: "Sobre mí",
