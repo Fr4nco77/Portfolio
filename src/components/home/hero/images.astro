@@ -15,7 +15,14 @@ const images = [ph, photography, am, anne];
   {
     images.map((image) => (
       <div class="size-11 overflow-hidden rounded-sm md:size-24 lg:size-32">
-        <Image src={image} alt="Proyect" class="size-full object-cover" />
+        <Image
+          src={image}
+          alt="Proyect"
+          class="object-cover"
+          widths={[44, 96, 128]}
+          sizes="(max-width: 767px) 44px, (max-width: 1023px) 96px, 128px"
+          quality="high"
+        />
       </div>
     ))
   }
@@ -44,7 +51,7 @@ const images = [ph, photography, am, anne];
 
       // progreso relativo: 0 cuando empieza a entrar, 1 cuando está centrado
       let rawProgress =
-        (windowHeight - rect.top) / (windowHeight + rect.height * 0.65);//configurar 0. para recalcular el scroll
+        (windowHeight - rect.top) / (windowHeight + rect.height * 0.65); //configurar 0. para recalcular el scroll
       rawProgress = Math.min(Math.max(rawProgress, 0), 1);
 
       const targetX =
