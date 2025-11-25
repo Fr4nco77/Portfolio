@@ -2,9 +2,9 @@
 import { getTranslation, type Locale } from "@i18n/utils";
 import { generateWorkStaticPaths } from "@lib/staticsPaths";
 import Layout from "@layouts/Layout.astro";
-import Hero from "@components/projects/Hero.astro";
+import Hero from "@components/work/Hero.astro";
 import CTA from "@components/ui/CTA.astro";
-import Projects from "@components/projects/Projects.astro";
+import Projects from "@components/work/Projects.astro";
 export const getStaticPaths = generateWorkStaticPaths;
 
 const currentLang = Astro.currentLocale as Locale;

@@ -1,4 +1,5 @@
 ---
+import type { Locale } from "@i18n/utils";
 import { Image } from "astro:assets";
 
 interface Props {
@@ -7,10 +8,14 @@ interface Props {
   summary: string;
   date: Date;
   redirection: string;
+  currentLocale: Locale;
   styles?: string;
 }
-
-const { name, image, summary, date, redirection, styles } = Astro.props;
+const { name, image, summary, date, redirection, currentLocale, styles } =
+  Astro.props;
+const formatter = new Intl.DateTimeFormat(`${currentLocale}-US`, {
+  dateStyle: "medium",
+});
 ---
 
 <a class:list={["w-full max-w-(--breakpoint-2xl)", styles]} href={redirection}>
@@ -34,7 +39,9 @@ const { name, image, summary, date, redirection, styles } = Astro.props;
     >
       <div class="flex flex-col gap-3.5 text-lg/snug font-medium capitalize">
         <span class="line-clamp-3">{summary}</span>
-        <span>{date.getFullYear()} </span>
+        <time datetime={date.toISOString()}>
+          {formatter.format(date)}
+        </time>
       </div>
     </div>
   </div>

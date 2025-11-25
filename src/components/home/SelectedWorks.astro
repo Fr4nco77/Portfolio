@@ -19,7 +19,7 @@ const { currentLang, texts: t, projects } = Astro.props;
 >
   <StickyTitle
     title={t.title}
-    to={getRelativeLocaleUrl(currentLang, "projects")}
+    to={getRelativeLocaleUrl(currentLang, "work")}
     button={t.button}
   />
   <div
@@ -31,7 +31,7 @@ const { currentLang, texts: t, projects } = Astro.props;
         <BigCard
           title={name}
           image={cover}
-          redirection={getRelativeLocaleUrl(currentLang, `projects/${id}`)}
+          redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
           styles="observe-enter opacity-0"
         />
       ))

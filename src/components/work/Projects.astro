@@ -1,5 +1,5 @@
 ---
-import Title from "@components/projects/Title.astro";
+import Title from "@components/work/Title.astro";
 import BigCard from "@components/ui/BigCard.astro";
 import ListCard from "./ListCard.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -33,7 +33,7 @@ const { currentLang, label, projects } = Astro.props;
         <BigCard
           title={name}
           image={cover}
-          redirection={getRelativeLocaleUrl(currentLang, `projects/${id}`)}
+          redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
           styles="observe-enter opacity-0"
         />
       ))
@@ -50,7 +50,8 @@ const { currentLang, label, projects } = Astro.props;
           image={cover}
           summary={summary}
           date={date}
-          redirection={getRelativeLocaleUrl(currentLang, `projects/${id}`)}
+          redirection={getRelativeLocaleUrl(currentLang, `work/${id}`)}
+          currentLocale={currentLang}
           styles="observe-enter opacity-0"
         />
       ))
