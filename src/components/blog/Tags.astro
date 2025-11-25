@@ -10,28 +10,29 @@ interface Props {
   labelAll: string;
 }
 
+function getButtonClasses(path: string) {
+  const isActive = currentPathname === path;
+  return isActive
+    ? "bg-white border-white text-black hover:bg-white pointer-events-none"
+    : "border-white hover:bg-white hover:text-black";
+}
+
 const { currentLang, currentPathname, tags, labelAll } = Astro.props;
 ---
 
 <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4">
   <ButtonRounded
     to={getRelativeLocaleUrl(currentLang, `blog`)}
-    styles={currentPathname === `/${currentLang}/blog/`
-      ? "bg-white border-white text-black hover:bg-white pointer-events-none"
-      : `border-white hover:bg-white hover:text-black`}
+    styles={`observe-enter opacity-0 ${getButtonClasses(`/${currentLang}/blog/`)}`}
   >
     <span class="px-4 py-1.5 text-lg font-medium uppercase">{labelAll}</span>
   </ButtonRounded>
 
   {
-    tags.map((tag) => (
+    tags.map((tag, index) => (
       <ButtonRounded
         to={getRelativeLocaleUrl(currentLang, `blog/tag/${tag}`)}
-        styles={
-          currentPathname === `/${currentLang}/blog/tag/${tag}/`
-            ? "bg-white border-white text-black hover:bg-white pointer-events-none"
-            : `border-white hover:bg-white hover:text-black`
-        }
+        styles={`[animation-delay:${(index + 1) * 150}ms] observe-enter opacity-0 ${getButtonClasses(`/${currentLang}/blog/tag/${tag}/`)}`}
       >
         <span class="px-4 py-1.5 font-medium uppercase md:text-lg">{tag}</span>
       </ButtonRounded>

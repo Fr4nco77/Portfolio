@@ -9,11 +9,12 @@ interface Props {
   posts: CollectionEntry<"posts">[];
   tags: string[];
   currentLang: Locale;
+  subtitle: string;
   labelAll: string;
 }
 
 const { pathname } = Astro.url;
-const { posts, tags, currentLang, labelAll } = Astro.props;
+const { posts, tags, currentLang, subtitle, labelAll } = Astro.props;
 ---
 
 <main
@@ -30,17 +31,29 @@ const { posts, tags, currentLang, labelAll } = Astro.props;
         blog
       </h1>
     </div>
+    <div class="overflow-hidden">
+      <p
+        class:list={[
+          "max-w-2xl text-center text-sm/relaxed font-medium text-balance [animation-delay:300ms] md:text-base/relaxed lg:max-w-3xl lg:text-xl/relaxed",
+          pathname === `/${currentLang}/blog/` && "animate-slideDown opacity-0",
+        ]}
+      >
+        {subtitle}
+      </p>
+    </div>
+  </section>
+  <section class="space-y-8 md:space-y-12 lg:space-y-16">
     <Tags
       currentLang={currentLang}
       tags={tags}
       currentPathname={pathname}
       labelAll={labelAll}
     />
-  </section>
-  <section
-    class="grid w-full max-w-(--breakpoint-2xl) items-center justify-center gap-12 overflow-hidden md:grid-cols-2 lg:grid-cols-3"
-  >
-    {posts.map((post) => <CardPost post={post} />)}
+    <div
+      class="grid w-full max-w-(--breakpoint-2xl) items-center justify-center gap-12 overflow-hidden md:grid-cols-2 lg:grid-cols-3"
+    >
+      {posts.map((post) => <CardPost post={post} />)}
+    </div>
   </section>
   <CTA currentLang={currentLang} />
 </main>
