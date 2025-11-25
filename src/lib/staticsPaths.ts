@@ -48,7 +48,7 @@ export const generateHomeStaticPaths: GetStaticPaths = async () => {
         id: id.split("/")[1],
         title,
         tag,
-        date: date.getFullYear(),
+        date,
         summary,
         cover,
       };
