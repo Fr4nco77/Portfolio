@@ -1,8 +1,7 @@
 ---
-import { Image } from "astro:assets";
 import Subtitle from "./Subtitle.astro";
 import Images from "./images.astro";
-import Poster from "@assets/images/hero/hero.png";
+import Poster from "@assets/images/hero/hero.webp";
 
 interface Props {
   texts: { [key: string]: string };
@@ -15,17 +14,9 @@ const { texts } = Astro.props;
   <div
     class="sticky top-0 flex h-screen w-full items-center justify-center p-4"
   >
-    <!-- Se mostrara el primer frame del video hasta que cargue -->
-    <Image
-      id="hero-poster"
-      src={Poster}
-      alt="Franco Carreras"
-      priority
-      class="absolute inset-0 z-0 size-full object-cover p-4"
-    />
     <video
-      id="hero"
       src="https://res.cloudinary.com/dcav0ojcf/video/upload/v1763422080/videos%20de%20webs%28en%20uso%2C%20no%20borrar%29/hero_dev_b3s8ph.mp4"
+      poster={Poster.src}
       class="size-full rounded-sm object-cover"
       autoplay
       muted
@@ -54,17 +45,3 @@ const { texts } = Astro.props;
     </div>
   </div>
 </section>
-
-<script is:inline data-astro-rerun>
-  (() => {
-    const video = document.getElementById("hero");
-    const poster = document.getElementById("hero-poster");
-    if (!video) return;
-
-    video.addEventListener("loadeddata", () => {
-      poster.classList.add("invisible");
-    });
-
-    if (video.readyState >= 3) poster.classList.add("invisible");
-  })();
-</script>
