@@ -30,9 +30,11 @@ export default {
     },
   },
   cta: {
-    text1: "trabajemos",
-    text2: "juntos",
-    button: "Ponte en contacto",
+    text1: "¿Listo para",
+    text2: "empezar",
+    subtitle:
+      "Cada idea puede transformarse en un caso de éxito. Con mi ayuda, el tuyo dejará de ser una posibilidad y se convertirá en una realidad.",
+    button: "Hablemos hoy",
   },
   home: {
     description:
