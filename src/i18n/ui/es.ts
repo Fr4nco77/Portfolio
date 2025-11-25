@@ -113,7 +113,7 @@ export default {
   about: {
     title: "Sobre mí",
     description:
-      "Soy Franco Carreras, desarrollador web y diseñador. Diseño y desarrollo sitios rápidos, escalables y con impacto real. ¡Conectemos!",
+      "Soy Franco Carreras, desarrollador de software y diseñador UI/UX. Creo productos digitales rápidos, escalables y con impacto real. Conectemos para dar vida a tus ideas.",
     hero: {
       name1: "Soy",
       name2: "Franco",
@@ -121,7 +121,7 @@ export default {
     history: {
       title: "Mi Trayectoria",
       texts:
-        "Desde chico me fascinó entender cómo funcionan las cosas. Esa curiosidad me llevó a explorar el diseño, el desarrollo y todo lo que conecta ideas con experiencias reales. Empecé creando por intuición, aprendiendo de errores y aciertos, hasta convertir esa pasión en una profesión. Cada proyecto que encaré fue una oportunidad para crecer, para desafiarme y para encontrar nuevas formas de comunicar. Hoy, mi trabajo refleja ese recorrido: una mezcla de técnica, creatividad y ganas de seguir aprendiendo.",
+        "Desde chico me fascinó entender cómo funcionan las cosas. Esa curiosidad me llevó a explorar el diseño, el desarrollo y todo lo que conecta ideas con experiencias reales. Empecé creando por intuición, aprendiendo de errores y aciertos, hasta convertir esa pasión en una profesión. Cada proyecto que encaré fue una oportunidad para crecer, desafiarme y encontrar nuevas formas de comunicar. Hoy, mi trabajo refleja ese recorrido: una mezcla de técnica, creatividad y ganas de seguir aprendiendo.",
       stats: [
         { data: "3", label: "Años de experiencia" },
         { data: "+30", label: "Proyectos completados" },
