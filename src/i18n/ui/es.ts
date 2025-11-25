@@ -3,7 +3,7 @@ export default {
     links: {
       home: "Inicio",
       about: "Perfil",
-      projects: "Proyectos",
+      projects: "Trabajo",
       blog: "Blog",
       contact: "Contacto",
     },
@@ -172,8 +172,8 @@ export default {
     description:
       "Explora proyectos destacados de mi portafolio. Creatividad, innovación y trabajos recientes diseñados para inspirar y conectar.",
     hero: {
-      title1: "Mis",
-      title2: "Proyectos",
+      title1: "Mi",
+      title2: "Trabajo",
     },
     label: "Últimos Proyectos",
   },
