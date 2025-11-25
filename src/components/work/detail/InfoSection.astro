@@ -2,6 +2,7 @@
 import type es from "@i18n/ui/es";
 import Data from "./Data.astro";
 import ButtonUnderline from "@components/ui/ButtonUnderline.astro";
+import type { Locale } from "@i18n/utils";
 
 interface Props {
   labels: typeof es.workDetail;
@@ -13,10 +14,14 @@ interface Props {
     link: string;
     repository?: string;
   };
+  currentLocale: Locale;
 }
 
-const { labels, information } = Astro.props;
+const { labels, information, currentLocale } = Astro.props;
 const { name, services, techs, date, link, repository } = information;
+const formatter = new Intl.DateTimeFormat(`${currentLocale}-US`, {
+  dateStyle: "medium",
+});
 ---
 
 <div
@@ -33,9 +38,11 @@ const { name, services, techs, date, link, repository } = information;
     >
   </Data>
   <Data label={labels.date}>
-    <span class="w-full text-end text-sm/relaxed font-medium capitalize"
-      >{date.getFullYear()}</span
-    >
+    <time
+      datetime={date.toISOString()}
+      class="w-full text-end text-sm/relaxed font-medium capitalize"
+      >{formatter.format(date)}
+    </time>
   </Data>
   <Data label={labels.link}>
     <ButtonUnderline
