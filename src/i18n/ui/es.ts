@@ -2,7 +2,7 @@ export default {
   navbar: {
     links: {
       home: "Inicio",
-      about: "Perfil",
+      about: "Trayectoria",
       work: "Trabajo",
       blog: "Blog",
       contact: "Contacto",
