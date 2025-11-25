@@ -8,6 +8,7 @@ import { generatePostStaticPaths } from "@lib/staticsPaths";
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { slide } from "astro:transitions";
 export const getStaticPaths = generatePostStaticPaths;
 
 interface Props {
@@ -27,6 +28,7 @@ const { Content } = await render(post);
 
 <Layout title={title} description={summary}>
   <main
+    transition:animate={slide({ duration: "700ms" })}
     class="flex w-full flex-col items-center gap-20 px-4 pt-24 pb-20 md:gap-32 md:px-8 md:pt-40 md:pb-32 xl:gap-52 xl:pb-52"
   >
     <article class="prose md:prose-lg prose-invert mx-auto">
