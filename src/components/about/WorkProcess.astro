@@ -27,7 +27,7 @@ const { texts: t } = Astro.props;
       {
         t.process.map(({ step, label, description }, index) => (
           <div
-            class="group observe-enter relative flex h-44 w-80 cursor-pointer flex-col items-center justify-center gap-2.5 overflow-hidden rounded-sm border border-neutral-800/80 bg-neutral-950 p-4 opacity-0 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-neutral-800/80 max-md:w-full"
+            class="group observe-enter relative flex h-44 w-80 flex-col items-center justify-center gap-2.5 overflow-hidden rounded-sm border border-neutral-800/80 bg-neutral-950 p-4 opacity-0 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-neutral-800/80 max-md:w-full"
             style={`animation-delay: ${index * 150}ms`}
           >
             <div class="flex size-full flex-col items-center justify-center text-center uppercase duration-300 group-hover:-translate-y-full">
