@@ -191,6 +191,8 @@ export default {
     title: "Blog",
     description:
       "Explora mi blog: artículos sobre programación, proyectos, tecnología y buenas prácticas para potenciar tus ideas digitales",
+    subtitle:
+      "En este espacio comparto aprendizajes, dudas y experiencias que me acompañan mientras sigo creciendo en el mundo del desarrollo.",
     labelAll: "Todo",
   },
   post: {
