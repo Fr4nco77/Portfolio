@@ -3,7 +3,7 @@ export default {
     links: {
       home: "Inicio",
       about: "Trayectoria",
-      work: "Trabajo",
+      work: "Proyectos",
       blog: "Blog",
       contact: "Contacto",
     },
@@ -45,7 +45,7 @@ export default {
       year: "2022",
       description:
         "Soy desarrollador de software especializado en crear aplicaciones web rápidas, escalables y centradas en la experiencia del usuario. Combino diseño limpio con arquitectura sólida para convertir conceptos en productos digitales que generan impacto real.",
-      button: "Conóceme",
+      button: "Descubrí más",
     },
     SelectedWorks: {
       title: "proyectos destacados",
@@ -168,12 +168,12 @@ export default {
     },
   },
   work: {
-    title: "Trabajo",
+    title: "Proyectos",
     description:
       "Explora proyectos destacados de mi portafolio. Creatividad, innovación y trabajos recientes diseñados para inspirar y conectar.",
     hero: {
-      title1: "Mi",
-      title2: "Trabajo",
+      title1: "Mis",
+      title2: "Proyectos",
     },
     label: "Últimos Proyectos",
   },
