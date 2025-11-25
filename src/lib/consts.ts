@@ -2,8 +2,18 @@
 import Github from "@assets/icons/networks/Github.astro";
 import LinkedIn from "@assets/icons/networks/LinkedIn.astro";
 import Mail from "@assets/icons/networks/Mail.astro";
-import World from "@assets/icons/Languages.astro";
-import Paint from "@assets/icons/Paint.astro";
+
+//services
+import Globe from "@assets/icons/services/Globe.astro";
+import Zap from "@assets/icons/services/Zap.astro";
+import Robot from "@assets/icons/services/Robot.astro";
+import Tools from "@assets/icons/services/Tools.astro";
+
+//design
+import Monitor from "@assets/icons/design/Monitor.astro";
+import Laptop from "@assets/icons/design/Laptop.astro";
+import Pen from "@assets/icons/design/Pen.astro";
+import Paint from "@assets/icons/design/Paint.astro";
 
 //techs
 import Javascript from "@assets/icons/techs/JavaScript.astro";
@@ -28,11 +38,51 @@ import MongoDB from "@assets/icons/techs/MongoDB.astro";
 import Mongoose from "@assets/icons/techs/Mongoose.astro";
 import Playwright from "@assets/icons/techs/Playwright.astro";
 import Jest from "@assets/icons/techs/Jest.astro";
+
 //images
-import Laptop from "@assets/images/skills/laptop.jpg";
+import Techs from "@assets/images/skills/laptop.jpg";
 import Services from "@assets/images/skills/services.jpg";
 import Design from "@assets/images/skills/design.jpg";
 
+//funciones para skills
+function getServiceIconByIndex(index: number) {
+  switch (index) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return Globe;
+
+    case 4:
+    case 5:
+      return Zap;
+
+    case 6:
+    case 7:
+      return Robot;
+
+    case 8:
+      return Tools;
+
+    default:
+      return Globe;
+  }
+}
+
+export function getIconDesignByIndex(index: number) {
+  switch (index) {
+    case 0:
+      return Monitor;
+    case 1:
+      return Laptop;
+    case 2:
+      return Pen;
+    default:
+      return Paint;
+  }
+}
+
+//constantes
 export const networks = [
   { label: "GitHub", href: "https://github.com/Fr4nco77", icon: Github },
   {
@@ -52,11 +102,14 @@ export const skills = ({
   {
     label: services.title,
     image: Services,
-    skills: services.skills.map((service) => ({ label: service, icon: World })),
+    skills: services.skills.map((service, index) => ({
+      label: service,
+      icon: getServiceIconByIndex(index),
+    })),
   },
   {
     label: "Tecnologías",
-    image: Laptop,
+    image: Techs,
     skills: [
       // Lenguajes
       { label: "JavaScript", icon: Javascript },
@@ -96,6 +149,9 @@ export const skills = ({
   {
     label: design.title,
     image: Design,
-    skills: design.skills.map((label) => ({ label: label, icon: Paint })),
+    skills: design.skills.map((label, index) => ({
+      label: label,
+      icon: getIconDesignByIndex(index),
+    })),
   },
 ];
