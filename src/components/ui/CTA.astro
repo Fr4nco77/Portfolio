@@ -34,7 +34,10 @@ const t = getTranslation(currentLang, "cta");
       <span class="text-neutral-400">{t.text2}</span>?
     </h2>
     <p
-      class="observe-enter max-w-2xl text-center text-sm/relaxed font-medium text-balance opacity-0 [animation-delay:150ms] md:text-base/relaxed lg:max-w-3xl lg:text-xl/relaxed"
+      class:list={[
+        "max-w-2xl text-center text-sm/relaxed font-medium text-balance [animation-delay:150ms] md:text-base/relaxed lg:max-w-3xl lg:text-xl/relaxed",
+        transition && "observe-enter opacity-0",
+      ]}
     >
       {t.subtitle}
     </p>
