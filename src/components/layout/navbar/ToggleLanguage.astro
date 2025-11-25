@@ -1,15 +1,14 @@
 ---
+import Check2 from "@assets/icons/Check2.astro";
 import Languages from "@assets/icons/Languages.astro";
 import { locales } from "@i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 interface Props {
-  buttonStyles?: string;
-  listStyles?: string;
   currentLanguage: string;
 }
 
-const { buttonStyles, listStyles, currentLanguage } = Astro.props;
+const { currentLanguage } = Astro.props;
 const { pathname } = Astro.url;
 const path = pathname.replace(/^\/[a-z]{2}/, "") || "/";
 ---
@@ -17,36 +16,39 @@ const path = pathname.replace(/^\/[a-z]{2}/, "") || "/";
 <button
   title="Idioma"
   aria-label="toggle language"
-  class:list={[
-    "toggleLanguage flex cursor-pointer items-center justify-center rounded-full border border-neutral-800/80 bg-neutral-950 transition-colors duration-500 hover:bg-neutral-800",
-    buttonStyles,
-  ]}
+  class="toggleLanguage flex size-10 cursor-pointer items-center justify-center rounded-full border border-neutral-800/80 transition-colors duration-500 hover:bg-neutral-800 lg:bg-neutral-950 xl:w-min xl:gap-2 xl:px-3 xl:py-2"
 >
   <Languages styles="size-6" />
+  <span class="text-xs max-xl:hidden">{currentLanguage.toUpperCase()}</span>
 </button>
 <!-- Lista de Idiomas -->
 <ul
-  class:list={[
-    "absolute z-60 h-0 list-none space-y-2 overflow-hidden rounded-sm bg-neutral-800 transition-all duration-300 ease-in-out",
-    listStyles,
-  ]}
+  class="absolute top-full right-2 z-60 max-h-0 min-w-[140px] list-none overflow-hidden rounded-lg border-neutral-800/80 bg-neutral-950 shadow-lg transition-all duration-500 ease-in-out sm:right-3 sm:mt-2 sm:min-w-40 md:right-6 lg:right-20 xl:right-28"
 >
   {
-    Object.entries(locales).map(([key, value]) => (
-      <li>
-        <a
-          href={getRelativeLocaleUrl(key, path)}
-          aria-label={`change language to ${value}`}
-          class:list={[
-            "transition-colors duration-300 hover:text-neutral-400",
-            currentLanguage === key &&
-              "pointer-events-none underline underline-offset-4",
-          ]}
-        >
-          {value}
-        </a>
-      </li>
-    ))
+    Object.entries(locales).map(([key, value]) => {
+      const displayNames = new Intl.DisplayNames([currentLanguage], {
+        type: "language",
+      });
+
+      return (
+        <li>
+          <a
+            href={getRelativeLocaleUrl(key, path)}
+            aria-label={`change language to ${value}`}
+            class="flex w-full items-center gap-2 px-3 py-2 text-sm transition-colors hover:bg-neutral-800/80 sm:gap-3 sm:px-4 sm:py-2.5"
+          >
+            <span class="text-sm sm:text-base">{value}</span>
+            <span class="flex-1 text-left text-xs capitalize sm:text-sm">
+              {displayNames.of(key)}
+            </span>
+            {currentLanguage === key && (
+              <Check2 styles="size-3.5 text-primary sm:size-4" />
+            )}
+          </a>
+        </li>
+      );
+    })
   }
 </ul>
 
@@ -57,9 +59,8 @@ const path = pathname.replace(/^\/[a-z]{2}/, "") || "/";
       if (!btn.dataset.listenerAdded) {
         const list = btn.nextElementSibling;
         btn.addEventListener("click", () => {
-          list.classList.toggle("h-0");
-          list.classList.toggle("p-7");
-          list.classList.toggle("border-2");
+          list.classList.toggle("border");
+          list.classList.toggle("max-h-[500px]");
         });
         btn.dataset.listenerAdded = "true";
       }
