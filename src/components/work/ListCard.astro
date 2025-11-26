@@ -37,7 +37,7 @@ const formatter = new Intl.DateTimeFormat(`${currentLocale}-US`, {
     <div
       class="absolute right-0 flex h-full w-fit max-w-md translate-x-full flex-col justify-center gap-2.5 bg-neutral-800/80 px-9 py-4 transition-transform duration-700 group-hover:translate-x-0"
     >
-      <div class="flex flex-col gap-3.5 text-lg/snug font-medium capitalize">
+      <div class="flex flex-col gap-3.5 text-lg/snug font-medium">
         <span class="line-clamp-3">{summary}</span>
         <time datetime={date.toISOString()}>
           {formatter.format(date)}
