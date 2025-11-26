@@ -1,13 +1,16 @@
 ---
 name: "Anne"
 cover: /src/assets/images/projects/anne/cover.png
-summary: "Portafolio minimalista y responsive de la modelo Anne Dupont, con internacionalización y optimización SEO."
+summary: "Anne es un portafolio profesional minimalista y elegante para la modelo ficticia Anne Dupont. Optimizado en SEO, performance y accesibilidad, ofrece diseño responsivo e internacionalización. Incluye animaciones fluidas, galería de trabajos, manifiesto y datos profesionales, formulario de contacto y un blog personal."
 services:
-  - "Diseño y desarrollo frontend"
-  - "Internacionalización (i18n)"
-  - "Optimización SEO"
-  - "Diseño responsive"
+  - "Desarrollo frontend"
   - "Gestión de contenido"
+  - "Optimización SEO"
+  - "Optimización de performance"
+  - “Accesibilidad (a11y)”
+  - "Internacionalización (i18n)"
+  - "UI/UX"
+  - "Diseño responsive"
 techs:
   - "Astro"
   - "TailwindCSS"
@@ -16,10 +19,11 @@ link: "https://anne-portafolio.vercel.app/en/"
 repository: "https://github.com/Fr4nco77/Anne-portfolio"
 date: 2025-01-01
 images:
-  - /src/assets/images/projects/anne/image1.png
-  - /src/assets/images/projects/anne/image2.png
-  - /src/assets/images/projects/anne/image3.png
-  - /src/assets/images/projects/anne/image4.png
+  - /src/assets/images/projects/anne/1.png
+  - /src/assets/images/projects/anne/2.png
+  - /src/assets/images/projects/anne/3.png
+  - /src/assets/images/projects/anne/4.png
+  - /src/assets/images/projects/anne/5.png
 othersProjects:
   - "es/3am"
   - "es/photography"
