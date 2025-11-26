@@ -26,6 +26,6 @@ images:
   - /src/assets/images/projects/ph/4.png
   - /src/assets/images/projects/ph/5.png
 othersProjects:
-  - "es/architect"
+  - "es/anne"
   - "es/photography"
 ---

@@ -26,7 +26,7 @@ images:
   - /src/assets/images/projects/3am/4.png
   - /src/assets/images/projects/3am/5.png
 othersProjects:
-  - "es/photography"
+  - "es/architect"
   - "es/anne"
 featured: true
 ---

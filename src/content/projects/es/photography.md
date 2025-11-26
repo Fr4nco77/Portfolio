@@ -26,6 +26,6 @@ images:
   - /src/assets/images/projects/photography/4.png
 othersProjects:
   - "es/ph"
-  - "es/3am"
+  - "es/architect"
 featured: true
 ---
