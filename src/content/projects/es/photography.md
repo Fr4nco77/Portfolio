@@ -1,14 +1,17 @@
 ---
 name: "Photography"
 cover: /src/assets/images/projects/photography/cover.png
-summary: "Portafolio responsive y multilingüe de la fotógrafa Amelia Allen, con modo oscuro y optimización SEO."
+summary: "Photography es el portafolio profesional de Amelia Allen, fotógrafa especializada en lifestyle, retrato y documental. Con un diseño elegante, modo oscuro e internacionalización, la web está optimizada en SEO, rendimiento y accesibilidad. Incluye presentación personal, galería de colecciones, trayectoria profesional, habilidades, y una sección de contacto."
 services:
-  - "Diseño y desarrollo frontend"
-  - "Internacionalización (i18n)"
+  - "Desarrollo frontend"
+  - "Gestión de contenido"
   - "Optimización SEO"
+  - "Optimización de performance"
+  - "Internacionalización (i18n)"
+  - "UI/UX"
   - "Diseño responsive"
-  - "Modo claro/oscuro"
-  - "Gestión de contenido visual"
+  - "Modo oscuro"
+  - "Accesibilidad (a11y)"
 techs:
   - "Astro"
   - "TailwindCSS"
@@ -17,10 +20,10 @@ link: "https://photographer-portafolio.vercel.app/en/"
 repository: "https://github.com/Fr4nco77/photographer-portfolio"
 date: 2025-01-01
 images:
-  - /src/assets/images/projects/photography/image1.png
-  - /src/assets/images/projects/photography/image2.png
-  - /src/assets/images/projects/photography/image3.png
-  - /src/assets/images/projects/photography/image4.png
+  - /src/assets/images/projects/photography/1.png
+  - /src/assets/images/projects/photography/2.png
+  - /src/assets/images/projects/photography/3.png
+  - /src/assets/images/projects/photography/4.png
 othersProjects:
   - "es/3am"
   - "es/anne"
