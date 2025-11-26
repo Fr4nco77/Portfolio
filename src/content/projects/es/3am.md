@@ -8,7 +8,7 @@ services:
   - "Gestión de contenido"
   - "Arquitectura de estado global"
   - "Optimización SEO"
-  - "UI/UX con TailwindCSS"
+  - "UI/UX"
   - "Diseño responsivo"
 techs:
   - "React"
