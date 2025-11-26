@@ -18,7 +18,7 @@ techs:
   - "Zustand"
 link: "https://the3amclub.vercel.app/"
 repository: "https://github.com/Fr4nco77/the_3am_club"
-date: 2025-01-01
+date: 2025-08-17
 images:
   - /src/assets/images/projects/3am/1.png
   - /src/assets/images/projects/3am/2.png
@@ -26,7 +26,7 @@ images:
   - /src/assets/images/projects/3am/4.png
   - /src/assets/images/projects/3am/5.png
 othersProjects:
-  - "es/anne"
   - "es/photography"
+  - "es/anne"
 featured: true
 ---

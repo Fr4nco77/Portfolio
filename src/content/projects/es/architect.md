@@ -18,7 +18,7 @@ techs:
   - "TypeScript"
 link: "https://architect-portafolio.vercel.app/"
 repository: "https://github.com/Fr4nco77/architect-s-portafolio"
-date: 2025-01-01
+date: 2025-08-22
 images:
   - /src/assets/images/projects/architect/1.png
   - /src/assets/images/projects/architect/2.png
@@ -26,7 +26,6 @@ images:
   - /src/assets/images/projects/architect/4.png
   - /src/assets/images/projects/architect/5.png
 othersProjects:
-  - "es/3am"
   - "es/anne"
-featured: true
+  - "es/ph"
 ---

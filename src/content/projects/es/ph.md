@@ -18,7 +18,7 @@ techs:
   - "TypeScript"
 link: "https://ph-portafolio.vercel.app/en/"
 repository: "https://github.com/Fr4nco77/ph-portfolio"
-date: 2025-01-01
+date: 2025-10-06
 images:
   - /src/assets/images/projects/ph/1.png
   - /src/assets/images/projects/ph/2.png
@@ -26,7 +26,6 @@ images:
   - /src/assets/images/projects/ph/4.png
   - /src/assets/images/projects/ph/5.png
 othersProjects:
-  - "es/3am"
-  - "es/anne"
-featured: true
+  - "es/architect"
+  - "es/photography"
 ---

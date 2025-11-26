@@ -17,7 +17,7 @@ techs:
   - "TypeScript"
 link: "https://anne-portafolio.vercel.app/en/"
 repository: "https://github.com/Fr4nco77/Anne-portfolio"
-date: 2025-01-01
+date: 2025-11-02
 images:
   - /src/assets/images/projects/anne/1.png
   - /src/assets/images/projects/anne/2.png
@@ -26,6 +26,6 @@ images:
   - /src/assets/images/projects/anne/5.png
 othersProjects:
   - "es/3am"
-  - "es/photography"
+  - "es/architect"
 featured: true
 ---

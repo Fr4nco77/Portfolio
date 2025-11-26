@@ -18,14 +18,14 @@ techs:
   - "TypeScript"
 link: "https://photographer-portafolio.vercel.app/en/"
 repository: "https://github.com/Fr4nco77/photographer-portfolio"
-date: 2025-01-01
+date: 2025-09-01
 images:
   - /src/assets/images/projects/photography/1.png
   - /src/assets/images/projects/photography/2.png
   - /src/assets/images/projects/photography/3.png
   - /src/assets/images/projects/photography/4.png
 othersProjects:
+  - "es/ph"
   - "es/3am"
-  - "es/anne"
 featured: true
 ---
