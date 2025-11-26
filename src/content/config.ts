@@ -7,7 +7,7 @@ const projectCollection = defineCollection({
     z.object({
       name: z.string().min(2),
       cover: image(),
-      summary: z.string().max(160),
+      summary: z.string(),
       services: z.array(z.string().min(2)),
       techs: z.array(z.string().min(2)),
       link: z.string().url(),
