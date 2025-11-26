@@ -1,11 +1,10 @@
 ---
-import type es from "@i18n/ui/es";
 import Data from "./Data.astro";
 import ButtonUnderline from "@components/ui/ButtonUnderline.astro";
 import type { Locale } from "@i18n/utils";
 
 interface Props {
-  labels: typeof es.workDetail;
+  labels: { [key: string]: string };
   information: {
     name: string;
     services: string[];

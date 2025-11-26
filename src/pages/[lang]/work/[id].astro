@@ -18,7 +18,9 @@ interface Props {
 }
 
 const currentLang = Astro.currentLocale as Locale;
-const t = getTranslation(currentLang, "workDetail");
+const t = getTranslation(currentLang, "workDetail") as {
+  [key: string]: string;
+};
 
 const { project, anotherProjects } = Astro.props;
 const {
