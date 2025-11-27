@@ -1,0 +1,107 @@
+---
+title: "Mistakes I Made as a Dev and What I Learned"
+summary: >
+  Throughout my journey as a developer, I’ve made mistakes that at the time felt like insurmountable obstacles, but today I recognize them as turning points in my professional growth. From failing to document properly to underestimating the importance of accessibility, each stumble taught me something valuable. In this post, I share the most significant mistakes I made as a dev, how I faced them, what I learned from each, and how they changed the way I work.
+date: 2025-10-27
+cover: /src/assets/images/posts/errors/cover.jpg
+tag: "project"
+draft: false
+---
+
+import { Image } from "astro:assets";
+import errors from "/src/assets/images/posts/errors/errors.jpg";
+
+<Image
+  src={errors}
+  alt="Illustration of common mistakes in web development"
+  class="size-full rounded-sm object-cover"
+/>
+
+When I started programming, I thought the most important thing was that the code worked. If it compiled and didn’t throw errors, everything was fine. But over time I realized that development goes far beyond that. And yes, I made mistakes. Many. Some cost me hours of work, others taught me lessons I still apply today.
+
+---
+
+## 1. Not Documenting with the Future in Mind
+
+At first, I wrote code without comments or documentation. After all, “I understand it.” The problem came months later when I had to revisit that project and couldn’t understand anything.
+
+**Lesson:** Documentation isn’t for others, it’s for your future self. Today I keep an updated README, use JSDoc, and strive to write self-explanatory code.
+
+---
+
+## 2. Underestimating Accessibility
+
+For a long time, I didn’t consider accessibility part of development. I didn’t use `aria` labels, didn’t think about contrast, and ignored keyboard navigation.
+
+**Lesson:** Now I design with all users in mind. I use Lighthouse to audit accessibility and follow best practices from the start.
+
+---
+
+## 3. Not Validating User Inputs
+
+In my early projects, I blindly trusted whatever the user entered. What could go wrong? Spoiler: everything. From formatting errors to security vulnerabilities.
+
+**Lesson:** Now I validate everything. I use `zod` for schemas, sanitize inputs, and never assume the user will do the right thing.
+
+---
+
+## 4. Ignoring Performance
+
+I focused on making the site look good, but not on making it load fast. I used heavy images, didn’t minify files, and didn’t leverage lazy loading.
+
+**Lesson:** Today I optimize every resource. I use Astro’s `Image` component, load scripts deferentially, and measure performance with WebPageTest and Lighthouse.
+
+---
+
+## 5. Not Asking for Help Out of Fear of Looking Incompetent
+
+This was one of the toughest mistakes. I spent hours stuck because I didn’t want to ask questions. I thought asking for help meant admitting I didn’t know.
+
+**Lesson:** I learned that asking for help is part of the process. The dev community is incredibly generous, and sharing doubts helped me grow faster.
+
+---
+
+## 6. Not Versioning Properly
+
+I used Git, but poorly. Meaningless commits, messy branches, and conflicts I didn’t know how to resolve.
+
+**Lesson:** Today I follow conventions like Conventional Commits, use feature branches, and write descriptive PRs. Git stopped being an enemy and became my ally.
+
+---
+
+## 7. Not Writing Tests
+
+For years I thought tests were a waste of time. “If it works, why test it again?” The problem came when a change broke critical functionality and I didn’t notice until the client reported it.
+
+**Lesson:** Now I write unit and integration tests. I use Vitest and Playwright, and I learned that tests aren’t an expense—they’re a quality insurance policy.
+
+---
+
+## 8. Neglecting Team Communication
+
+I believed a dev’s job was just code. I didn’t share progress, didn’t ask for feedback, and that led to misunderstandings.
+
+**Lesson:** Communication is as important as code. Today I do dailies, write clear documentation, and keep everyone informed.
+
+---
+
+## Quick Checklist to Avoid These Mistakes
+
+- ✅ Always document, even if it’s just a basic README.  
+- ✅ Think about accessibility from the start.  
+- ✅ Validate and sanitize all inputs.  
+- ✅ Optimize performance and measure constantly.  
+- ✅ Ask for help: no one expects you to know everything.  
+- ✅ Use Git with clear conventions.  
+- ✅ Write tests, even basic ones.  
+- ✅ Communicate progress and blockers to the team.  
+
+---
+
+## Conclusion: Mistakes Are Part of the Journey
+
+Every mistake I made taught me something. And although they were frustrating at the time, today I value them. Because thanks to them I’m a better developer—more aware, more empathetic, and more professional.
+
+---
+
+Would you like me to write about **how to version projects properly** or about **best accessibility practices**? I’m ready to keep creating content that adds value to your portfolio.

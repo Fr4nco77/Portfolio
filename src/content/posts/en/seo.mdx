@@ -1,0 +1,104 @@
+---
+title: "Technical SEO: The Art of Making Google Love Your Code"
+summary: >
+  Technical SEO is one of the most underestimated yet fundamental disciplines in modern web development. It’s not just about keywords or backlinks, but about how your site is built from the inside out: HTML structure, loading speed, accessibility, URL architecture, proper use of meta tags, and much more.
+date: 2025-10-15
+cover: /src/assets/images/posts/seo/cover.jpg
+tag: "seo"
+draft: false
+---
+
+import { Image } from "astro:assets";
+import ejemplo from "/src/assets/images/posts/seo/estructura-html.jpg";
+import lighthouse from "/src/assets/images/posts/seo/lighthouse.png";
+import data from "/src/assets/images/posts/seo/data.jpg";
+
+<Image
+  src={data}
+  alt="Google Search Console"
+  class="size-full rounded-sm object-cover"
+/>
+
+When I started building websites, I thought SEO was just the marketing team’s job. Spoiler: I was wrong. Very wrong. Technical SEO is a direct responsibility of the developer, and it can be the decisive factor between a site no one finds and one that generates consistent organic traffic.
+
+---
+
+## What is Technical SEO?
+
+Technical SEO covers all the optimizations made at the code and site architecture level to help search engines crawl, index, and understand your site correctly. It’s not about writing keyword-rich content, but about ensuring that content is visible, fast, and accessible.
+
+### Key aspects of Technical SEO
+
+- **Loading speed**: Google loves fast sites. Minimizing CSS and JS, using optimized images, and leveraging lazy loading are essential practices.  
+- **HTML structure**: Properly using tags like `<header>`, `<main>`, `<article>`, `<section>`, and `<footer>` helps bots understand the content hierarchy.  
+- **Clean and semantic URLs**: Avoid unnecessary parameters and use descriptive slugs to improve both SEO and user experience.  
+- **Sitemaps and robots.txt**: They facilitate indexing and control what should or shouldn’t be crawled.  
+- **Use of meta tags**: Titles, descriptions, canonical tags, and Open Graph tags are fundamental for SEO and social sharing.  
+- **Accessibility (a11y)**: An accessible site is not only more inclusive, but also easier for search engines to understand.  
+
+---
+
+## My experience applying Technical SEO
+
+In my portfolio, built with Astro, I’ve applied several of these practices. For example:
+
+- I use Astro’s `Image` component to automatically serve optimized images.  
+- I implemented clean, predictable routes for each post (`/posts/technical-seo` instead of `/posts?id=123`).  
+- I automatically generate a sitemap.xml and robots.txt with Astro plugins.  
+- Each page has unique titles and descriptions, defined in the frontmatter and dynamically rendered in the `<head>`.  
+
+<Image
+  src={ejemplo}
+  alt="Example of semantic HTML structure"
+  class="size-full rounded-sm object-cover"
+/>
+
+---
+
+## Common mistakes to avoid
+
+- **Blocking resources in robots.txt**: many developers accidentally block CSS or JS, preventing Google from rendering the page correctly.  
+- **Not using HTTPS**: security is a ranking factor and also improves user trust.  
+- **Duplicate content**: failing to configure `canonical` tags can cause Google to index multiple versions of the same page.  
+- **Not optimizing for mobile**: mobile-first indexing means your mobile version is the one Google prioritizes.  
+
+---
+
+## Tools I recommend
+
+Here are some tools I use to audit and improve Technical SEO:
+
+- **Lighthouse**: Built into Chrome DevTools, it gives you an overview of performance, accessibility, and SEO.  
+- **Ahrefs Webmaster Tools**: Free and very powerful for detecting technical issues.  
+- **Screaming Frog SEO Spider**: Ideal for analyzing large sites and detecting crawling problems.  
+- **Astro plugins**: Such as `@astrojs/sitemap` and `astro-seo` to automate key tasks.  
+
+<Image
+  src={lighthouse}
+  alt="Lighthouse, 100% in SEO"
+  class="size-full rounded-sm object-cover"
+/>
+
+---
+
+## Quick Technical SEO Checklist
+
+Before publishing any project, check:
+
+- ✅ Do your pages load in under 2 seconds?  
+- ✅ Do you have an up-to-date sitemap.xml?  
+- ✅ Are your URLs clean and descriptive?  
+- ✅ Are your images optimized and with `alt` attributes?  
+- ✅ Is your site accessible and mobile-friendly?  
+
+---
+
+## Conclusion: Technical SEO is your ally
+
+It doesn’t matter if you’re building a personal blog, an online store, or a complex app: Technical SEO is an investment that always pays off. It not only improves your ranking, but also makes your site faster, more accessible, and easier to maintain.
+
+So next time you write a line of code, ask yourself: does this help my site be more understandable to search engines? If the answer is yes, you’re on the right track.
+
+---
+
+Would you like me to prepare a **step-by-step guide to Technical SEO in Astro** with practical examples? Let me know and that will be the next post.
