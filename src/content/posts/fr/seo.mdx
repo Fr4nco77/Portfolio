@@ -1,0 +1,104 @@
+---
+title: "SEO technique : l’art de faire aimer ton code à Google"
+summary: >
+  Le SEO technique est l’une des disciplines les plus sous-estimées mais fondamentales du développement web moderne. Il ne s’agit pas seulement de mots-clés ou de backlinks, mais de la manière dont ton site est construit de l’intérieur : structure HTML, vitesse de chargement, accessibilité, architecture des URLs, utilisation correcte des balises meta, et bien plus encore.
+date: 2025-10-15
+cover: /src/assets/images/posts/seo/cover.jpg
+tag: "seo"
+draft: false
+---
+
+import { Image } from "astro:assets";
+import exemple from "/src/assets/images/posts/seo/estructura-html.jpg";
+import lighthouse from "/src/assets/images/posts/seo/lighthouse.png";
+import data from "/src/assets/images/posts/seo/data.jpg";
+
+<Image
+  src={data}
+  alt="Google Search Console"
+  class="size-full rounded-sm object-cover"
+/>
+
+Quand j’ai commencé à développer des sites web, je pensais que le SEO relevait de l’équipe marketing. Spoiler : je me trompais. Vraiment. Le SEO technique est la responsabilité directe du développeur, et peut être le facteur décisif entre un site que personne ne trouve et un site qui génère un trafic organique constant.
+
+---
+
+## Qu’est-ce que le SEO technique ?
+
+Le SEO technique englobe toutes les optimisations faites au niveau du code et de l’architecture du site pour faciliter le crawl, l’indexation et la compréhension par les moteurs de recherche. Il ne s’agit pas d’écrire du contenu avec des mots-clés, mais de s’assurer que ce contenu soit visible, rapide et accessible.
+
+### Aspects clés du SEO technique
+
+- **Vitesse de chargement** : Google adore les sites rapides. Minimiser CSS et JS, utiliser des images optimisées et exploiter le lazy loading sont des pratiques essentielles.  
+- **Structure HTML** : Utiliser correctement des balises comme `<header>`, `<main>`, `<article>`, `<section>` et `<footer>` aide les bots à comprendre la hiérarchie du contenu.  
+- **URLs propres et sémantiques** : Éviter les paramètres inutiles et utiliser des slugs descriptifs améliore à la fois le SEO et l’expérience utilisateur.  
+- **Sitemaps et robots.txt** : Ils facilitent l’indexation et contrôlent ce qui doit ou non être crawlé.  
+- **Utilisation des balises meta** : Titres, descriptions, balises canonical et balises Open Graph sont fondamentales pour le SEO et le partage social.  
+- **Accessibilité (a11y)** : Un site accessible est non seulement plus inclusif, mais aussi plus compréhensible pour les moteurs de recherche.  
+
+---
+
+## Mon expérience avec le SEO technique
+
+Dans mon portfolio, construit avec Astro, j’ai appliqué plusieurs de ces pratiques. Par exemple :
+
+- J’utilise le composant `Image` d’Astro pour servir automatiquement des images optimisées.  
+- J’ai mis en place des routes propres et prédictives pour chaque post (`/posts/seo-technique` au lieu de `/posts?id=123`).  
+- Je génère automatiquement un sitemap.xml et un robots.txt avec des plugins Astro.  
+- Chaque page a son titre et sa description uniques, définis dans le frontmatter et rendus dynamiquement dans le `<head>`.  
+
+<Image
+  src={exemple}
+  alt="Exemple de structure HTML sémantique"
+  class="size-full rounded-sm object-cover"
+/>
+
+---
+
+## Erreurs courantes à éviter
+
+- **Bloquer des ressources dans robots.txt** : beaucoup de développeurs bloquent par erreur CSS ou JS, ce qui empêche Google de rendre correctement la page.  
+- **Ne pas utiliser HTTPS** : la sécurité est un facteur de classement, et elle renforce aussi la confiance des utilisateurs.  
+- **Contenu dupliqué** : ne pas configurer de balises `canonical` peut amener Google à indexer plusieurs versions de la même page.  
+- **Ne pas optimiser pour mobile** : le mobile-first indexing signifie que ta version mobile est celle que Google priorise.  
+
+---
+
+## Outils que je recommande
+
+Voici quelques outils que j’utilise pour auditer et améliorer le SEO technique :
+
+- **Lighthouse** : Intégré à Chrome DevTools, il donne une vue d’ensemble sur la performance, l’accessibilité et le SEO.  
+- **Ahrefs Webmaster Tools** : Gratuit et très puissant pour détecter des erreurs techniques.  
+- **Screaming Frog SEO Spider** : Idéal pour analyser de grands sites et détecter des problèmes de crawl.  
+- **Plugins Astro** : Comme `@astrojs/sitemap` et `astro-seo` pour automatiser des tâches clés.  
+
+<Image
+  src={lighthouse}
+  alt="Lighthouse, 100% en SEO"
+  class="size-full rounded-sm object-cover"
+/>
+
+---
+
+## Checklist rapide de SEO technique
+
+Avant de publier un projet, vérifie :
+
+- ✅ Tes pages se chargent-elles en moins de 2 secondes ?  
+- ✅ As-tu un sitemap.xml à jour ?  
+- ✅ Tes URLs sont-elles propres et descriptives ?  
+- ✅ Tes images sont-elles optimisées et avec des attributs `alt` ?  
+- ✅ Ton site est-il accessible et mobile-friendly ?  
+
+---
+
+## Conclusion : le SEO technique est ton allié
+
+Peu importe que tu construises un blog personnel, une boutique en ligne ou une application complexe : le SEO technique est un investissement qui rapporte toujours. Il améliore non seulement ton positionnement, mais rend aussi ton site plus rapide, accessible et maintenable.  
+
+Alors la prochaine fois que tu écris une ligne de code, demande-toi : est-ce que cela aide mon site à être mieux compris par les moteurs de recherche ? Si la réponse est oui, tu es sur la bonne voie.
+
+---
+
+Veux-tu que je prépare un **guide étape par étape du SEO technique avec Astro** avec des exemples pratiques ? Ce sera mon prochain post.

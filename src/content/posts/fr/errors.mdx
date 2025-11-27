@@ -1,0 +1,107 @@
+---
+title: "Erreurs que j’ai commises en tant que dev et ce que j’ai appris"
+summary: >
+  Tout au long de mon parcours de développeur, j’ai commis des erreurs qui semblaient à l’époque des obstacles insurmontables, mais que je reconnais aujourd’hui comme des points de bascule dans ma croissance professionnelle. De l’absence de documentation correcte à la sous-estimation de l’importance de l’accessibilité, chaque faux pas m’a appris quelque chose de précieux. Dans ce post, je partage les erreurs les plus significatives que j’ai commises en tant que dev, comment je les ai affrontées, ce que j’ai appris de chacune et comment elles ont changé ma façon de travailler.
+date: 2025-10-27
+cover: /src/assets/images/posts/errors/cover.jpg
+tag: "project"
+draft: false
+---
+
+import { Image } from "astro:assets";
+import erreurs from "/src/assets/images/posts/errors/errors.jpg";
+
+<Image
+  src={erreurs}
+  alt="Illustration des erreurs courantes en développement web"
+  class="size-full rounded-sm object-cover"
+/>
+
+Quand j’ai commencé à programmer, je pensais que le plus important était que le code fonctionne. S’il compilait et ne générait pas d’erreurs, tout allait bien. Mais avec le temps, j’ai compris que le développement allait bien au-delà de ça. Et oui, j’ai fait des erreurs. Beaucoup. Certaines m’ont coûté des heures de travail, d’autres m’ont appris des leçons que j’applique encore aujourd’hui.
+
+---
+
+## 1. Ne pas documenter en pensant à l’avenir
+
+Au début, j’écrivais du code sans commentaires ni documentation. Après tout, “je comprends”. Le problème est arrivé des mois plus tard, quand j’ai dû reprendre ce projet et que je ne comprenais plus rien.  
+
+**Leçon :** Documenter n’est pas pour les autres, c’est pour ton futur toi. Aujourd’hui je maintiens un README à jour, j’utilise JSDoc et je m’efforce d’écrire du code auto-explicatif.
+
+---
+
+## 2. Sous-estimer l’accessibilité
+
+Pendant longtemps, je n’ai pas considéré l’accessibilité comme faisant partie du développement. Je n’utilisais pas d’attributs `aria`, je ne pensais pas au contraste, et encore moins à la navigation au clavier.  
+
+**Leçon :** Aujourd’hui je conçois en pensant à tous les utilisateurs. J’utilise Lighthouse pour auditer l’accessibilité et je suis les bonnes pratiques dès le départ.
+
+---
+
+## 3. Ne pas valider les entrées utilisateur
+
+Dans mes premiers projets, je faisais confiance aveuglément à ce que l’utilisateur saisissait. Qu’est-ce qui pouvait mal tourner ? Spoiler : tout. Des erreurs de format aux failles de sécurité.  
+
+**Leçon :** Maintenant je valide tout. J’utilise `zod` pour les schémas, je nettoie les entrées et je ne suppose jamais que l’utilisateur fera ce qu’il faut.
+
+---
+
+## 4. Ignorer la performance
+
+Je me concentrais sur l’apparence du site, mais pas sur sa vitesse de chargement. J’utilisais des images lourdes, je ne minifiais pas les fichiers, et je n’exploitais pas le lazy loading.  
+
+**Leçon :** Aujourd’hui j’optimise chaque ressource. J’utilise le composant `Image` d’Astro, je charge les scripts de manière différée et je mesure la performance avec WebPageTest et Lighthouse.
+
+---
+
+## 5. Ne pas demander de l’aide par peur de paraître incompétent
+
+C’était l’une des erreurs les plus difficiles. Je restais bloqué des heures sans vouloir poser de questions. Je pensais que demander de l’aide signifiait admettre que je ne savais pas.  
+
+**Leçon :** J’ai appris que demander de l’aide fait partie du processus. La communauté dev est incroyablement généreuse, et partager mes doutes m’a permis de progresser plus vite.
+
+---
+
+## 6. Ne pas versionner correctement
+
+J’utilisais Git, mais mal. Des commits sans sens, des branches désordonnées, et des conflits que je ne savais pas résoudre.  
+
+**Leçon :** Aujourd’hui je suis des conventions comme Conventional Commits, j’utilise des branches par fonctionnalité et je fais des PRs bien descriptives. Git a cessé d’être un ennemi et est devenu un allié.
+
+---
+
+## 7. Ne pas écrire de tests
+
+Pendant des années, je pensais que les tests étaient une perte de temps. “Si ça marche, pourquoi le tester encore ?”. Le problème est arrivé quand une modification a cassé des fonctionnalités critiques et que je ne l’ai remarqué que lorsque le client l’a signalé.  
+
+**Leçon :** Aujourd’hui j’écris des tests unitaires et d’intégration. J’utilise Vitest et Playwright, et j’ai appris que les tests ne sont pas une dépense, mais une assurance qualité.
+
+---
+
+## 8. Négliger la communication avec l’équipe
+
+Je croyais que le travail du dev se limitait au code. Je ne partageais pas mes avancées, je ne demandais pas de feedback, et cela créait des malentendus.  
+
+**Leçon :** La communication est aussi importante que le code. Aujourd’hui je fais des dailies, j’écris une documentation claire et je tiens tout le monde informé.
+
+---
+
+## Checklist rapide pour éviter ces erreurs
+
+- ✅ Documente toujours, même si ce n’est qu’un README basique.  
+- ✅ Pense à l’accessibilité dès le début.  
+- ✅ Valide et nettoie toutes les entrées.  
+- ✅ Optimise la performance et mesure constamment.  
+- ✅ Demande de l’aide : personne n’attend que tu saches tout.  
+- ✅ Utilise Git avec des conventions claires.  
+- ✅ Écris des tests, même basiques.  
+- ✅ Communique les avancées et les blocages à l’équipe.  
+
+---
+
+## Conclusion : se tromper fait partie du chemin
+
+Chaque erreur que j’ai commise m’a appris quelque chose. Et même si elles étaient frustrantes à l’époque, aujourd’hui je les valorise. Parce que grâce à elles je suis un meilleur développeur, plus conscient, plus empathique et plus professionnel.
+
+---
+
+Veux-tu que j’écrive sur **comment versionner correctement les projets** ou sur **les bonnes pratiques d’accessibilité** ? Je suis prêt à continuer à créer du contenu qui enrichit ton portfolio.
