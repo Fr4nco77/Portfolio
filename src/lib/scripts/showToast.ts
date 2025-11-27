@@ -2,6 +2,10 @@ export default function showToast({
   title,
   message,
   type = "default",
+}: {
+  title: string;
+  message: string;
+  type: "success" | "error" | "info" | "default";
 }) {
   const container = document.getElementById("toaster");
 

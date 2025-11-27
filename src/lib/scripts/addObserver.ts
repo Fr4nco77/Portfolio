@@ -1,7 +1,7 @@
 //El fin de este script es centralizar un observer necesario
-//para las transiciones de entrada en los componentes que los requieran
+//para las transiciones de entrada en los componentes que lo requieran
 
-(() => {
+document.addEventListener("astro:page-load", () => {
   const elements = document.querySelectorAll(".observe-enter");
 
   const observer = new IntersectionObserver(
@@ -22,4 +22,4 @@
   );
 
   elements.forEach((e) => observer.observe(e));
-})();
+});
