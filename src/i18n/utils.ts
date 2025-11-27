@@ -18,6 +18,6 @@ export const getTranslation = (
   section: keyof typeof es,
 ) => {
   const translations = { en, es, fr, pt };
-  const translation = translations[currenLocale][section];
+  const translation = translations[currenLocale][section] as any;
   return translation;
 };
