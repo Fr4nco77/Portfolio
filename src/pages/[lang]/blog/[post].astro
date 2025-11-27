@@ -63,11 +63,13 @@ const { Content } = await render(post);
   </main>
 </Layout>
 
-<script is:inline data-astro-rerun>
-  (() => {
+<script>
+  document.addEventListener("astro:page-load", () => {
     const btn = document.getElementById("back");
+    if (!btn) return;
+
     btn.addEventListener("click", () => {
       return history.back();
     });
-  })();
+  });
 </script>

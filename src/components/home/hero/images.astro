@@ -28,10 +28,10 @@ const images = [ph, photography, am, anne];
   }
 </div>
 
-<script is:inline data-astro-rerun>
-  (() => {
-    const imageGrid = document.getElementById("image-grid");
-    const target = document.getElementById("target");
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const imageGrid = document.getElementById("image-grid")!;
+    const target = document.getElementById("target")!;
     if (!imageGrid || !target) return;
 
     const initialTranslateX = -window.innerWidth; // arranca fuera de pantalla
@@ -39,7 +39,7 @@ const images = [ph, photography, am, anne];
     const initialScale = 0.8;
     const finalScale = 1;
 
-    let animationFrameId = null;
+    let animationFrameId: number | null = null;
     let currentX = initialTranslateX;
     let currentScale = initialScale;
 
@@ -82,5 +82,5 @@ const images = [ph, photography, am, anne];
     window.addEventListener("resize", onScrollOrResize);
 
     onScrollOrResize();
-  })();
+  });
 </script>

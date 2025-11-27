@@ -50,12 +50,12 @@ const { titles: t } = Astro.props;
   </div>
 </section>
 
-<script is:inline data-astro-rerun>
-  (() => {
+<script>
+  document.addEventListener("astro:page-load", () => {
     const container = document.getElementById("hero-container");
-    const titleOne = document.getElementById("title-one");
-    const titleTwo = document.getElementById("title-two");
-    const image = document.getElementById("hero-image");
+    const titleOne = document.getElementById("title-one")!;
+    const titleTwo = document.getElementById("title-two")!;
+    const image = document.getElementById("hero-image") as HTMLImageElement;
     if (!image) return;
 
     if (!image.complete) {
@@ -69,5 +69,5 @@ const { titles: t } = Astro.props;
       titleOne.classList.add("animate-slideUp");
       titleTwo.classList.add("animate-slideUp");
     });
-  })();
+  });
 </script>

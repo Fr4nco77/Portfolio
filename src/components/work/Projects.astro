@@ -59,15 +59,15 @@ const { currentLang, label, projects } = Astro.props;
   </div>
 </section>
 
-<script is:inline data-astro-rerun>
-  (() => {
-    const listCards = document.getElementById("ListCards");
-    const btnListCard = document.getElementById("toggleListCards");
-    const iconListCard = btnListCard?.querySelector("svg");
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const listCards = document.getElementById("ListCards")!;
+    const btnListCard = document.getElementById("toggleListCards")!;
+    const iconListCard = btnListCard?.querySelector("svg")!;
 
-    const bigCards = document.getElementById("BigCards");
-    const btnBigCard = document.getElementById("toggleBigCards");
-    const iconBigCard = btnBigCard?.querySelector("svg");
+    const bigCards = document.getElementById("BigCards")!;
+    const btnBigCard = document.getElementById("toggleBigCards")!;
+    const iconBigCard = btnBigCard?.querySelector("svg")!;
 
     const ACTIVE_BTN_CLASSES = [
       "pointer-events-none",
@@ -92,7 +92,12 @@ const { currentLang, label, projects } = Astro.props;
       "hover:stroke-neutral-400",
     ];
 
-    const setState = (activeBtn, activeIcon, inactiveBtn, inactiveIcon) => {
+    const setState = (
+      activeBtn: HTMLElement,
+      activeIcon: SVGSVGElement,
+      inactiveBtn: HTMLElement,
+      inactiveIcon: SVGSVGElement,
+    ) => {
       activeBtn?.classList.remove(...activeBtn.classList);
       activeBtn?.classList.add(...ACTIVE_BTN_CLASSES);
       activeIcon?.classList.remove(...activeIcon.classList);
@@ -116,5 +121,5 @@ const { currentLang, label, projects } = Astro.props;
 
       setState(btnBigCard, iconBigCard, btnListCard, iconListCard);
     });
-  })();
+  });
 </script>

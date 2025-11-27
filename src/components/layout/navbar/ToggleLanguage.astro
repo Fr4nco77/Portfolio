@@ -52,12 +52,14 @@ const path = pathname.replace(/^\/[a-z]{2}/, "") || "/";
   }
 </ul>
 
-<script is:inline data-astro-rerun>
-  (() => {
-    const buttons = document.querySelectorAll(".toggleLanguage");
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const buttons = document.querySelectorAll(
+      ".toggleLanguage",
+    ) as NodeListOf<HTMLButtonElement>;
     buttons.forEach((btn) => {
       if (!btn.dataset.listenerAdded) {
-        const list = btn.nextElementSibling;
+        const list = btn.nextElementSibling!;
         btn.addEventListener("click", () => {
           list.classList.toggle("border");
           list.classList.toggle("max-h-[500px]");
@@ -65,5 +67,5 @@ const path = pathname.replace(/^\/[a-z]{2}/, "") || "/";
         btn.dataset.listenerAdded = "true";
       }
     });
-  })();
+  });
 </script>

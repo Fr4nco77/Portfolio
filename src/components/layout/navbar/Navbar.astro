@@ -31,9 +31,7 @@ const t = getTranslation(currentLocale, "navbar");
         />
       </a>
       <div class="flex items-center gap-2 lg:hidden">
-        <ToggleLanguage
-          currentLanguage={currentLocale}
-        />
+        <ToggleLanguage currentLanguage={currentLocale} />
 
         <ToggleMenu id="toggleMenu" />
       </div>
@@ -48,9 +46,7 @@ const t = getTranslation(currentLocale, "navbar");
     <div
       class="relative items-center gap-2 max-lg:hidden lg:flex lg:w-fit lg:justify-self-end"
     >
-      <ToggleLanguage
-        currentLanguage={currentLocale}
-      />
+      <ToggleLanguage currentLanguage={currentLocale} />
       <Button
         to={getRelativeLocaleUrl(currentLocale, "contact")}
         styles="h-10 px-6 "
@@ -61,11 +57,11 @@ const t = getTranslation(currentLocale, "navbar");
   </div>
 </header>
 
-<script is:inline data-astro-rerun>
-  (() => {
-    const btnOpen = document.getElementById("toggleMenu");
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const btnOpen = document.getElementById("toggleMenu")!;
     const [top, mid, bottom] = btnOpen.querySelectorAll("span");
-    const menu = document.getElementById("menu");
+    const menu = document.getElementById("menu")!;
 
     btnOpen.addEventListener("click", () => {
       //Transicion del toggle de menu
@@ -84,5 +80,5 @@ const t = getTranslation(currentLocale, "navbar");
         .querySelectorAll(".movilLink")
         .forEach((e) => e.classList.toggle("animate-fadeIn"));
     });
-  })();
+  });
 </script>
