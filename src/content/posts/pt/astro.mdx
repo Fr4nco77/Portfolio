@@ -1,0 +1,110 @@
+---
+title: "Por que escolhi Astro e não outro framework"
+summary: >
+  Escolher um framework para construir seu portfólio ou qualquer projeto pessoal não é uma decisão pequena. Em um ecossistema cheio de opções como Next.js, Nuxt, SvelteKit ou Remix, optar por Astro pode parecer uma escolha pouco convencional. No entanto, depois de testar várias alternativas, encontrei no Astro uma combinação perfeita de desempenho, simplicidade e flexibilidade. Neste post, conto por que decidi construir meu portfólio com Astro, quais vantagens ele me ofereceu em relação a outros frameworks populares e como mudou minha forma de desenvolver sites.
+date: 2025-11-08
+cover: /src/assets/images/posts/astro/cover.png
+tag: "frontend"
+draft: false
+---
+
+import { Image } from "astro:assets";
+import astro from "/src/assets/images/posts/astro/astro.png";
+
+<Image
+  src={astro}
+  alt="Ilustração de frameworks web com Astro no centro"
+  class="size-full rounded-sm object-cover"
+/>
+
+Quando decidi refazer meu portfólio, sabia que queria algo mais do que uma simples landing page. Queria um site rápido, bem estruturado, fácil de manter e que refletisse minha forma de pensar como desenvolvedor. Testei vários frameworks antes de tomar uma decisão: Next.js, Nuxt, SvelteKit, até mesmo Remix. Todos têm seus pontos fortes, mas nenhum me convenceu tanto quanto o Astro.
+
+---
+
+## 1. Desempenho fora de série 🚀
+
+O Astro gera HTML estático por padrão. Isso significa que o conteúdo é entregue ao navegador sem necessidade de JavaScript adicional, resultando em tempos de carregamento ultrarrápidos.  
+
+Em um mundo onde cada milissegundo conta, isso é ouro puro.  
+
+**Comparado ao Next.js**, onde muitas vezes você acaba com uma SPA disfarçada, o Astro me deu controle total sobre o que é renderizado e quando. Resultado: meu portfólio carrega em menos de um segundo na maioria dos dispositivos.
+
+---
+
+## 2. Islands architecture: apenas o necessário 🏝️
+
+Uma das joias do Astro é sua arquitetura de *component islands*. Você pode usar componentes interativos apenas onde precisa, sem carregar JavaScript desnecessário no restante do site.  
+
+Isso me permitiu ter um site majoritariamente estático, mas com interatividade pontual (como formulários ou sliders) sem sacrificar desempenho. É como ter um site estático com superpoderes.
+
+---
+
+## 3. Liberdade para usar múltiplos frameworks 🔓
+
+O Astro não obriga você a se casar com uma única stack. É possível usar React, Vue, Svelte, Solid ou até mesmo web components… tudo no mesmo projeto!  
+
+Isso me deu liberdade para experimentar e escolher o melhor de cada mundo. Por exemplo, no meu portfólio uso React para componentes complexos e Svelte para widgets mais leves.
+
+---
+
+## 4. Markdown e MDX como cidadãos de primeira classe ✍️
+
+Meu portfólio inclui um blog técnico, e escrever em `.mdx` é uma delícia. Posso combinar conteúdo estático com componentes interativos sem complicações.  
+
+Além disso, o Astro tem suporte nativo para coleções de conteúdo, o que me permite organizar meus posts de forma limpa e escalável. Escrever tutoriais com exemplos de código embutidos nunca foi tão fácil.
+
+---
+
+## 5. Simplicidade sem sacrificar poder ⚡
+
+O Astro tem uma curva de aprendizado suave. Sua sintaxe é clara, o sistema de rotas é intuitivo e a configuração inicial é mínima.  
+
+Mas isso não significa que seja limitado: você pode fazer coisas muito avançadas se precisar. Desde integrações com CMS até deploys em plataformas serverless, o Astro se adapta sem perder sua essência.
+
+---
+
+## 6. Comunidade e documentação 🤝
+
+A comunidade do Astro é jovem, mas muito ativa. A documentação é clara, atualizada e cheia de exemplos. Além disso, a equipe por trás do projeto está constantemente lançando melhorias e ouvindo os usuários.  
+
+No Discord e no GitHub sempre encontrei respostas rápidas, o que me deu confiança para apostar no Astro a longo prazo.
+
+---
+
+## 7. Erros que evitei graças ao Astro ✅
+
+- Não precisar brigar com configurações complexas de SSR.  
+- Evitar carregar bibliotecas pesadas em páginas que não precisam delas.  
+- Simplificar a gestão de conteúdo com coleções e MDX.  
+- Melhorar o SEO técnico desde o início graças ao foco em HTML estático.  
+
+---
+
+## E os contras? ⚠️
+
+Nem tudo é perfeito. Algumas integrações ainda estão amadurecendo, e se você vem de um ambiente full SPA, pode ser necessário mudar o mindset. Além disso, por ser um projeto relativamente novo, algumas bibliotecas ainda não têm suporte oficial.  
+
+Mas, na minha experiência, os benefícios superam amplamente as limitações.
+
+---
+
+## Checklist rápido: o Astro é para você?
+
+- ✅ Você quer um site rápido e otimizado para SEO.  
+- ✅ Tem interesse em escrever em Markdown/MDX sem complicações.  
+- ✅ Valoriza a simplicidade, mas não quer perder flexibilidade.  
+- ✅ Gosta de experimentar diferentes frameworks em um mesmo projeto.  
+
+Se marcou pelo menos dois desses pontos, o Astro provavelmente é uma ótima escolha.
+
+---
+
+## Conclusão: o Astro me representa 🌌
+
+Escolhi o Astro porque ele se alinha com a forma como penso o desenvolvimento web: conteúdo em primeiro lugar, desempenho como prioridade e simplicidade sem abrir mão da potência.  
+
+Meu portfólio não só tem uma boa aparência, como também carrega rápido, é fácil de manter e está preparado para escalar. E o mais importante: eu me divirto desenvolvendo com Astro.
+
+---
+
+Está pensando em usar o Astro para seu próximo projeto? Posso mostrar como estruturei meu portfólio ou ajudar você a migrar de outro framework. Vamos conversar!

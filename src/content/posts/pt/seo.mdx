@@ -1,0 +1,104 @@
+---
+title: "SEO Técnico: A Arte de Fazer o Google Amar Seu Código"
+summary: >
+  O SEO técnico é uma das disciplinas mais subestimadas, mas fundamentais no desenvolvimento web moderno. Não se trata apenas de palavras-chave ou backlinks, mas de como seu site é construído por dentro: estrutura do HTML, velocidade de carregamento, acessibilidade, arquitetura das URLs, uso correto de meta tags e muito mais.
+date: 2025-10-15
+cover: /src/assets/images/posts/seo/cover.jpg
+tag: "seo"
+draft: false
+---
+
+import { Image } from "astro:assets";
+import exemplo from "/src/assets/images/posts/seo/estructura-html.jpg";
+import lighthouse from "/src/assets/images/posts/seo/lighthouse.png";
+import data from "/src/assets/images/posts/seo/data.jpg";
+
+<Image
+  src={data}
+  alt="Google Search Console"
+  class="size-full rounded-sm object-cover"
+/>
+
+Quando comecei a desenvolver sites, pensava que SEO era coisa da equipe de marketing. Spoiler: eu estava errado. Muito errado. O SEO técnico é responsabilidade direta do desenvolvedor e pode ser o fator decisivo entre um site que ninguém encontra e um que gera tráfego orgânico constante.
+
+---
+
+## O que é SEO técnico?
+
+O SEO técnico abrange todas as otimizações feitas no nível do código e da arquitetura do site para facilitar que os mecanismos de busca rastreiem, indexem e entendam corretamente. Não se trata de escrever conteúdo com palavras-chave, mas de garantir que esse conteúdo seja visível, rápido e acessível.
+
+### Aspectos-chave do SEO técnico
+
+- **Velocidade de carregamento**: o Google ama sites rápidos. Minimizar CSS e JS, usar imagens otimizadas e aproveitar o lazy loading são práticas essenciais.  
+- **Estrutura do HTML**: usar corretamente tags como `<header>`, `<main>`, `<article>`, `<section>` e `<footer>` ajuda os bots a entenderem a hierarquia do conteúdo.  
+- **URLs limpas e semânticas**: evitar parâmetros desnecessários e usar slugs descritivos melhora tanto o SEO quanto a experiência do usuário.  
+- **Sitemaps e robots.txt**: facilitam a indexação e controlam o que deve ou não ser rastreado.  
+- **Uso de meta tags**: títulos, descrições, canonical tags e tags Open Graph são fundamentais para SEO e compartilhamento social.  
+- **Acessibilidade (a11y)**: um site acessível não é apenas mais inclusivo, também é mais compreensível para os mecanismos de busca.  
+
+---
+
+## Minha experiência aplicando SEO técnico
+
+No meu portfólio, construído com Astro, apliquei várias dessas práticas. Por exemplo:
+
+- Uso o componente `Image` do Astro para servir imagens otimizadas automaticamente.  
+- Implementei rotas limpas e previsíveis para cada post (`/posts/seo-tecnico` em vez de `/posts?id=123`).  
+- Gero automaticamente um sitemap.xml e robots.txt com plugins do Astro.  
+- Cada página tem seu título e descrição únicos, definidos no frontmatter e renderizados dinamicamente no `<head>`.  
+
+<Image
+  src={exemplo}
+  alt="Exemplo de estrutura HTML semântica"
+  class="size-full rounded-sm object-cover"
+/>
+
+---
+
+## Erros comuns que você deve evitar
+
+- **Bloquear recursos no robots.txt**: muitos desenvolvedores bloqueiam CSS ou JS sem querer, o que impede o Google de renderizar a página corretamente.  
+- **Não usar HTTPS**: segurança é um fator de ranking e também aumenta a confiança do usuário.  
+- **Conteúdo duplicado**: não configurar tags `canonical` pode fazer o Google indexar várias versões da mesma página.  
+- **Não otimizar para dispositivos móveis**: o mobile-first indexing significa que a versão mobile é a que o Google prioriza.  
+
+---
+
+## Ferramentas que recomendo
+
+Estas são algumas ferramentas que uso para auditar e melhorar o SEO técnico:
+
+- **Lighthouse**: integrado ao Chrome DevTools, fornece uma visão geral de desempenho, acessibilidade e SEO.  
+- **Ahrefs Webmaster Tools**: gratuito e muito poderoso para detectar erros técnicos.  
+- **Screaming Frog SEO Spider**: ideal para analisar sites grandes e detectar problemas de rastreamento.  
+- **Plugins do Astro**: como `@astrojs/sitemap` e `astro-seo` para automatizar tarefas-chave.  
+
+<Image
+  src={lighthouse}
+  alt="Lighthouse, 100% em SEO"
+  class="size-full rounded-sm object-cover"
+/>
+
+---
+
+## Checklist rápido de SEO técnico
+
+Antes de publicar qualquer projeto, verifique:
+
+- ✅ Suas páginas carregam em menos de 2 segundos?  
+- ✅ Você tem um sitemap.xml atualizado?  
+- ✅ Suas URLs são limpas e descritivas?  
+- ✅ Suas imagens estão otimizadas e com atributos `alt`?  
+- ✅ Seu site é acessível e mobile-friendly?  
+
+---
+
+## Conclusão: o SEO técnico é seu aliado
+
+Não importa se você está construindo um blog pessoal, uma loja online ou um app complexo: o SEO técnico é um investimento que sempre traz resultados. Ele não apenas melhora seu posicionamento, mas também torna seu site mais rápido, acessível e fácil de manter.  
+
+Então, da próxima vez que escrever uma linha de código, pergunte-se: isso ajuda meu site a ser mais compreensível para os mecanismos de busca? Se a resposta for sim, você está no caminho certo.
+
+---
+
+Quer que eu prepare um **guia passo a passo de SEO técnico no Astro** com exemplos práticos? Me avise e será o próximo post.
