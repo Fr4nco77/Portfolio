@@ -1,31 +1,33 @@
 ---
 title: "Errores que cometí como dev y lo que aprendí"
 summary: >
-  A lo largo de mi camino como desarrollador, he cometido errores que en su momento parecían obstáculos insalvables, pero que hoy reconozco como puntos de inflexión en mi crecimiento profesional. Desde no documentar correctamente hasta subestimar la importancia de la accesibilidad, cada tropiezo me enseñó algo valioso. En este post comparto los errores más significativos que cometí como dev, cómo los enfrenté, qué aprendí de cada uno y cómo cambiaron mi forma de trabajar. Este artículo no solo busca ser una reflexión personal, sino también una guía para quienes están empezando o quieren evitar caer en las mismas trampas. Porque equivocarse es parte del proceso, pero aprender de ello es lo que realmente te convierte en mejor desarrollador.
-date: 2025-11-18
+  A lo largo de mi camino como desarrollador, he cometido errores que en su momento parecían obstáculos insalvables, pero que hoy reconozco como puntos de inflexión en mi crecimiento profesional. Desde no documentar correctamente hasta subestimar la importancia de la accesibilidad, cada tropiezo me enseñó algo valioso. En este post comparto los errores más significativos que cometí como dev, cómo los enfrenté, qué aprendí de cada uno y cómo cambiaron mi forma de trabajar.
+date: 2025-10-27
 cover: /src/assets/images/posts/errors/cover.jpg
 tag: "project"
 draft: false
 ---
 
 import { Image } from "astro:assets";
-
-# Errores que cometí como dev y lo que aprendí
+import erros from "/src/assets/images/posts/errors/errors.jpg";
 
 <Image
-  src="/src/assets/images/posts/errors/errors.jpg"
+  src={erros}
   alt="Ilustración de errores comunes en desarrollo web"
-  class="size-full object-cover rounded-sm"
-
+  class="size-full rounded-sm object-cover"
 />
 
 Cuando empecé a programar, pensaba que lo más importante era que el código funcionara. Si compilaba y no tiraba errores, estaba todo bien. Pero con el tiempo entendí que el desarrollo va mucho más allá de eso. Y sí, cometí errores. Muchos. Algunos me costaron horas de trabajo, otros me enseñaron lecciones que todavía aplico hoy.
 
+---
+
 ## 1. No documentar pensando en el futuro
 
-Al principio, escribía código sin dejar comentarios ni documentación. Total, "yo lo entiendo". El problema llegó meses después, cuando tuve que retomar ese proyecto y no entendía nada. Aprendí que documentar no es para los demás, es para tu yo del futuro.
+Al principio, escribía código sin dejar comentarios ni documentación. Total, "yo lo entiendo". El problema llegó meses después, cuando tuve que retomar ese proyecto y no entendía nada.
 
-**Lección:** Siempre dejo comentarios claros y mantengo un README actualizado. Uso herramientas como JSDoc y me esfuerzo por escribir código autoexplicativo.
+**Lección:** Documentar no es para los demás, es para tu yo del futuro. Hoy mantengo un README actualizado, uso JSDoc y me esfuerzo por escribir código autoexplicativo.
+
+---
 
 ## 2. Subestimar la accesibilidad
 
@@ -33,11 +35,7 @@ Durante mucho tiempo, no consideré la accesibilidad como parte del desarrollo. 
 
 **Lección:** Hoy diseño pensando en todos los usuarios. Uso Lighthouse para auditar accesibilidad y sigo buenas prácticas desde el inicio.
 
-<Image
-  src="/src/assets/images/posts/errors/404.jpg"
-  alt="Ejemplo de contraste deficiente en una interfaz"
-  class="size-full object-cover rounded-sm"
-/>
+---
 
 ## 3. No validar inputs del usuario
 
@@ -45,11 +43,15 @@ En mis primeros proyectos, confiaba ciegamente en lo que el usuario ingresaba. �
 
 **Lección:** Ahora valido todo. Uso `zod` para esquemas, sanitizo entradas y nunca doy por sentado que el usuario va a hacer lo correcto.
 
+---
+
 ## 4. Ignorar el rendimiento
 
 Me enfocaba en que el sitio se viera bien, pero no en que cargara rápido. Usaba imágenes pesadas, no minificaba archivos, y no aprovechaba el lazy loading.
 
-**Lección:** Hoy optimizo cada recurso. Uso el componente `Image` de Astro, cargo scripts de forma diferida y mido el rendimiento con herramientas como WebPageTest.
+**Lección:** Hoy optimizo cada recurso. Uso el componente `Image` de Astro, cargo scripts de forma diferida y mido el rendimiento con WebPageTest y Lighthouse.
+
+---
 
 ## 5. No pedir ayuda por miedo a parecer incompetente
 
@@ -57,11 +59,44 @@ Este fue uno de los errores más duros. Me quedaba horas bloqueado por no querer
 
 **Lección:** Aprendí que pedir ayuda es parte del proceso. La comunidad dev es increíblemente generosa, y compartir dudas me hizo crecer más rápido.
 
+---
+
 ## 6. No versionar correctamente
 
 Usaba Git, pero mal. Commits sin sentido, ramas desordenadas, y conflictos que no sabía resolver.
 
 **Lección:** Hoy sigo convenciones como Conventional Commits, uso ramas por feature y hago PRs bien descriptivos. Git dejó de ser un enemigo y pasó a ser mi aliado.
+
+---
+
+## 7. No escribir tests
+
+Durante años pensaba que los tests eran una pérdida de tiempo. "Si funciona, ¿para qué probarlo otra vez?". El problema llegó cuando un cambio rompió funcionalidades críticas y no lo noté hasta que el cliente lo reportó.
+
+**Lección:** Hoy escribo tests unitarios y de integración. Uso Vitest y Playwright, y aprendí que los tests no son un gasto, son un seguro de calidad.
+
+---
+
+## 8. No cuidar la comunicación con el equipo
+
+Creía que el trabajo del dev era solo código. No compartía avances, no pedía feedback, y eso generaba malentendidos.
+
+**Lección:** La comunicación es tan importante como el código. Hoy hago dailies, escribo documentación clara y mantengo a todos informados.
+
+---
+
+## Checklist rápido para evitar estos errores
+
+- ✅ Documenta siempre, aunque sea un README básico.
+- ✅ Piensa en accesibilidad desde el inicio.
+- ✅ Valida y sanitiza todos los inputs.
+- ✅ Optimiza rendimiento y mide constantemente.
+- ✅ Pide ayuda: nadie espera que lo sepas todo.
+- ✅ Usa Git con convenciones claras.
+- ✅ Escribe tests, aunque sean básicos.
+- ✅ Comunica avances y bloqueos al equipo.
+
+---
 
 ## Conclusión: equivocarse es parte del camino
 
@@ -69,4 +104,4 @@ Cada error que cometí me enseñó algo. Y aunque en su momento fueron frustrant
 
 ---
 
-¿Querés que escriba sobre cómo versionar proyectos correctamente o sobre buenas prácticas de accesibilidad? Estoy listo para seguir armando contenido que sume a tu portafolio.
+¿Querés que escriba sobre **cómo versionar proyectos correctamente** o sobre **buenas prácticas de accesibilidad**? Estoy listo para seguir armando contenido que sume a tu portafolio.
