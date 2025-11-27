@@ -15,7 +15,11 @@ const { title } = Astro.props;
     {title}
   </h3>
   <div class="flex items-center justify-center gap-8 max-md:hidden">
-    <button id="toggleListCards" class="cursor-pointer">
+    <button
+      id="toggleListCards"
+      class="cursor-pointer"
+      aria-label="Cambiar a vista de lista de proyectos"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -30,6 +34,7 @@ const { title } = Astro.props;
     <button
       id="toggleBigCards"
       class="pointer-events-none flex items-center justify-center rounded-full bg-white p-1.5"
+      aria-label="Cambiar a vista de tarjetas grandes de proyectos"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
