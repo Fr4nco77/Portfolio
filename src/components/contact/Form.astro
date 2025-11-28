@@ -1,22 +1,27 @@
 ---
+import Spin from "@assets/icons/Spin.astro";
 import type es from "@i18n/ui/es";
+import type { Locale } from "@i18n/utils";
 
 interface Props {
+  currentLocale: Locale;
   texts: typeof es.contact.form;
 }
 
-const { texts: t } = Astro.props;
+const { texts: t, currentLocale } = Astro.props;
 ---
 
 <form
   id="contactForm"
-  data-toast={JSON.stringify(t.toaster)}
+  data-toast={JSON.stringify(t.toaster.unexpected)}
   class="flex w-full flex-col"
 >
   <div class="flex w-full max-md:flex-col">
+    <input type="hidden" name="locale" value={currentLocale} />
     <input
       type="text"
       name="name"
+      minlength={3}
       placeholder={t.name}
       class="flex-1 border-t border-l border-neutral-800/80 bg-neutral-900/15 p-[18px] text-sm/snug font-medium outline-hidden placeholder:text-sm/snug placeholder:text-neutral-400 focus:border focus:border-neutral-400 max-md:border-r md:border-b"
       required
@@ -32,33 +37,68 @@ const { texts: t } = Astro.props;
   <textarea
     name="message"
     placeholder={t.message}
+    minlength={15}
     class="min-h-56 flex-1 border-x border-b border-neutral-800/80 bg-neutral-900/15 p-[18px] text-sm/snug font-medium outline-hidden placeholder:text-sm/snug placeholder:text-neutral-400 focus:border focus:border-neutral-400 md:min-h-60"
     required></textarea>
   <button
     type="submit"
-    class="cursor-pointer bg-neutral-800 p-[18px] text-sm/tight font-medium uppercase transition-colors duration-200 lg:hover:bg-neutral-800/80"
-    >{t.button}</button
+    class="flex cursor-pointer items-center justify-center bg-neutral-800 p-[18px] text-sm/tight font-medium uppercase transition-colors duration-200 lg:hover:bg-neutral-800/80"
   >
+    <span>{t.button}</span>
+    <Spin styles="size-4 animate-spin hidden" />
+  </button>
 </form>
 
-<script is:inline data-astro-rerun type="module">
-  import showToast from "/scripts/showToast.js";
+<script>
+  import { actions } from "astro:actions";
+  import showToast from "@lib/scripts/showToast.ts";
+  import { isInputError } from "astro:actions";
 
-  (() => {
-    const form = document.getElementById("contactForm");
-    form?.addEventListener("submit", (e) => {
+  document.addEventListener("astro:page-load", () => {
+    const form = document.getElementById("contactForm") as HTMLFormElement;
+
+    form?.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const { success } = JSON.parse(form.dataset.toast);
-      //  Realmente  se debería usar server actions para hacer el registro
-      // al blog de esa forma se validaría la información y se se manejaría
-      // la informacion tanto para exito como error.
-      // Pero hasta no tener un servicio de email dedicado, va quedar así.
-      showToast({
-        title: success.title,
-        message: success.message,
-        type: "success",
+      const btn = form.querySelector("button")!;
+      btn.disabled = true;
+      Array.from(btn.children).forEach((child) => {
+        child.classList.toggle("hidden");
       });
-      form.reset();
+
+      const unexpected = JSON.parse(form.dataset.toast!);
+      const formData = new FormData(form);
+
+      try {
+        const { data: response, error } = await actions.sendMessage(formData);
+        if (isInputError(error)) {
+          showToast({
+            title: unexpected.title,
+            message: unexpected.message,
+            type: "error",
+          });
+          return;
+        }
+        if (response) {
+          const { success, data } = response;
+          showToast({
+            title: data.title,
+            message: data.message,
+            type: success ? "success" : "error",
+          });
+          success && form.reset();
+        }
+      } catch (err) {
+        showToast({
+          title: unexpected.title,
+          message: unexpected.message,
+          type: "error",
+        });
+      } finally {
+        Array.from(btn.children).forEach((child) => {
+          child.classList.toggle("hidden");
+        });
+        btn.disabled = false;
+      }
     });
-  })();
+  });
 </script>

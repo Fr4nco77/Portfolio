@@ -4,6 +4,7 @@ import { getTranslation, type Locale } from "@i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { networks } from "@lib/consts";
 import Send from "@assets/icons/Send.astro";
+import Spin from "@assets/icons/Spin.astro";
 
 const currentLocale = Astro.currentLocale as Locale;
 const links = getTranslation(currentLocale, "navbar").links;
@@ -52,7 +53,12 @@ const year = new Date().getFullYear();
         <span class="mb-1 block text-sm font-medium tracking-wide uppercase">
           {t.blog}
         </span>
-        <form class="flex" id="formBlog" data-toast={JSON.stringify(t.toaster)}>
+        <form
+          class="flex"
+          id="formBlog"
+          data-toast={JSON.stringify(t.toaster.unexpected)}
+        >
+          <input type="hidden" name="locale" value={currentLocale} />
           <input
             type="email"
             name="email"
@@ -65,7 +71,8 @@ const year = new Date().getFullYear();
             aria-label="submit"
             class="flex cursor-pointer items-center gap-2 rounded-r bg-white px-4 py-2 text-sm font-medium text-black transition-colors duration-300 hover:bg-neutral-700 hover:text-white"
           >
-            <Send styles="size-4 " />
+            <Send styles="size-4" />
+            <Spin styles="size-4 animate-spin hidden" />
           </button>
         </form>
       </div>
@@ -96,36 +103,60 @@ const year = new Date().getFullYear();
   </div>
 </footer>
 
-<script is:inline data-astro-rerun type="module">
-  import showToast from "/scripts/showToast.js";
-  (() => {
-    const form = document.getElementById("formBlog");
+<script>
+  import { actions } from "astro:actions";
+  import showToast from "@lib/scripts/showToast";
+  import { isInputError } from "astro:actions";
 
-    form?.addEventListener("submit", (e) => {
+  document.addEventListener("astro:page-load", () => {
+    const form = document.getElementById("formBlog") as HTMLFormElement;
+
+    form?.addEventListener("submit", async (e) => {
+      //Prevengo el comportamiento por defecto del boton y activo el loader
       e.preventDefault();
-      const { success, error } = JSON.parse(form.dataset.toast);
+      const btn = form.querySelector("button")!;
+      btn.disabled = true;
+      Array.from(btn.children).forEach((child) => {
+        child.classList.toggle("hidden");
+      });
+      //Preparo la informacion
+      const unexpectedError = JSON.parse(form.dataset.toast!);
+      const formData = new FormData(form);
 
-      //  Realmente  se debería usar server actions para hacer el registro
-      // al blog de esa forma se validaría la información y se se manejaría
-      // la informacion tanto para exito como error.
-      // Pero hasta no tener un servicio de email dedicado, va quedar así.
-      const email = form.elements["email"].value.trim();
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      try {
+        const { data: response, error } =
+          await actions.suscribeToBlog(formData);
 
-      if (!regex.test(email)) {
+        if (isInputError(error)) {
+          showToast({
+            title: unexpectedError.title,
+            message: unexpectedError.message,
+            type: "error",
+          });
+          return;
+        }
+        if (response) {
+          const { success, data } = response;
+          showToast({
+            title: data.title,
+            message: data.message,
+            type: success ? "success" : "error",
+          });
+          success && form.reset();
+        }
+      } catch (err) {
         showToast({
-          title: error.title,
-          message: error.message,
+          title: unexpectedError.title,
+          message: unexpectedError.message,
           type: "error",
         });
-      } else {
-        showToast({
-          title: success.title,
-          message: success.message,
-          type: "success",
+      } finally {
+        //Desactivo el loader
+        Array.from(btn.children).forEach((child) => {
+          child.classList.toggle("hidden");
         });
-        form.reset();
+        btn.disabled = false;
       }
     });
-  })();
+  });
 </script>
