@@ -30,9 +30,8 @@ const t = getTranslation(currentLocale, "navbar");
           class="size-7 object-contain md:size-9 lg:size-10"
         />
       </a>
-      <div class="flex items-center gap-2 lg:hidden">
+      <div class="relative flex items-center gap-2 lg:hidden">
         <ToggleLanguage currentLanguage={currentLocale} />
-
         <ToggleMenu id="toggleMenu" />
       </div>
     </div>
