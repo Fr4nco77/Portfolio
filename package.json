@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.11",
     "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/vercel": "^9.0.2",
     "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.15.4",
