@@ -22,9 +22,13 @@ export default {
         message:
           "Vous recevrez désormais des notifications pour les nouveaux articles et du contenu exclusif.",
       },
-      error: {
-        title: "Email non valide",
-        message: "Veuillez saisir une adresse email valide pour vous inscrire.",
+      telegramFail: {
+        title: "Erreur d’envoi",
+        message: "Le message n’a pas pu être envoyé sur Telegram",
+      },
+      unexpected: {
+        title: "Erreur inattendue",
+        message: "Un problème est survenu, veuillez réessayer plus tard",
       },
     },
   },
@@ -103,9 +107,17 @@ export default {
       button: "Envoyer",
       toaster: {
         success: {
-          title: "Merci pour votre message !",
+          title: "Votre message est arrivé avec succès 🚀!",
           message:
-            "Je l’ai bien reçu. Je vous contacterai bientôt afin que nous puissions avancer ensemble.",
+            "Je prendrai bientôt contact avec vous pour continuer à avancer ensemble 💡🤝",
+        },
+        telegramFail: {
+          title: "Erreur d’envoi",
+          message: "Le message n’a pas pu être envoyé sur Telegram",
+        },
+        unexpected: {
+          title: "Erreur inattendue",
+          message: "Un problème est survenu, veuillez réessayer plus tard",
         },
       },
     },

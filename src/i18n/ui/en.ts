@@ -22,9 +22,13 @@ export default {
         message:
           "You will now receive notifications about new posts and exclusive content.",
       },
-      error: {
-        title: "Invalid email",
-        message: "Please enter a valid email address to register.",
+      telegramFail: {
+        title: "Sending Error",
+        message: "The message could not be sent to Telegram",
+      },
+      unexpected: {
+        title: "Unexpected Error",
+        message: "A problem occurred, please try again later",
       },
     },
   },
@@ -103,9 +107,17 @@ export default {
       button: "Send",
       toaster: {
         success: {
-          title: "Thank you for your message!",
+          title: "Your message arrived successfully 🚀!",
           message:
-            "I’ve received it. I’ll get in touch soon so we can move forward together.",
+            "I will get in touch very soon so we can keep moving forward together 💡🤝",
+        },
+        telegramFail: {
+          title: "Sending Error",
+          message: "The message could not be sent to Telegram",
+        },
+        unexpected: {
+          title: "Unexpected Error",
+          message: "A problem occurred, please try again later",
         },
       },
     },
