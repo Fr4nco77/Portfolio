@@ -42,7 +42,7 @@ const { texts: t, currentLocale } = Astro.props;
     required></textarea>
   <button
     type="submit"
-    class="flex cursor-pointer items-center justify-center bg-neutral-800 p-[18px] text-sm/tight font-medium uppercase transition-colors duration-200 lg:hover:bg-neutral-800/80"
+    class="flex cursor-pointer items-center justify-center bg-neutral-800 p-[18px] text-sm/tight font-medium uppercase transition-colors duration-200 disabled:cursor-not-allowed lg:hover:bg-neutral-800/80"
   >
     <span>{t.button}</span>
     <Spin styles="size-4 animate-spin hidden" />
