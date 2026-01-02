@@ -27,5 +27,4 @@ images:
 othersProjects:
   - "pt/ph"
   - "pt/architect"
-featured: true
 ---
