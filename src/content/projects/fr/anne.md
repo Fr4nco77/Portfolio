@@ -25,7 +25,7 @@ images:
   - /src/assets/images/projects/anne/4.png
   - /src/assets/images/projects/anne/5.png
 othersProjects:
-  - "fr/3am"
+  - "fr/peeps-generator"
   - "fr/ph"
 featured: true
 ---
