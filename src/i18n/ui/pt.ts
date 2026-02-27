@@ -203,7 +203,7 @@ export default {
     description:
       "Explore meu blog: artigos sobre programação, projetos, tecnologia e boas práticas para potencializar suas ideias digitais.",
     subtitle:
-      "Neste espaço compartilho aprendizados, dúvidas e experiências que me acompanham enquanto continuo crescendo no mundo do desenvolvimento.",
+      "Descubra o critério e as decisões que transformam o desenvolvimento em produtos digitais eficientes, escaláveis e preparados para novos desafios.",
     labelAll: "Tudo",
   },
   post: {

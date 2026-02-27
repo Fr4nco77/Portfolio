@@ -203,7 +203,7 @@ export default {
     description:
       "Explore my blog: articles on programming, projects, technology, and best practices to boost your digital ideas.",
     subtitle:
-      "In this space I share learnings, questions, and experiences that accompany me as I continue growing in the world of development.",
+      "Discover the expertise and decisions that transform development into efficient, scalable digital products ready for new challenges.",
     labelAll: "All",
   },
   post: {

@@ -203,7 +203,7 @@ export default {
     description:
       "Découvrez mon blog : articles sur la programmation, les projets, la technologie et les bonnes pratiques pour renforcer vos idées numériques.",
     subtitle:
-      "Dans cet espace, je partage des apprentissages, des questions et des expériences qui m’accompagnent au fil de ma progression dans le monde du développement.",
+      "Découvrez le discernement et les décisions qui transforment le développement en produits numériques performants, évolutifs et prêts à relever de nouveaux défis.",
     labelAll: "Tout",
   },
   post: {
