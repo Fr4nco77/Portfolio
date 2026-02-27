@@ -27,6 +27,6 @@ images:
   - /src/assets/images/projects/3am/5.png
 othersProjects:
   - "pt/architect"
-  - "pt/anne"
+  - "pt/peeps-generator"
 featured: true
 ---

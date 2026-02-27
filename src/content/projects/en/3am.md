@@ -26,7 +26,7 @@ images:
   - /src/assets/images/projects/3am/4.png
   - /src/assets/images/projects/3am/5.png
 othersProjects:
-  - "en/photography"
-  - "en/anne"
+  - "en/architect"
+  - "en/peeps-generator"
 featured: true
 ---
