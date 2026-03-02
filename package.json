@@ -19,6 +19,7 @@
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
+    "@google/genai": "^1.43.0",
     "@tailwindcss/typography": "^0.5.19",
     "prettier": "3.6.2",
     "prettier-plugin-astro": "0.14.1",
