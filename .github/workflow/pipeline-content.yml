@@ -1,0 +1,78 @@
+name: Translate & Publish
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/content/posts/es/**"
+      - "src/content/projects/es/**"
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Copiar el código del repositorio al servidor de Github
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Trae todo el historial para poder comparar archivos
+
+      # AÑADIDO: Instalar pnpm antes de Setup Node
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      # 2. Configurar Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      # 3. Instalar dependencias
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 4. Detectar archivos modificados
+      # Este paso crea una lista de archivos separados por espacio
+      - name: Detect Changed Files
+        id: changed-files
+        run: |
+          FILES=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)
+          echo "list=$FILES" >> $GITHUB_OUTPUT
+
+      # 5. Ejecutar Script de LinkedIn
+      - name: LinkedIn Post
+        if: steps.changed-files.outputs.list != ''
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+          LINKEDIN_VERSION: ${{ secrets.LINKEDIN_VERSION }}
+        run: node src/lib/scripts/pipeline/publishLinkedin.js ${{ steps.changed-files.outputs.list }}
+
+      # 6. Ejecutar Traducción de Posts
+      - name: Translate Posts
+        if: steps.changed-files.outputs.list != ''
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node src/lib/scripts/pipeline/translatePosts.js ${{ steps.changed-files.outputs.list }}
+
+      # 7. Ejecutar Traducción de Proyectos
+      - name: Translate Projects
+        if: steps.changed-files.outputs.list != ''
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node src/lib/scripts/pipeline/translateProjects.js ${{ steps.changed-files.outputs.list }}
+
+      # 8. Guardar cambios (Traducciones generadas)
+      - name: Commit & Push Translations
+        if: steps.changed-files.outputs.list != ''
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore: auto-translations generated [skip ci]" || echo "No changes to commit"
+          git push
