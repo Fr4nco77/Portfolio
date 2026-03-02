@@ -6,7 +6,7 @@ if (existsSync(".env")) {
   process.loadEnvFile();
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenAI({});
 
 export default async function gemini(prompt) {
   if (!prompt || prompt.trim() === "") return "";
@@ -19,7 +19,7 @@ export default async function gemini(prompt) {
 
     return response.text?.trim();
   } catch (error) {
-    console.error(`❌ Gemini API Error:`, error.message);
+    console.error(`\n❌ Gemini API Error:`, error.message);
     return null;
   }
 }

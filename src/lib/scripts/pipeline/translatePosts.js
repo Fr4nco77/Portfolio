@@ -10,11 +10,11 @@ async function main() {
     if (!filePath.endsWith(".mdx") || !filePath.includes("/content/posts/es/"))
       continue;
 
-    console.log(`\n📄 Procesando original: ${filePath}`);
+    console.log(`\n📄 Processing file: ${filePath}`);
     const fileContent = readFileSync(filePath, "utf-8");
 
     for (const lang of target_langs) {
-      console.log(`\n🌎 Traduciendo a ${lang}...`);
+      console.log(`\ 🌎 Translating to ${lang}...`);
 
       const prompt = `
     Actúa como un traductor nativo experto en tecnología y MDX.
@@ -39,7 +39,7 @@ async function main() {
         if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
         writeFileSync(newPath, fileTranslated);
 
-        console.log(`\n✅ Guardado: ${newPath}`);
+        console.log(` ✅ Saved: ${newPath}`);
       }
     }
   }

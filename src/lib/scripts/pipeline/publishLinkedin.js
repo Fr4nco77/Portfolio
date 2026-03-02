@@ -16,9 +16,10 @@ const files = process.argv.slice(2);
 async function main() {
   for (const filePath of files) {
     // SOLO publicar si es un post nuevo en la carpeta original (ES)
-    if (!filePath.includes("/content/posts/es/")) continue;
+    if (!filePath.endsWith(".mdx") || !filePath.includes("/content/posts/es/"))
+      continue;
 
-    console.log(`\n📢 Procesando anuncio para: ${filePath}`);
+    console.log(`\n📄 Processing file: ${filePath}`);
 
     try {
       const fileContent = readFileSync(filePath, "utf-8");
@@ -27,15 +28,16 @@ async function main() {
 
       // 1. Generar Copy con Gemini
       const prompt = generatePrompt(fileContent);
-      console.log("🤖 Gemini está redactando el post estratégico...");
+      console.log(" 🤖 Writing a strategic post...");
       const linkedinText = await gemini(prompt);
 
-      if (!linkedinText) throw new Error("Gemini devolvió un texto vacío");
+      if (!linkedinText) throw new Error("Gemini returned an empty text");
 
       // 2. Enviar a LinkedIn
+      console.log(" ✍️ Posting...");
       await postToLinkedin(linkedinText, postUrl);
     } catch (error) {
-      console.error(`❌ Error con ${filePath}:`, error.message);
+      console.error(` ❌ Error with ${filePath}:`, error.message);
     }
   }
 }
@@ -76,10 +78,13 @@ async function postToLinkedin(linkedinText, postUrl) {
   });
 
   if (response.ok) {
-    console.log("✅ Publicado en LinkedIn con éxito.");
+    console.log(" ✅ Successfully published on LinkedIn.");
   } else {
     const errorData = await response.json();
-    console.error("❌ Error API LinkedIn:", JSON.stringify(errorData, null, 2));
+    console.error(
+      " ❌ LinkedIn API Error:",
+      JSON.stringify(errorData, null, 2),
+    );
   }
 }
 
