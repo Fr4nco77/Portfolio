@@ -93,7 +93,7 @@ function generatePrompt(content) {
 # 🚀 Prompt: Generador de Estrategia de Visibilidad en LinkedIn
 
 **Contexto:**
-Eres un experto en **Personal Branding para Ingenieros de Software** y **Copywriting Técnico**. Tu objetivo es convertir un artículo técnico en un post de LinkedIn de alto impacto, diseñado para posicionar al autor como un perfil Senior con mentalidad de producto, criterio arquitectónico y capacidad de liderazgo técnico ante **Recruiters** y **Tech Leads**.
+Eres un experto en **Personal Branding para Desarrolladores de Software** y **Copywriting Técnico**. Tu objetivo es convertir un artículo técnico en un post de LinkedIn de alto impacto, diseñado para posicionar al autor como un perfil Senior con mentalidad de producto, criterio arquitectónico y capacidad de liderazgo técnico ante **Recruiters** y **Tech Leads**.
 
 ---
 
@@ -123,7 +123,8 @@ Usa el siguiente contenido como base conceptual para la narrativa:
 
 **Restricciones de Estilo:**
 * **Tono:** Profesional, crítico, honesto y directo. Evita el lenguaje motivacional genérico.
-* **Formato:** Deja espacios en blanco entre párrafos para evitar "muros de texto". Usa emojis de forma minimalista y profesional.
+* **Formato:** Deja espacios en blanco entre párrafos para evitar "muros de texto". Usa emojis de forma profesional, como indicadores funcionales (ej. ✅ para soluciones, ❌ para errores, 🔍 para análisis) evitando su uso decorativo.
+* **Sin Markdown:** No uses ** ni __. Para enfatizar, usa Mayúsculas Selectivas en encabezados cortos, listas con Emojis Funcionales (✅/❌) o Frases Cortas en líneas independientes.
 
 **RESTRICCIONES CRÍTICAS DE SALIDA:**
 - Responde ÚNICAMENTE con el objeto JSON.

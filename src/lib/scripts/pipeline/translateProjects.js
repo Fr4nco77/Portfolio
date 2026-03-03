@@ -31,10 +31,9 @@ async function main() {
 
   REGLAS DE TRADUCCIÓN:
   1. Traduce únicamente los valores de "summary" y los elementos de la lista "services".
-  2. NO traduzcas las llaves (ej. "name:", "cover:", etc.).
-  3. NO traduzcas los valores de: "name", "cover", "techs", "link", "repository", "date", "images", "video", "featured".
-  4. En las rutas de "othersProjects", cambia solo el prefijo de idioma al de destino (ej. "es/peeps" pasa a ser "${lang}/peeps").
-  5. Devuelve ÚNICAMENTE el texto del archivo, sin introducciones ni comentarios.
+  2. NO traduzcas los valores de: "name", "cover", "techs", "link", "repository", "date", "images", "video", "featured".
+  3. En las rutas de "othersProjects", cambia solo el prefijo de idioma al de destino (ej. "es/peeps" pasa a ser "${lang}/peeps").
+  4. Devuelve ÚNICAMENTE el texto del archivo, sin introducciones ni comentarios.
 
   Archivo a traducir:
   ${fileContent}`;

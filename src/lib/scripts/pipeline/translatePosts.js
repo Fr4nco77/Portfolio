@@ -24,7 +24,8 @@ async function main() {
     1. No traduzcas componentes de Astro/React (ej. <Card />, <Button>).
     2. Mantén intactas las rutas de imágenes, enlaces de Markdown, fechas, ids y tags.
     3. No inventes contenido, solo traduce.
-    4. Devuelve ÚNICAMENTE el texto traducido, sin comentarios adicionales.
+    4. PROHIBIDO el uso de bloques de código Markdown: Entrega el contenido directamente como texto plano sin envolverlo en \`\`\`yaml, \`\`\`md o etiquetas similares.
+    5. Devuelve ÚNICAMENTE el texto traducido, sin comentarios adicionales.
     
     Texto a traducir:
     ${fileContent}
