@@ -27,14 +27,16 @@ const { texts: t } = Astro.props;
       {
         t.process.map(({ step, label, description }, index) => (
           <div
-            class="group observe-enter relative flex h-44 w-80 flex-col items-center justify-center gap-2.5 overflow-hidden rounded-sm border border-neutral-800/80 bg-neutral-950 p-4 opacity-0 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-neutral-800/80 max-md:w-full"
+            class="group observe-enter relative flex min-h-52 w-full flex-col items-center justify-center gap-2.5 overflow-hidden rounded-sm border border-neutral-800/80 bg-neutral-950 p-4 opacity-0 transition-all duration-300 ease-in-out md:h-44 md:w-80 md:hover:scale-110 md:hover:bg-neutral-800/80"
             style={`animation-delay: ${index * 150}ms`}
           >
-            <div class="flex size-full flex-col items-center justify-center text-center uppercase duration-300 group-hover:-translate-y-full">
-              <h3 class="font-mono text-8xl font-medium">{step}</h3>
-              <p class="text-lg/tight font-medium text-neutral-400">{label}</p>
+            <div class="flex flex-col items-center justify-center text-center uppercase duration-300 md:size-full md:group-hover:-translate-y-full">
+              <h3 class="font-mono text-5xl font-medium md:text-8xl">{step}</h3>
+              <p class="text-base font-medium text-neutral-400 md:text-lg/tight">
+                {label}
+              </p>
             </div>
-            <p class="absolute flex size-full translate-y-full items-center justify-center p-4 text-center text-xl/tight font-medium duration-300 group-hover:translate-y-0">
+            <p class="mt-2 text-center text-sm font-normal text-neutral-300 max-md:max-w-xs md:absolute md:mt-0 md:flex md:size-full md:translate-y-full md:items-center md:justify-center md:p-4 md:text-xl/tight md:font-medium md:text-white md:duration-300 md:group-hover:translate-y-0">
               {description}
             </p>
           </div>
