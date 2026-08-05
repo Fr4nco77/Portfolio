@@ -18,6 +18,7 @@ import Paint from "@assets/icons/design/Paint.astro";
 //techs
 import Javascript from "@assets/icons/techs/JavaScript.astro";
 import TypeScript from "@assets/icons/techs/TypeScript.astro";
+import Python from "@assets/icons/techs/Python.astro";
 import Java from "@assets/icons/techs/Java.astro";
 import HTML from "@assets/icons/techs/HTML.astro";
 import React from "@assets/icons/techs/React.astro";
@@ -36,6 +37,8 @@ import PostgreSQL from "@assets/icons/techs/PostgreSQL.astro";
 import MySQL from "@assets/icons/techs/MySQL.astro";
 import MongoDB from "@assets/icons/techs/MongoDB.astro";
 import Mongoose from "@assets/icons/techs/Mongoose.astro";
+import Sequelize from "@assets/icons/techs/Sequelize.astro";
+import Prisma from "@assets/icons/techs/Prisma.astro";
 import Playwright from "@assets/icons/techs/Playwright.astro";
 import Jest from "@assets/icons/techs/Jest.astro";
 
@@ -114,6 +117,7 @@ export const skills = ({
       // Lenguajes
       { label: "JavaScript", icon: Javascript },
       { label: "TypeScript", icon: TypeScript },
+      { label: "Python", icon: Python },
       { label: "Java", icon: Java },
       { label: "HTML", icon: HTML },
 
@@ -138,6 +142,8 @@ export const skills = ({
       // ORMs y Bases de Datos
       { label: "PostgreSQL", icon: PostgreSQL },
       { label: "MySQL", icon: MySQL },
+      { label: "Sequelize", icon: Sequelize },
+      { label: "Prisma", icon: Prisma },
       { label: "MongoDB", icon: MongoDB },
       { label: "Mongoose", icon: Mongoose },
 
